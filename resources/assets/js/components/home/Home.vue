@@ -30,15 +30,8 @@
 			loginSuccess(data) {
 				jwtToken.setToken(data.token);
 				this.setAuthUser(data.user);
-				this.$router.push({name: 'profile'});
+				this.$router.push({name: 'map'});
 			}
 		}
 	}
 </script>
-
-<style lang="css">
-#main {
-  min-height: calc(100vh - 150px);
-}
-</style>
-

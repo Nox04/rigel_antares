@@ -8,7 +8,10 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
-					<router-link v-show="isLoggedIn" :to="{name: 'profile'}" tag="li" class="nav-item" activeClass="active">
+          <router-link v-show="isLoggedIn" :to="{name: 'map'}" tag="li" class="nav-item">
+						<a class="nav-link">Mapa</a>
+					</router-link>
+					<router-link v-show="isLoggedIn" :to="{name: 'profile'}" tag="li" class="nav-item">
 						<a class="nav-link">Perfil</a>
 					</router-link>
 					<li class="nav-item" v-show="isLoggedIn">

@@ -1,4 +1,5 @@
 import Home from './components/home/Home.vue';
+import Map from './components/map/Map.vue';
 import ProfileWrapper from './components/profile/ProfileWrapper.vue';
 import Profile from './components/profile/Profile.vue';
 import EditProfile from './components/profile/edit-profile/EditProfile.vue';
@@ -10,6 +11,12 @@ export default [
 		name: 'index',
 		component: Home,
 		meta: {requiresGuest: true}
+  },
+  {
+		path: '/map',
+		name: 'map',
+		component: Map,
+		meta: {requiresAuth: true}
 	},
 	{
 		path: '/profile',

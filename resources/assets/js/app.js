@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueNoty from 'vuejs-noty';
 import axios from 'axios';
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 window.axios = axios;
 
@@ -9,6 +10,13 @@ Vue.use(VueNoty, {
 	layout: 'bottomRight',
 	theme: 'bootstrap-v4',
 	timeout: 3000
+});
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBVzxYskKUvuoV68FulOZBOee2VXnaKgvM',
+    libraries: 'places'
+  }
 });
 
 import router from './router';
