@@ -3,29 +3,43 @@
     <div class="form-group">
       <label for="new-password">Nueva contraseña</label>
       <input
+        id="new-password"
+        v-model="form.new_password"
         type="password"
         class="form-control"
         :class="{'is-invalid' : error.new_password}"
-        id="new-password"
-        v-model="form.new_password"
         :disabled="loading"
-      />
-      <div class="invalid-feedback" v-show="error.new_password">{{ error.new_password }}</div>
+      >
+      <div
+        v-show="error.new_password"
+        class="invalid-feedback"
+      >
+        {{ error.new_password }}
+      </div>
     </div>
     <div class="form-group">
       <label for="confirm-new-password">Confirmar nueva contraseña</label>
       <input
+        id="confirm-new-password"
+        v-model="form.confirm_new_password"
         type="password"
         class="form-control"
         :class="{'is-invalid' : error.confirm_new_password}"
-        id="confirm-new-password"
-        v-model="form.confirm_new_password"
         :disabled="loading"
-      />
-      <div class="invalid-feedback" v-show="error.confirm_new_password">{{ error.confirm_new_password }}</div>
+      >
+      <div
+        v-show="error.confirm_new_password"
+        class="invalid-feedback"
+      >
+        {{ error.confirm_new_password }}
+      </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" :disabled="loading">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      :disabled="loading"
+    >
       <span v-show="loading">Actualizando contraseña</span>
       <span v-show="!loading">Actualizar contraseña</span>
     </button>

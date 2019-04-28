@@ -3,11 +3,13 @@
     <div class="row">
       <div class="col-12 col-md-12 col-lg-12 text-center">
         <div class="page-header">
-          <h1 class="display-6">Inicio de sesión</h1>
+          <h1 class="display-6">
+            Inicio de sesión
+          </h1>
         </div>
         <div class="card col-12 col-md-8 col-lg-4 offset-md-2 offset-lg-4">
           <div class="card-body">
-            <login-form @loginSuccess="loginSuccess"></login-form>
+            <login-form @loginSuccess="loginSuccess" />
           </div>
         </div>
       </div>

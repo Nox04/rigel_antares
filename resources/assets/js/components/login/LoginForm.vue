@@ -3,30 +3,44 @@
     <div class="form-group">
       <label for="email">Email</label>
       <input
+        id="email"
+        v-model="form.email"
         type="email"
         class="form-control"
         :class="{'is-invalid' : error.email}"
-        id="email"
-        v-model="form.email"
         autocomplete="off"
         :disabled="loading"
-      />
-      <div class="invalid-feedback" v-show="error.email">{{ error.email }}</div>
+      >
+      <div
+        v-show="error.email"
+        class="invalid-feedback"
+      >
+        {{ error.email }}
+      </div>
     </div>
     <div class="form-group">
       <label for="password">Contraseña</label>
       <input
+        id="password"
+        v-model="form.password"
         type="password"
         class="form-control"
         :class="{'is-invalid' : error.password}"
-        id="password"
-        v-model="form.password"
         :disabled="loading"
-      />
-      <div class="invalid-feedback" v-show="error.password">{{ error.password }}</div>
+      >
+      <div
+        v-show="error.password"
+        class="invalid-feedback"
+      >
+        {{ error.password }}
+      </div>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block" :disabled="loading">
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        :disabled="loading"
+      >
         <span v-show="loading">Iniciando sesión</span>
         <span v-show="!loading">Iniciar sesión</span>
       </button>

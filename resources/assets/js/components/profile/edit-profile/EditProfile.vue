@@ -1,12 +1,14 @@
 <template>
-	<div>
-		<h3 class="mb-4">Editar Profile</h3>
-		<div class="card">
-			<div class="card-body">
-				<edit-profile-form @updateSuccess="updateSuccess"></edit-profile-form>
-			</div>
-		</div>
-	</div>
+  <div>
+    <h3 class="mb-4">
+      Editar Profile
+    </h3>
+    <div class="card">
+      <div class="card-body">
+        <edit-profile-form @updateSuccess="updateSuccess" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

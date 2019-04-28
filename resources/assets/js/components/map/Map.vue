@@ -1,13 +1,17 @@
 <template>
-  <GmapMap id="map" :center="{lat:10.46314, lng:-73.25322}" :zoom="14">
+  <GmapMap
+    id="map"
+    :center="{lat:10.46314, lng:-73.25322}"
+    :zoom="14"
+  >
     <GmapMarker
-      :key="index"
       v-for="(m, index) in markers"
+      :key="index"
       :position="m.position"
       :clickable="true"
       :draggable="false"
-      @click="center=m.position"
       :icon="markerIcon"
+      @click="center=m.position"
     />
   </GmapMap>
 </template>
@@ -15,18 +19,6 @@
 <script>
 import markerIcon from '../../../static/moto.png';
 export default {
-  mounted() {
-    setTimeout(() => {
-      setInterval(() => {
-        const value = Math.round(Math.random());
-        if(value === 1) {
-          this.markers[value].position.lng -= 0.0001;
-        } else {
-          this.markers[value].position.lat -= 0.0001;
-        }
-      }, 800);
-    }, 1000);
-  },
   data() {
     return {
       markerIcon: markerIcon,
@@ -42,6 +34,18 @@ export default {
           }
         }]
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      setInterval(() => {
+        const value = Math.round(Math.random());
+        if(value === 1) {
+          this.markers[value].position.lng -= 0.0001;
+        } else {
+          this.markers[value].position.lat -= 0.0001;
+        }
+      }, 800);
+    }, 1000);
   }
 }
 </script>

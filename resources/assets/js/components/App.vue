@@ -1,12 +1,15 @@
 <template>
   <div>
-    <top-menu></top-menu>
+    <top-menu />
     <div id="main">
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <router-view />
       </transition>
     </div>
-    <app-footer></app-footer>
+    <app-footer />
   </div>
 </template>
 
