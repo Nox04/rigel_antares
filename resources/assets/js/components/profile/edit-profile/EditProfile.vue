@@ -10,21 +10,21 @@
 </template>
 
 <script>
-	import EditProfileForm from './EditProfileForm.vue'
-	import {mapActions} from 'vuex';
+import EditProfileForm from './EditProfileForm.vue';
+import {mapActions} from 'vuex';
 
-	export default {
-		components: {
-			'edit-profile-form': EditProfileForm
-		},
-		methods: {
-			...mapActions([
-				'setAuthUser'
-			]),
-			updateSuccess(data) {
-				this.setAuthUser(data.user);
-				this.$router.push({name: 'profile'});
-			}
-		}
-	}
+export default {
+  components: {
+    'edit-profile-form': EditProfileForm
+  },
+  methods: {
+    ...mapActions([
+      'setAuthUser'
+    ]),
+    updateSuccess(data) {
+      this.setAuthUser(data.user);
+      this.$router.push({name: 'profile'});
+    }
+  }
+}
 </script>

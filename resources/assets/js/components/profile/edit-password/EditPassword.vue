@@ -10,7 +10,7 @@
 </template>
 
 <script>
-	import EditPasswordForm from './EditPasswordForm.vue'
+	import EditPasswordForm from './EditPasswordForm.vue';
 
 	export default {
 		components: {

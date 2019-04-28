@@ -1,84 +1,82 @@
 <template>
-	<div>
-		<form @submit.prevent="updatePassword">
-			<div class="form-group">
-				<label for="new-password">Nueva contraseña</label>
-				<input
-					type="password"
-					class="form-control"
-					:class="{'is-invalid' : error.new_password}"
-					id="new-password"
-					v-model="form.new_password"
-					:disabled="loading"
-				/>
-				<div class="invalid-feedback" v-show="error.new_password">{{ error.new_password }}</div>
-			</div>
-			<div class="form-group">
-				<label for="confirm-new-password">Confirmar nueva contraseña</label>
-				<input
-					type="password"
-					class="form-control"
-					:class="{'is-invalid' : error.confirm_new_password}"
-					id="confirm-new-password"
-					v-model="form.confirm_new_password"
-					:disabled="loading"
-				/>
-				<div class="invalid-feedback" v-show="error.confirm_new_password">{{ error.confirm_new_password }}</div>
-			</div>
+  <form @submit.prevent="updatePassword">
+    <div class="form-group">
+      <label for="new-password">Nueva contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        :class="{'is-invalid' : error.new_password}"
+        id="new-password"
+        v-model="form.new_password"
+        :disabled="loading"
+      />
+      <div class="invalid-feedback" v-show="error.new_password">{{ error.new_password }}</div>
+    </div>
+    <div class="form-group">
+      <label for="confirm-new-password">Confirmar nueva contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        :class="{'is-invalid' : error.confirm_new_password}"
+        id="confirm-new-password"
+        v-model="form.confirm_new_password"
+        :disabled="loading"
+      />
+      <div class="invalid-feedback" v-show="error.confirm_new_password">{{ error.confirm_new_password }}</div>
+    </div>
 
-			<button type="submit" class="btn btn-primary" :disabled="loading">
-				<span v-show="loading">Actualizando contraseña</span>
-				<span v-show="!loading">Actualizar contraseña</span>
-			</button>
-		</form>
-	</div>
+    <button type="submit" class="btn btn-primary" :disabled="loading">
+      <span v-show="loading">Actualizando contraseña</span>
+      <span v-show="!loading">Actualizar contraseña</span>
+    </button>
+  </form>
 </template>
 
 <script>
-	import {mapState} from 'vuex'
-	import {api} from "../../../config";
+import {mapState} from 'vuex';
+import {api} from "../../../config";
 
-	export default {
-		data() {
-			return {
-				loading: false,
-				form: {
-					new_password: '',
-					confirm_new_password: ''
-				},
-				error: {
-					new_password: '',
-					confirm_new_password: ''
-				}
-			}
-		},
-		methods: {
-			updatePassword() {
-				this.loading = true;
-				axios.post(api.updateUserPassword, this.form)
-					.then((res) => {
-						this.loading = false;
-						this.$noty.success('Password updated');
-						this.$emit('updateSuccess');
-					})
-					.catch(err => {
-						(err.response.data.error) && this.$noty.error(err.response.data.error);
+export default {
+  data() {
+    return {
+      loading: false,
+      form: {
+        new_password: '',
+        confirm_new_password: ''
+      },
+      error: {
+        new_password: '',
+        confirm_new_password: ''
+      }
+    }
+  },
+  methods: {
+    updatePassword() {
+      this.loading = true;
+      axios.post(api.updateUserPassword, this.form)
+        .then((res) => {
+          this.loading = false;
+          this.$noty.success('Password updated');
+          this.$emit('updateSuccess');
+        })
+        .catch(err => {
+          (err.response.data.error) && this.$noty.error(err.response.data.error);
 
-						(err.response.data.errors)
-							? this.setErrors(err.response.data.errors)
-							: this.clearErrors();
+          (err.response.data.errors)
+            ? this.setErrors(err.response.data.errors)
+            : this.clearErrors();
 
-						this.loading = false;
-					});
-			},
-			setErrors(errors) {
-				this.error.new_password = errors.new_password ? errors.new_password[0] : null;
-				this.error.confirm_new_password = errors.confirm_new_password ? errors.confirm_new_password[0] : null;
-			},
-			clearErrors() {
-				this.error.new_password = null;
-				this.error.confirm_new_password = null;
-			}
-		}
-	}
+          this.loading = false;
+        });
+    },
+    setErrors(errors) {
+      this.error.new_password = errors.new_password ? errors.new_password[0] : null;
+      this.error.confirm_new_password = errors.confirm_new_password ? errors.confirm_new_password[0] : null;
+    },
+    clearErrors() {
+      this.error.new_password = null;
+      this.error.confirm_new_password = null;
+    }
+  }
+}
 </script>

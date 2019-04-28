@@ -34,51 +34,51 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
-	import {api} from "../../../config";
+import {mapState} from 'vuex';
+import {api} from "../../../config";
 
-	export default {
-		data() {
-			return {
-				loading: false,
-				error: {
-					name: '',
-					email: ''
-				}
-			};
-		},
-		computed: mapState({
-			form: state => {
-				return {...state.auth};
-			}
-		}),
-		methods: {
-			updateProfile() {
-				this.loading = true;
-				axios.post(api.updateUserProfile, this.form)
-					.then((res) => {
-						this.loading = false;
-						this.$noty.success('Profile Updated');
-						this.$emit('updateSuccess', res.data);
-					})
-					.catch(err => {
-						(err.response.data.error) && this.$noty.error(err.response.data.error);
+export default {
+  data() {
+    return {
+      loading: false,
+      error: {
+        name: '',
+        email: ''
+      }
+    };
+  },
+  computed: mapState({
+    form: state => {
+      return {...state.auth};
+    }
+  }),
+  methods: {
+    updateProfile() {
+      this.loading = true;
+      axios.post(api.updateUserProfile, this.form)
+        .then((res) => {
+          this.loading = false;
+          this.$noty.success('Profile Updated');
+          this.$emit('updateSuccess', res.data);
+        })
+        .catch(err => {
+          (err.response.data.error) && this.$noty.error(err.response.data.error);
 
-						(err.response.data.errors)
-							? this.setErrors(err.response.data.errors)
-							: this.clearErrors();
+          (err.response.data.errors)
+            ? this.setErrors(err.response.data.errors)
+            : this.clearErrors();
 
-						this.loading = false;
-					});
-			},
-			setErrors(errors) {
-				this.error.name = errors.name ? errors.name[0] : null;
-				this.error.email = errors.email ? errors.email[0] : null;
-			},
-			clearErrors() {
-				this.error.name = null;
-				this.error.email = null;
-			}
-		}
-	}
+          this.loading = false;
+        });
+    },
+    setErrors(errors) {
+      this.error.name = errors.name ? errors.name[0] : null;
+      this.error.email = errors.email ? errors.email[0] : null;
+    },
+    clearErrors() {
+      this.error.name = null;
+      this.error.email = null;
+    }
+  }
+}
 </script>
