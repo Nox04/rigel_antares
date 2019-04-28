@@ -21,10 +21,10 @@ class AuthenticateController extends Controller
 
 		try {
 			if(!$token = JWTAuth::attempt($credentials)) {
-				return response()->json(['error' => 'Invalid login credential'], 401);
+				return response()->json(['error' => 'Los datos ingresados no son correctos'], 401);
 			}
 		} catch(JWTException $e) {
-			return response()->json(['error' => 'Could not create token'], 500);
+			return response()->json(['error' => 'No se ha podido crear el token'], 500);
 		}
 
 		$user = $request->user();

@@ -1,11 +1,8 @@
-import $ from 'jquery';
 import Vue from 'vue';
 import VueNoty from 'vuejs-noty';
 import axios from 'axios';
 
-window.$ = window.jQuery = $;
 window.axios = axios;
-require('bootstrap');
 
 Vue.use(VueNoty, {
 	progressBar: false,
@@ -43,7 +40,7 @@ axios.interceptors.response.use(response => {
 		store.dispatch('unsetAuthUser')
 			.then(() => {
 				jwtToken.removeToken();
-				router.push({name: 'login'});
+				router.push({name: 'index'});
 			});
 	}
 

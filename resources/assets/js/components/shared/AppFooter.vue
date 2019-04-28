@@ -3,7 +3,7 @@
 		<hr>
 		<div class="container">
 			&copy;<span v-once>{{ siteName }}</span> <span v-once>{{ currentYear }},
-			developed by <a href="http://github.com/anindya-dhruba" target="_blank">Anindya Dhruba</a></span>
+			developed by <a href="https://rigel.digital" target="_blank">Rigel</a></span>
 		</div>
 	</footer>
 </template>
