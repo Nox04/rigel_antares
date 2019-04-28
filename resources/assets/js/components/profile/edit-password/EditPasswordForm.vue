@@ -2,7 +2,7 @@
 	<div>
 		<form @submit.prevent="updatePassword">
 			<div class="form-group">
-				<label for="new-password">New Password</label>
+				<label for="new-password">Nueva contraseña</label>
 				<input
 					type="password"
 					class="form-control"
@@ -14,7 +14,7 @@
 				<div class="invalid-feedback" v-show="error.new_password">{{ error.new_password }}</div>
 			</div>
 			<div class="form-group">
-				<label for="confirm-new-password">Confirm New Password</label>
+				<label for="confirm-new-password">Confirmar nueva contraseña</label>
 				<input
 					type="password"
 					class="form-control"
@@ -27,8 +27,8 @@
 			</div>
 
 			<button type="submit" class="btn btn-primary" :disabled="loading">
-				<span v-show="loading">Updating Password</span>
-				<span v-show="!loading">Update Password</span>
+				<span v-show="loading">Actualizando contraseña</span>
+				<span v-show="!loading">Actualizar contraseña</span>
 			</button>
 		</form>
 	</div>

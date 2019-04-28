@@ -30,10 +30,7 @@
 			loginSuccess(data) {
 				jwtToken.setToken(data.token);
 				this.setAuthUser(data.user);
-				if(data.user.is_admin)
-					this.$router.push({name: 'index'});
-				else
-					this.$router.push({name: 'profile'});
+				this.$router.push({name: 'profile'});
 			}
 		}
 	}

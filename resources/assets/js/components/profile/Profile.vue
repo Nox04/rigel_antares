@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<h3 class="mb-4">{{user.name}}'s Profile</h3>
+		<h3 class="mb-4">Perfil de  {{user.name}}</h3>
 		<div class="card">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">
-					Name
+					Nombre
 					<p class="lead">{{ user.name }}</p>
 				</li>
 				<li class="list-group-item">

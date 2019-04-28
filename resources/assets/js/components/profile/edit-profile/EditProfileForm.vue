@@ -2,7 +2,7 @@
 	<div>
 		<form @submit.prevent="updateProfile">
 			<div class="form-group">
-				<label for="name">Name</label>
+				<label for="name">Nombre</label>
 				<input
 					type="text"
 					class="form-control"
@@ -26,8 +26,8 @@
 				<div class="invalid-feedback" v-show="error.email">{{ error.email }}</div>
 			</div>
 			<button type="submit" class="btn btn-primary" :disabled="loading">
-				<span v-show="loading">Updating Profile</span>
-				<span v-show="!loading">Update Profile</span>
+				<span v-show="loading">Actualizando perfil</span>
+				<span v-show="!loading">Actualizar perfil</span>
 			</button>
 		</form>
 	</div>

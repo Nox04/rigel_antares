@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h3 class="mb-4">Edit Password</h3>
+		<h3 class="mb-4">Editar Contraseña</h3>
 		<div class="card">
 			<div class="card-body">
 				<edit-password-form @updateSuccess="updateSuccess"></edit-password-form>

@@ -1,5 +1,4 @@
 import Home from './components/home/Home.vue';
-import Login from './components/login/Login.vue';
 import ProfileWrapper from './components/profile/ProfileWrapper.vue';
 import Profile from './components/profile/Profile.vue';
 import EditProfile from './components/profile/edit-profile/EditProfile.vue';

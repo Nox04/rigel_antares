@@ -4,13 +4,13 @@
 			<div class="col-12 col-md-3">
 				<nav class="nav flex-column nav-pills mb-4">
 					<router-link :to="{name: 'profile'}" class="nav-link" activeClass="active" exact>
-						View Profile
+						Ver perfil
 					</router-link>
 					<router-link :to="{name: 'profile.editProfile'}" class="nav-link" activeClass="active" exact>
-						Edit Profile
+						Editar perfil
 					</router-link>
 					<router-link :to="{name: 'profile.editPassword'}" class="nav-link" activeClass="active" exact>
-						Edit Password
+						Editar contraseña
 					</router-link>
 				</nav>
 			</div>

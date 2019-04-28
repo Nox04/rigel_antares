@@ -18994,17 +18994,14 @@ var getters = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_home_Home_vue__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_home_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_home_Home_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_login_Login_vue__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_login_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_login_Login_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_ProfileWrapper_vue__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_ProfileWrapper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_profile_ProfileWrapper_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_Profile_vue__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_Profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_profile_Profile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_profile_edit_profile_EditProfile_vue__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_profile_edit_profile_EditProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_profile_edit_profile_EditProfile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_profile_edit_password_EditPassword_vue__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_profile_edit_password_EditPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_profile_edit_password_EditPassword_vue__);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_ProfileWrapper_vue__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_ProfileWrapper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_profile_ProfileWrapper_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_Profile_vue__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_Profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_profile_Profile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_edit_profile_EditProfile_vue__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_edit_profile_EditProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_profile_edit_profile_EditProfile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_profile_edit_password_EditPassword_vue__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_profile_edit_password_EditPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_profile_edit_password_EditPassword_vue__);
 
 
 
@@ -19018,21 +19015,21 @@ var getters = {
 	meta: { requiresGuest: true }
 }, {
 	path: '/profile',
-	component: __WEBPACK_IMPORTED_MODULE_2__components_profile_ProfileWrapper_vue___default.a,
+	component: __WEBPACK_IMPORTED_MODULE_1__components_profile_ProfileWrapper_vue___default.a,
 	children: [{
 		path: '',
 		name: 'profile',
-		component: __WEBPACK_IMPORTED_MODULE_3__components_profile_Profile_vue___default.a,
+		component: __WEBPACK_IMPORTED_MODULE_2__components_profile_Profile_vue___default.a,
 		meta: { requiresAuth: true }
 	}, {
 		path: 'edit-profile',
 		name: 'profile.editProfile',
-		component: __WEBPACK_IMPORTED_MODULE_4__components_profile_edit_profile_EditProfile_vue___default.a,
+		component: __WEBPACK_IMPORTED_MODULE_3__components_profile_edit_profile_EditProfile_vue___default.a,
 		meta: { requiresAuth: true }
 	}, {
 		path: 'edit-password',
 		name: 'profile.editPassword',
-		component: __WEBPACK_IMPORTED_MODULE_5__components_profile_edit_password_EditPassword_vue___default.a,
+		component: __WEBPACK_IMPORTED_MODULE_4__components_profile_edit_password_EditPassword_vue___default.a,
 		meta: { requiresAuth: true }
 	}, {
 		path: '*',
@@ -19140,102 +19137,8 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(50)
-/* template */
-var __vue_template__ = __webpack_require__(54)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/login/Login.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ba0d9948", Component.options)
-  } else {
-    hotAPI.reload("data-v-ba0d9948", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__login_LoginForm_vue__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__login_LoginForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__login_LoginForm_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers_jwt_token__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(2);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	components: {
-		'login-form': __WEBPACK_IMPORTED_MODULE_0__login_LoginForm_vue___default.a
-	},
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapActions */])(['setAuthUser']), {
-		loginSuccess: function loginSuccess(data) {
-			__WEBPACK_IMPORTED_MODULE_1__helpers_jwt_token__["a" /* default */].setToken(data.token);
-			this.setAuthUser(data.user);
-			this.$router.push({ name: 'profile' });
-		}
-	})
-});
-
-/***/ }),
+/* 49 */,
+/* 50 */,
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19536,52 +19439,7 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12 col-md-6 col-lg-4" }, [
-        _c("div", { staticClass: "card" }, [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [_c("login-form", { on: { loginSuccess: _vm.loginSuccess } })],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-md-6 col-lg-8" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c("h1", { staticClass: "display-4" }, [_vm._v("Login")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ba0d9948", module.exports)
-  }
-}
-
-/***/ }),
+/* 54 */,
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19687,7 +19545,7 @@ var render = function() {
                   exact: ""
                 }
               },
-              [_vm._v("\n\t\t\t\t\tView Profile\n\t\t\t\t")]
+              [_vm._v("\n\t\t\t\t\tVer perfil\n\t\t\t\t")]
             ),
             _vm._v(" "),
             _c(
@@ -19700,7 +19558,7 @@ var render = function() {
                   exact: ""
                 }
               },
-              [_vm._v("\n\t\t\t\t\tEdit Profile\n\t\t\t\t")]
+              [_vm._v("\n\t\t\t\t\tEditar perfil\n\t\t\t\t")]
             ),
             _vm._v(" "),
             _c(
@@ -19713,7 +19571,7 @@ var render = function() {
                   exact: ""
                 }
               },
-              [_vm._v("\n\t\t\t\t\tEdit Password\n\t\t\t\t")]
+              [_vm._v("\n\t\t\t\t\tEditar contraseña\n\t\t\t\t")]
             )
           ],
           1
@@ -19839,13 +19697,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("h3", { staticClass: "mb-4" }, [
-      _vm._v(_vm._s(_vm.user.name) + "'s Profile")
+      _vm._v("Perfil de  " + _vm._s(_vm.user.name))
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c("ul", { staticClass: "list-group list-group-flush" }, [
         _c("li", { staticClass: "list-group-item" }, [
-          _vm._v("\n\t\t\t\tName\n\t\t\t\t"),
+          _vm._v("\n\t\t\t\tNombre\n\t\t\t\t"),
           _c("p", { staticClass: "lead" }, [_vm._v(_vm._s(_vm.user.name))])
         ]),
         _vm._v(" "),
@@ -20113,7 +19971,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+          _c("label", { attrs: { for: "name" } }, [_vm._v("Nombre")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -20217,7 +20075,7 @@ var render = function() {
                   }
                 ]
               },
-              [_vm._v("Updating Profile")]
+              [_vm._v("Actualizando perfil")]
             ),
             _vm._v(" "),
             _c(
@@ -20232,7 +20090,7 @@ var render = function() {
                   }
                 ]
               },
-              [_vm._v("Update Profile")]
+              [_vm._v("Actualizar perfil")]
             )
           ]
         )
@@ -20259,7 +20117,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "mb-4" }, [_vm._v("Edit Profile")]),
+    _c("h3", { staticClass: "mb-4" }, [_vm._v("Editar Profile")]),
     _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c(
@@ -20521,7 +20379,7 @@ var render = function() {
       [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "new-password" } }, [
-            _vm._v("New Password")
+            _vm._v("Nueva contraseña")
           ]),
           _vm._v(" "),
           _c("input", {
@@ -20570,7 +20428,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "confirm-new-password" } }, [
-            _vm._v("Confirm New Password")
+            _vm._v("Confirmar nueva contraseña")
           ]),
           _vm._v(" "),
           _c("input", {
@@ -20636,7 +20494,7 @@ var render = function() {
                   }
                 ]
               },
-              [_vm._v("Updating Password")]
+              [_vm._v("Actualizando contraseña")]
             ),
             _vm._v(" "),
             _c(
@@ -20651,7 +20509,7 @@ var render = function() {
                   }
                 ]
               },
-              [_vm._v("Update Password")]
+              [_vm._v("Actualizar contraseña")]
             )
           ]
         )
@@ -20678,7 +20536,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "mb-4" }, [_vm._v("Edit Password")]),
+    _c("h3", { staticClass: "mb-4" }, [_vm._v("Editar Contraseña")]),
     _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c(
@@ -21228,7 +21086,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		loginSuccess: function loginSuccess(data) {
 			__WEBPACK_IMPORTED_MODULE_1__helpers_jwt_token__["a" /* default */].setToken(data.token);
 			this.setAuthUser(data.user);
-			if (data.user.is_admin) this.$router.push({ name: 'index' });else this.$router.push({ name: 'profile' });
+			this.$router.push({ name: 'profile' });
 		}
 	})
 });
