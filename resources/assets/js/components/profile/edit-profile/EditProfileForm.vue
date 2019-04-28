@@ -29,11 +29,6 @@
 				<span v-show="loading">Updating Profile</span>
 				<span v-show="!loading">Update Profile</span>
 			</button>
-			<div class="form-text text-muted mt-4">
-				Update Profile is disabled for demo purpose.
-				<br>
-				Please, enable it from <code>updateProfile()</code> method in EditProfileForm.vue component
-			</div>
 		</form>
 	</div>
 </template>
@@ -59,10 +54,6 @@
 		}),
 		methods: {
 			updateProfile() {
-				// uncomment the following 2 lines to enable edit profile
-				this.$noty.info('Edit Profile is disabled for demo purpose');
-				return;
-
 				this.loading = true;
 				axios.post(api.updateUserProfile, this.form)
 					.then((res) => {

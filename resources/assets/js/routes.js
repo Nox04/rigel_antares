@@ -10,12 +10,6 @@ export default [
 		path: '/',
 		name: 'index',
 		component: Home,
-		meta: {}
-	},
-	{
-		path: '/login',
-		name: 'login',
-		component: Login,
 		meta: {requiresGuest: true}
 	},
 	{

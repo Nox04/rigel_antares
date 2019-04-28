@@ -1,24 +1,39 @@
 <template>
-	<div class="container">
-		<div class="jumbotron">
-			<h1 class="display-4" v-once>{{siteName}}</h1>
-			<p class="lead">Starter Boilerplate SPA made with Laravel 5.6, Bootstrap 4, JWT Auth, Vue 2, Vue-router 3, Vuex 3, Axios and love</p>
-			<div class="pt-3">
-				<iframe src="https://ghbtns.com/github-btn.html?user=anindya-dhruba&repo=laravel-vue-spa&type=star&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
-				<iframe src="https://ghbtns.com/github-btn.html?user=anindya-dhruba&repo=laravel-vue-spa&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
-				<iframe src="https://ghbtns.com/github-btn.html?user=anindya-dhruba&repo=laravel-vue-spa&type=watch&count=true&size=large&v=2" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
+<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-12 col-lg-12 text-center">
+				<div class="page-header">
+					<h1 class="display-6">Inicio de sesión</h1>
+				</div>
+				<div class="card col-12 col-md-8 col-lg-4 offset-md-2 offset-lg-4">
+					<div class="card-body">
+						<login-form @loginSuccess="loginSuccess"></login-form>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+</div>
 </template>
 
 <script>
-	import {siteName} from './../../config';
-
+	import LoginForm from './../login/LoginForm.vue'
+	import jwtToken from "../../helpers/jwt-token";
+	import {mapActions} from "vuex";
 	export default {
-		data() {
-			return {
-				siteName: siteName
+		components: {
+			'login-form': LoginForm
+		},
+		methods: {
+			...mapActions([
+				'setAuthUser'
+			]),
+			loginSuccess(data) {
+				jwtToken.setToken(data.token);
+				this.setAuthUser(data.user);
+				if(data.user.is_admin)
+					this.$router.push({name: 'index'});
+				else
+					this.$router.push({name: 'profile'});
 			}
 		}
 	}

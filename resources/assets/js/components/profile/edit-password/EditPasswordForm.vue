@@ -30,11 +30,6 @@
 				<span v-show="loading">Updating Password</span>
 				<span v-show="!loading">Update Password</span>
 			</button>
-			<div class="form-text text-muted mt-4">
-				Update Password is disabled for demo purpose.
-				<br>
-				Please, enable it from <code>updatePassword()</code> method in EditPasswordForm.vue component
-			</div>
 		</form>
 	</div>
 </template>
@@ -59,10 +54,6 @@
 		},
 		methods: {
 			updatePassword() {
-				// uncomment the following 2 lines in your app
-				this.$noty.info('Edit Password is disabled for demo purpose');
-				return;
-
 				this.loading = true;
 				axios.post(api.updateUserPassword, this.form)
 					.then((res) => {

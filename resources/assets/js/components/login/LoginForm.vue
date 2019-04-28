@@ -15,7 +15,7 @@
 				<div class="invalid-feedback" v-show="error.email">{{ error.email }}</div>
 			</div>
 			<div class="form-group">
-				<label for="password">Password</label>
+				<label for="password">Contraseña</label>
 				<input
 					type="password"
 					class="form-control"
@@ -28,8 +28,8 @@
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-block" :disabled="loading">
-					<span v-show="loading">Logging in</span>
-					<span v-show="!loading">Login</span>
+					<span v-show="loading">Iniciando sesión</span>
+					<span v-show="!loading">Iniciar sesión</span>
 				</button>
 			</div>
 		</form>
@@ -38,7 +38,6 @@
 
 <script>
 	import {api} from "../../config";
-
 	export default {
 		data() {
 			return {
@@ -59,16 +58,14 @@
 				axios.post(api.login, this.form)
 					.then(res => {
 						this.loading = false;
-						this.$noty.success('Welcome back!');
+						this.$noty.success('Bienvenido de vuelta');
 						this.$emit('loginSuccess', res.data);
 					})
 					.catch(err => {
 						(err.response.data.error) && this.$noty.error(err.response.data.error);
-
 						(err.response.data.errors)
 							? this.setErrors(err.response.data.errors)
 							: this.clearErrors();
-
 						this.loading = false;
 					});
 			},

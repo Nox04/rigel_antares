@@ -8,17 +8,11 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
-					<router-link :to="{name: 'index'}" tag="li" class="nav-item" activeClass="active" exact>
-						<a class="nav-link">Home</a>
-					</router-link>
-					<router-link v-show="!isLoggedIn" :to="{name: 'login'}" tag="li" class="nav-item" activeClass="active" exact>
-						<a class="nav-link">Login</a>
-					</router-link>
 					<router-link v-show="isLoggedIn" :to="{name: 'profile'}" tag="li" class="nav-item" activeClass="active">
-						<a class="nav-link">Profile</a>
+						<a class="nav-link">Perfil</a>
 					</router-link>
 					<li class="nav-item" v-show="isLoggedIn">
-						<a class="nav-link" href="#" @click.prevent="logout">Logout</a>
+						<a class="nav-link" href="#" @click.prevent="logout">Cerrar sesión</a>
 					</li>
 				</ul>
 			</div>
@@ -45,8 +39,8 @@
 				jwtToken.removeToken();
 				this.$store.dispatch('unsetAuthUser')
 					.then(() => {
-						this.$noty.success('You are logged out');
-						this.$router.push({name: 'login'});
+						this.$noty.success('Cerraste sesión con éxito');
+						this.$router.push({name: 'index'});
 					});
 			}
 		}
