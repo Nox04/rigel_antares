@@ -1,7 +1,6 @@
 <template>
-  <form @submit.prevent="login">
-    <div class="form-group">
-      <label for="email">Email</label>
+  <form class="kt-form" @submit.prevent="login">
+    <div class="input-group">
       <input
         id="email"
         v-model="form.email"
@@ -9,6 +8,7 @@
         class="form-control"
         :class="{'is-invalid' : error.email}"
         autocomplete="off"
+        placeholder="Email"
         :disabled="loading"
       >
       <div
@@ -18,13 +18,13 @@
         {{ error.email }}
       </div>
     </div>
-    <div class="form-group">
-      <label for="password">Contraseña</label>
+    <div class="input-group">
       <input
         id="password"
         v-model="form.password"
         type="password"
         class="form-control"
+        placeholder="Contraseña"
         :class="{'is-invalid' : error.password}"
         :disabled="loading"
       >
@@ -35,12 +35,19 @@
         {{ error.password }}
       </div>
     </div>
-    <div class="form-group">
-      <button
-        type="submit"
-        class="btn btn-primary btn-block"
-        :disabled="loading"
-      >
+    <div class="row kt-login__extra">
+      <div class="col">
+        <label class="kt-checkbox">
+          <input type="checkbox" name="remember"> Recordarme
+          <span></span>
+        </label>
+      </div>
+      <div class="col kt-align-right">
+        <a href="javascript:;" id="kt_login_forgot" class="kt-login__link">¿Olvidaste tu contraseña?</a>
+      </div>
+    </div>
+    <div class="kt-login__actions">
+      <button id="kt_login_signin_submit" type="submit" :disabled="loading" class="btn btn-brand btn-pill kt-login__btn-primary">
         <span v-show="loading">Iniciando sesión</span>
         <span v-show="!loading">Iniciar sesión</span>
       </button>
@@ -92,3 +99,8 @@ export default {
   }
 }
 </script>
+<style>
+.invalid-feedback {
+  padding-left: 15px;
+}
+</style>

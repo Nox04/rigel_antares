@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import markerIcon from '../../../static/moto.png';
+import markerIcon from '../../../static/images/map/marker.png';
 export default {
   data() {
     return {
