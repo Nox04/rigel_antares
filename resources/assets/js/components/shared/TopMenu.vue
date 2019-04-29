@@ -10,7 +10,7 @@
             <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">{{name.charAt(0)}}</span>
           </div>
         </div>
-        <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl" :class="dynamicClass">
+        <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl" :class="dynamicClass" @click="toggleMenu()">
           <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x card-background">
             <div class="kt-user-card__avatar">
               <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{name.charAt(0)}}</span>
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="kt-notification">
-            <a href="#" class="kt-notification__item">
+            <router-link :to="{name:'profile'}" class="kt-notification__item">
               <div class="kt-notification__item-icon">
                 <i class="flaticon2-calendar-3 kt-font-success"></i>
               </div>
@@ -32,7 +32,7 @@
                   Configuración de la cuenta y más.
                 </div>
               </div>
-            </a>
+            </router-link>
             <div class="kt-notification__custom kt-space-between">
               <a href="#" @click.prevent="logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Cerrar sesión</a>
             </div>

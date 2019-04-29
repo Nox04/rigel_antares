@@ -25377,7 +25377,12 @@ var render = function() {
               {
                 staticClass:
                   "dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl",
-                class: _vm.dynamicClass
+                class: _vm.dynamicClass,
+                on: {
+                  click: function($event) {
+                    return _vm.toggleMenu()
+                  }
+                }
               },
               [
                 _c(
@@ -25406,31 +25411,85 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "kt-notification" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "kt-notification__custom kt-space-between" },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "btn btn-label btn-label-brand btn-sm btn-bold",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.logout($event)
+                _c(
+                  "div",
+                  { staticClass: "kt-notification" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { to: { name: "profile" } }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass:
+                                "flaticon2-calendar-3 kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "kt-notification__item-title kt-font-bold"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                Mi perfil\n              "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                Configuración de la cuenta y más.\n              "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "kt-notification__custom kt-space-between"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "btn btn-label btn-label-brand btn-sm btn-bold",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.logout($event)
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("Cerrar sesión")]
-                      )
-                    ]
-                  )
-                ])
+                          },
+                          [_vm._v("Cerrar sesión")]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
               ]
             )
           ]
@@ -25439,36 +25498,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "kt-notification__item", attrs: { href: "#" } },
-      [
-        _c("div", { staticClass: "kt-notification__item-icon" }, [
-          _c("i", { staticClass: "flaticon2-calendar-3 kt-font-success" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "kt-notification__item-details" }, [
-          _c(
-            "div",
-            { staticClass: "kt-notification__item-title kt-font-bold" },
-            [_vm._v("\n                Mi perfil\n              ")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "kt-notification__item-time" }, [
-            _vm._v(
-              "\n                Configuración de la cuenta y más.\n              "
-            )
-          ])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -25625,148 +25655,159 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass:
+        "kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop",
+      attrs: { id: "kt_aside" }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "kt-aside__brand kt-grid__item ",
+          attrs: { id: "kt_aside_brand" }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "kt-aside__brand-logo" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "kt-menu__link ",
+                  attrs: { to: { name: "map" } }
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      alt: "Logo",
+                      src: __webpack_require__(27)
+                    }
+                  })
+                ]
+              )
+            ],
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid",
+          attrs: { id: "kt_aside_menu_wrapper" }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "kt-aside-menu ", attrs: { id: "kt_aside_menu" } },
+            [
+              _c("ul", { staticClass: "kt-menu__nav " }, [
+                _c(
+                  "li",
+                  {
+                    staticClass: "kt-menu__item  kt-menu__item--active",
+                    attrs: { "aria-haspopup": "true" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "kt-menu__link ",
+                        attrs: { to: { name: "map" } }
+                      },
+                      [
+                        _c("span", { staticClass: "kt-menu__link-icon" }, [
+                          _c("i", { staticClass: "fa fa-map-marked-alt" })
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "kt-menu__link-text" }, [
+                          _vm._v("Mapa")
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "kt-menu__item",
+                    attrs: { "aria-haspopup": "true" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "kt-menu__link ",
+                        attrs: { to: { name: "messengers" } }
+                      },
+                      [
+                        _c("span", { staticClass: "kt-menu__link-icon" }, [
+                          _c("i", { staticClass: "fa fa-motorcycle" })
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "kt-menu__link-text" }, [
+                          _vm._v("Mensajeros")
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "kt-menu__item",
+                    attrs: { "aria-haspopup": "true" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "kt-menu__link ",
+                        attrs: { to: { name: "rides" } }
+                      },
+                      [
+                        _c("span", { staticClass: "kt-menu__link-icon" }, [
+                          _c("i", { staticClass: "fa fa-route" })
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "kt-menu__link-text" }, [
+                          _vm._v("Domicilios")
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop",
-        attrs: { id: "kt_aside" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "kt-aside__brand kt-grid__item ",
-            attrs: { id: "kt_aside_brand" }
-          },
-          [
-            _c("div", { staticClass: "kt-aside__brand-logo" }, [
-              _c("a", { attrs: { href: "demo1/index.html" } }, [
-                _c("img", {
-                  attrs: {
-                    alt: "Logo",
-                    src: __webpack_require__(27)
-                  }
-                })
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid",
-            attrs: { id: "kt_aside_menu_wrapper" }
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "kt-aside-menu ", attrs: { id: "kt_aside_menu" } },
-              [
-                _c("ul", { staticClass: "kt-menu__nav " }, [
-                  _c(
-                    "li",
-                    {
-                      staticClass: "kt-menu__item  kt-menu__item--active",
-                      attrs: { "aria-haspopup": "true" }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "kt-menu__link ",
-                          attrs: { href: "demo1/index.html" }
-                        },
-                        [
-                          _c("span", { staticClass: "kt-menu__link-icon" }, [
-                            _c("i", { staticClass: "fa fa-map-marked-alt" })
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "kt-menu__link-text" }, [
-                            _vm._v("Mapa")
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "kt-menu__section " }, [
-                    _c("h4", { staticClass: "kt-menu__section-text" }, [
-                      _vm._v("Gestión")
-                    ]),
-                    _vm._v(" "),
-                    _c("i", {
-                      staticClass: "kt-menu__section-icon flaticon-more-v2"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "kt-menu__item",
-                      attrs: { "aria-haspopup": "true" }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "kt-menu__link ",
-                          attrs: { href: "javascript:;" }
-                        },
-                        [
-                          _c("span", { staticClass: "kt-menu__link-icon" }, [
-                            _c("i", { staticClass: "fa fa-motorcycle" })
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "kt-menu__link-text" }, [
-                            _vm._v("Mensajeros")
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "kt-menu__item",
-                      attrs: { "aria-haspopup": "true" }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "kt-menu__link ",
-                          attrs: { href: "javascript:;" }
-                        },
-                        [
-                          _c("span", { staticClass: "kt-menu__link-icon" }, [
-                            _c("i", { staticClass: "fa fa-route" })
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "kt-menu__link-text" }, [
-                            _vm._v("Domicilios")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ]
-            )
-          ]
-        )
-      ]
-    )
+    return _c("li", { staticClass: "kt-menu__section " }, [
+      _c("h4", { staticClass: "kt-menu__section-text" }, [_vm._v("Gestión")]),
+      _vm._v(" "),
+      _c("i", { staticClass: "kt-menu__section-icon flaticon-more-v2" })
+    ])
   }
 ]
 render._withStripped = true
