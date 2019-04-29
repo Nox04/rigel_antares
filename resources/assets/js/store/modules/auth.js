@@ -54,6 +54,9 @@ const actions = {
 const getters = {
 	isLoggedIn: (state) => {
 		return !!(state.name && state.email);
+  },
+  name: (state) => {
+		return state.name;
 	}
 };
 
