@@ -23413,7 +23413,7 @@ var render = function() {
                 ]
               },
               [
-                _c("i", { staticClass: "fab fa-500px" }),
+                _c("i", { staticClass: "fa fa-sign-in-alt" }),
                 _vm._v(" Iniciando sesión")
               ]
             ),
@@ -23431,7 +23431,7 @@ var render = function() {
                 ]
               },
               [
-                _c("i", { staticClass: "fab fa-500px" }),
+                _c("i", { staticClass: "fa fa-sign-in-alt" }),
                 _vm._v(" Iniciar sesión")
               ]
             )

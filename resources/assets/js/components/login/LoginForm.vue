@@ -48,8 +48,8 @@
     </div>
     <div class="kt-login__actions">
       <button id="kt_login_signin_submit" type="submit" :disabled="loading" class="btn btn-brand btn-pill kt-login__btn-primary">
-        <span v-show="loading"><i class="fab fa-500px"></i> Iniciando sesión</span>
-        <span v-show="!loading"><i class="fab fa-500px"></i> Iniciar sesión</span>
+        <span v-show="loading"><i class="fa fa-sign-in-alt"></i> Iniciando sesión</span>
+        <span v-show="!loading"><i class="fa fa-sign-in-alt"></i> Iniciar sesión</span>
       </button>
     </div>
   </form>
