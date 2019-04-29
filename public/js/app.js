@@ -25113,6 +25113,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(182)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(131)
@@ -25121,7 +25125,7 @@ var __vue_template__ = __webpack_require__(132)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -25164,95 +25168,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_jwt_token__ = __webpack_require__(8);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -25366,10 +25283,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
   data: function data() {
     return {
-      siteName: __WEBPACK_IMPORTED_MODULE_0__config__["b" /* siteName */]
+      siteName: __WEBPACK_IMPORTED_MODULE_0__config__["b" /* siteName */],
+      menuIsOpen: false
     };
   },
 
@@ -25383,9 +25301,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.$toastr('success', 'Sesión finalizada', '');
         _this.$router.push({ name: 'index' });
       });
+    },
+    toggleMenu: function toggleMenu() {
+      this.menuIsOpen = !this.menuIsOpen;
     }
+  } }, 'computed', {
+  dynamicClass: function dynamicClass() {
+    if (this.menuIsOpen) return 'showDropDown';else return '';
   }
-});
+}));
 
 /***/ }),
 /* 132 */
@@ -25411,88 +25335,33 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass:
-              "kt-header__topbar-item kt-header__topbar-item--quick-panel",
-            attrs: {
-              "data-toggle": "kt-tooltip",
-              title: "Quick panel",
-              "data-placement": "right"
-            }
+            staticClass: "kt-header__topbar-item kt-header__topbar-item--user"
           },
           [
             _c(
-              "span",
+              "div",
               {
-                staticClass: "kt-header__topbar-icon",
-                attrs: { id: "kt_quick_panel_toggler_btn" }
+                staticClass: "kt-header__topbar-wrapper",
+                on: {
+                  click: function($event) {
+                    return _vm.toggleMenu()
+                  }
+                }
               },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "kt-svg-icon",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                      width: "24px",
-                      height: "24px",
-                      viewBox: "0 0 24 24",
-                      version: "1.1"
-                    }
-                  },
-                  [
-                    _c(
-                      "g",
-                      {
-                        attrs: {
-                          stroke: "none",
-                          "stroke-width": "1",
-                          fill: "none",
-                          "fill-rule": "evenodd"
-                        }
-                      },
-                      [
-                        _c("rect", {
-                          attrs: {
-                            id: "bound",
-                            x: "0",
-                            y: "0",
-                            width: "24",
-                            height: "24"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("rect", {
-                          attrs: {
-                            id: "Rectangle-7",
-                            fill: "#000000",
-                            x: "4",
-                            y: "4",
-                            width: "7",
-                            height: "7",
-                            rx: "1.5"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z",
-                            id: "Combined-Shape",
-                            fill: "#000000",
-                            opacity: "0.3"
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ]
+              [_vm._m(0)]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl",
+                class: _vm.dynamicClass
+              },
+              [_vm._m(1), _vm._v(" "), _vm._m(2)]
             )
           ]
-        ),
-        _vm._v(" "),
-        _vm._m(0)
+        )
       ])
     ]
   )
@@ -25502,295 +25371,93 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "kt-header__topbar-user" }, [
+      _c(
+        "span",
+        { staticClass: "kt-header__topbar-welcome kt-hidden-mobile" },
+        [_vm._v("Hola,")]
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        { staticClass: "kt-header__topbar-username kt-hidden-mobile" },
+        [_vm._v("Juan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass:
+            "kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold"
+        },
+        [_vm._v("J")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "kt-header__topbar-item kt-header__topbar-item--user" },
+      {
+        staticClass:
+          "kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x card-background"
+      },
       [
-        _c(
-          "div",
-          {
-            staticClass: "kt-header__topbar-wrapper",
-            attrs: { "data-toggle": "dropdown", "data-offset": "0px,0px" }
-          },
-          [
-            _c("div", { staticClass: "kt-header__topbar-user" }, [
-              _c(
-                "span",
-                { staticClass: "kt-header__topbar-welcome kt-hidden-mobile" },
-                [_vm._v("Hi,")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "kt-header__topbar-username kt-hidden-mobile" },
-                [_vm._v("Sean")]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "kt-hidden",
-                attrs: {
-                  alt: "Pic",
-                  src: __webpack_require__(179)
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold"
-                },
-                [_vm._v("S")]
-              )
-            ])
-          ]
-        ),
+        _c("div", { staticClass: "kt-user-card__avatar" }, [
+          _c(
+            "span",
+            {
+              staticClass:
+                "kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success"
+            },
+            [_vm._v("J")]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x",
-                staticStyle: {
-                  "background-image":
-                    "url(../../../static/images/misc/bg-1.jpg)"
-                }
-              },
-              [
-                _c("div", { staticClass: "kt-user-card__avatar" }, [
-                  _c("img", {
-                    staticClass: "kt-hidden",
-                    attrs: {
-                      alt: "Pic",
-                      src: __webpack_require__(179)
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success"
-                    },
-                    [_vm._v("S")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "kt-user-card__name" }, [
-                  _vm._v("\n              Sean Stone\n            ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "kt-user-card__badge" }, [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "btn btn-success btn-sm btn-bold btn-font-md"
-                    },
-                    [_vm._v("23 messages")]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "kt-notification" }, [
-              _c(
-                "a",
-                { staticClass: "kt-notification__item", attrs: { href: "#" } },
-                [
-                  _c("div", { staticClass: "kt-notification__item-icon" }, [
-                    _c("i", {
-                      staticClass: "flaticon2-calendar-3 kt-font-success"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "kt-notification__item-details" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "kt-notification__item-title kt-font-bold"
-                      },
-                      [
-                        _vm._v(
-                          "\n                  My Profile\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "kt-notification__item-time" }, [
-                      _vm._v(
-                        "\n                  Account settings and more\n                "
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                { staticClass: "kt-notification__item", attrs: { href: "#" } },
-                [
-                  _c("div", { staticClass: "kt-notification__item-icon" }, [
-                    _c("i", { staticClass: "flaticon2-mail kt-font-warning" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "kt-notification__item-details" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "kt-notification__item-title kt-font-bold"
-                      },
-                      [
-                        _vm._v(
-                          "\n                  My Messages\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "kt-notification__item-time" }, [
-                      _vm._v(
-                        "\n                  Inbox and tasks\n                "
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                { staticClass: "kt-notification__item", attrs: { href: "#" } },
-                [
-                  _c("div", { staticClass: "kt-notification__item-icon" }, [
-                    _c("i", {
-                      staticClass: "flaticon2-rocket-1 kt-font-danger"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "kt-notification__item-details" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "kt-notification__item-title kt-font-bold"
-                      },
-                      [
-                        _vm._v(
-                          "\n                  My Activities\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "kt-notification__item-time" }, [
-                      _vm._v(
-                        "\n                  Logs and notifications\n                "
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                { staticClass: "kt-notification__item", attrs: { href: "#" } },
-                [
-                  _c("div", { staticClass: "kt-notification__item-icon" }, [
-                    _c("i", {
-                      staticClass: "flaticon2-hourglass kt-font-brand"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "kt-notification__item-details" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "kt-notification__item-title kt-font-bold"
-                      },
-                      [_vm._v("\n                  My Tasks\n                ")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "kt-notification__item-time" }, [
-                      _vm._v(
-                        "\n                  latest tasks and projects\n                "
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                { staticClass: "kt-notification__item", attrs: { href: "#" } },
-                [
-                  _c("div", { staticClass: "kt-notification__item-icon" }, [
-                    _c("i", {
-                      staticClass: "flaticon2-cardiogram kt-font-warning"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "kt-notification__item-details" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "kt-notification__item-title kt-font-bold"
-                      },
-                      [_vm._v("\n                  Billing\n                ")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "kt-notification__item-time" }, [
-                      _vm._v("\n                  billing & statements "),
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "kt-badge kt-badge--danger kt-badge--inline kt-badge--pill kt-badge--rounded"
-                        },
-                        [_vm._v("2 pending")]
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "kt-notification__custom kt-space-between" },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "btn btn-label btn-label-brand btn-sm btn-bold",
-                      attrs: {
-                        href: "demo1/custom/user/login-v2.html",
-                        target: "_blank"
-                      }
-                    },
-                    [_vm._v("Sign Out")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-clean btn-sm btn-bold",
-                      attrs: {
-                        href: "demo1/custom/user/login-v2.html",
-                        target: "_blank"
-                      }
-                    },
-                    [_vm._v("Upgrade Plan")]
-                  )
-                ]
-              )
-            ])
-          ]
-        )
+        _c("div", { staticClass: "kt-user-card__name" }, [
+          _vm._v("\n            Juan David\n          ")
+        ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "kt-notification" }, [
+      _c("a", { staticClass: "kt-notification__item", attrs: { href: "#" } }, [
+        _c("div", { staticClass: "kt-notification__item-icon" }, [
+          _c("i", { staticClass: "flaticon2-calendar-3 kt-font-success" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "kt-notification__item-details" }, [
+          _c(
+            "div",
+            { staticClass: "kt-notification__item-title kt-font-bold" },
+            [_vm._v("\n                Mi perfil\n              ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "kt-notification__item-time" }, [
+            _vm._v(
+              "\n                Configuración de la cuenta y más.\n              "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "kt-notification__custom kt-space-between" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-label btn-label-brand btn-sm btn-bold",
+            attrs: { href: "demo1/custom/user/login-v2.html", target: "_blank" }
+          },
+          [_vm._v("Cerrar sesión")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -26192,12 +25859,7 @@ if (false) {
 }
 
 /***/ }),
-/* 179 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/300_25.jpg?b5bc9ee931bdcc0c439702898a9dc0d2";
-
-/***/ }),
+/* 179 */,
 /* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27267,6 +26929,53 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-a0d96f2e", module.exports)
   }
 }
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(183);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("0de7ccfc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2d54cd3e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TopMenu.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2d54cd3e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TopMenu.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var escape = __webpack_require__(92);
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.showDropDown {\n  display: block;\n  position: absolute; \n  will-change: transform; \n  top: 0px; \n  left: 0px; \n  -webkit-transform: translate3d(calc(100vw - 660px), 64px, 0px); \n          transform: translate3d(calc(100vw - 660px), 64px, 0px);\n}\n.card-background {\n  background-image: url(" + escape(__webpack_require__(184)) + ");\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/bg-1.jpg?78ed2040c21a3c1152696fcf378e690d";
 
 /***/ })
 /******/ ]);
