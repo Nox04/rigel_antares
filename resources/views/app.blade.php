@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Rigel">
         <meta name="description" content="Antares">
-        <link rel="shortcut icon" href="/images/favicon.ico" />
+        <link rel="shortcut icon" href="/images/favicon.png" />
         <title>{{ config('app.name') }}</title>
 
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">

@@ -27,7 +27,7 @@ const mutations = {
 		state.email = payload.user.email;
 	},
 	[UNSET_USER](state, payload) {
-		state.name = null;
+		state.name = '';
 		state.email = null;
 	}
 };

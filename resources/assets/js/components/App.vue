@@ -1,37 +1,47 @@
 <template>
   <div>
     <top-mobile v-if="!isLoginPage" />
-    <div
-      v-if="!isLoginPage"
-      class="kt-grid kt-grid--hor kt-grid--root"
+    <transition
+      name="fade"
+      mode="out-in"
     >
-      <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-        <sidebar />
-        <div
-          id="kt_wrapper"
-          class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper"
-        >
-          <top-menu />
-          <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
-            <div
-              id="kt_content"
-              class="kt-grid__item kt-grid__item--fluid"
-            >
-              <div id="main">
-                <transition
-                  name="fade"
-                  mode="out-in"
-                >
-                  <router-view />
-                </transition>
+      <div
+        v-if="!isLoginPage"
+        class="kt-grid kt-grid--hor kt-grid--root"
+      >
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+          <sidebar />
+          <div
+            id="kt_wrapper"
+            class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper"
+          >
+            <top-menu />
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+              <div
+                id="kt_content"
+                class="kt-grid__item kt-grid__item--fluid"
+              >
+                <div id="main">
+                  <transition
+                    name="fade"
+                    mode="out-in"
+                  >
+                    <router-view />
+                  </transition>
+                </div>
               </div>
             </div>
+            <app-footer />
           </div>
-          <app-footer />
         </div>
       </div>
-    </div>
-    <home v-if="isLoginPage" />
+    </transition>
+    <transition
+      name="fade"
+      mode="out-in"
+    >
+      <home v-if="isLoginPage" />
+    </transition>
   </div>
 </template>
 
