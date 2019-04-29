@@ -31,6 +31,6 @@ export default {
 </script>
 <style lang="css">
 #main {
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 125px);
 }
 </style>

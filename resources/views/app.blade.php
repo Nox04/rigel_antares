@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Rigel">
         <meta name="description" content="Antares">
-
+        <link rel="shortcut icon" href="/images/favicon.ico" />
         <title>{{ config('app.name') }}</title>
 
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
@@ -17,7 +17,7 @@
             ]) !!}
         </script>
     </head>
-    <body>
+    <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
         <div id="app">
             <app></app>
         </div>

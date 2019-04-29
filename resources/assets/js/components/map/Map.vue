@@ -53,7 +53,7 @@ export default {
 <style>
 #map {
   width: 100%;
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 125px);
 }
 </style>
 

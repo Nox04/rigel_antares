@@ -23656,7 +23656,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n#map {\n  width: 100%;\n  min-height: calc(100vh - 150px);\n}\n", ""]);
+exports.push([module.i, "\n#map {\n  width: 100%;\n  min-height: calc(100vh - 125px);\n}\n", ""]);
 
 // exports
 
@@ -25037,7 +25037,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n#main {\n  min-height: calc(100vh - 150px);\n}\n", ""]);
+exports.push([module.i, "\n#main {\n  min-height: calc(100vh - 125px);\n}\n", ""]);
 
 // exports
 
@@ -25438,6 +25438,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -25458,33 +25461,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("footer", [
-    _c("hr"),
-    _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
-      _vm._v("\n    ©"),
-      _vm._m(0),
+  return _c(
+    "div",
+    {
+      staticClass:
+        "kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop"
+    },
+    [
+      _c("div", { staticClass: "kt-footer__copyright" }, [
+        _vm._v("\n      ©"),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1)
+      ]),
       _vm._v(" "),
-      _vm._m(1)
-    ])
-  ])
+      _vm._m(2)
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", [_vm._v(_vm._s(_vm.siteName))])
+    return _c("span", [_vm._v(_vm._s(_vm.siteName) + " ")])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", [
-      _vm._v(_vm._s(_vm.currentYear) + ",\n      desarrollado por "),
-      _c("a", { attrs: { href: "https://rigel.digital", target: "_blank" } }, [
-        _vm._v("Rigel")
-      ])
+      _vm._v(_vm._s(_vm.currentYear) + ",\ndesarrollado por "),
+      _c(
+        "a",
+        {
+          staticClass: "kt-link",
+          attrs: { href: "https://rigel.digital", target: "_blank" }
+        },
+        [_vm._v("Rigel")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "kt-footer__menu" }, [
+      _c(
+        "a",
+        {
+          staticClass: "kt-footer__menu-link kt-link",
+          attrs: { href: "http://keenthemes.com/metronic", target: "_blank" }
+        },
+        [_vm._v("Contacto")]
+      )
     ])
   }
 ]
