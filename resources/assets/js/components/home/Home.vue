@@ -1,7 +1,13 @@
 <template>
   <div class="kt-grid kt-grid--ver kt-grid--root">
-    <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v4 kt-login--signin" id="kt_login">
-      <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="background">
+    <div
+      id="kt_login"
+      class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v4 kt-login--signin"
+    >
+      <div
+        id="background"
+        class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+      >
         <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
           <div class="kt-login__container">
             <div class="kt-login__logo">
@@ -11,7 +17,9 @@
             </div>
             <div class="kt-login__signin">
               <div class="kt-login__head">
-                <h3 class="kt-login__title">Inicio de sesión</h3>
+                <h3 class="kt-login__title">
+                  Inicio de sesión
+                </h3>
               </div>
               <login-form @loginSuccess="loginSuccess" />
             </div>

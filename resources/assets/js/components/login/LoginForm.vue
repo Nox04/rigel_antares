@@ -1,5 +1,8 @@
 <template>
-  <form class="kt-form" @submit.prevent="login">
+  <form
+    class="kt-form"
+    @submit.prevent="login"
+  >
     <div class="input-group">
       <input
         id="email"
@@ -38,18 +41,30 @@
     <div class="row kt-login__extra">
       <div class="col">
         <label class="kt-checkbox">
-          <input type="checkbox" name="remember"> Recordarme
-          <span></span>
+          <input
+            type="checkbox"
+            name="remember"
+          > Recordarme
+          <span />
         </label>
       </div>
       <div class="col kt-align-right">
-        <a href="javascript:;" id="kt_login_forgot" class="kt-login__link">¿Olvidaste tu contraseña?</a>
+        <a
+          id="kt_login_forgot"
+          href="javascript:;"
+          class="kt-login__link"
+        >¿Olvidaste tu contraseña?</a>
       </div>
     </div>
     <div class="kt-login__actions">
-      <button id="kt_login_signin_submit" type="submit" :disabled="loading" class="btn btn-brand btn-pill kt-login__btn-primary">
-        <span v-show="loading"><i class="fa fa-sign-in-alt"></i> Iniciando sesión</span>
-        <span v-show="!loading"><i class="fa fa-sign-in-alt"></i> Iniciar sesión</span>
+      <button
+        id="kt_login_signin_submit"
+        type="submit"
+        :disabled="loading"
+        class="btn btn-brand btn-pill kt-login__btn-primary"
+      >
+        <span v-show="loading"><i class="fa fa-sign-in-alt" /> Iniciando sesión</span>
+        <span v-show="!loading"><i class="fa fa-sign-in-alt" /> Iniciar sesión</span>
       </button>
     </div>
   </form>

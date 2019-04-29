@@ -1,13 +1,22 @@
 <template>
   <div>
     <top-mobile v-if="!isLoginPage" />
-		<div class="kt-grid kt-grid--hor kt-grid--root" v-if="!isLoginPage">
-			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+    <div
+      v-if="!isLoginPage"
+      class="kt-grid kt-grid--hor kt-grid--root"
+    >
+      <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
         <sidebar />
-				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-          <top-menu  />
-					<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
-						<div class="kt-grid__item kt-grid__item--fluid" id="kt_content">
+        <div
+          id="kt_wrapper"
+          class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper"
+        >
+          <top-menu />
+          <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+            <div
+              id="kt_content"
+              class="kt-grid__item kt-grid__item--fluid"
+            >
               <div id="main">
                 <transition
                   name="fade"
@@ -16,13 +25,13 @@
                   <router-view />
                 </transition>
               </div>
-						</div>
-					</div>
+            </div>
+          </div>
           <app-footer />
-				</div>
-			</div>
-		</div>
-    <home v-if="isLoginPage"/>
+        </div>
+      </div>
+    </div>
+    <home v-if="isLoginPage" />
   </div>
 </template>
 

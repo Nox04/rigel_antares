@@ -12,7 +12,7 @@ body {
 
 // animation
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .2s ease;
+  transition: opacity .5s ease;
 }
 .fade-enter, .fade-leave-active {
   opacity: 0;
