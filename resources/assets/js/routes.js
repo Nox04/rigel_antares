@@ -17,6 +17,18 @@ export default [
 		name: 'map',
 		component: Map,
 		meta: {requiresAuth: true}
+  },
+  {
+		path: '/messengers',
+		name: 'messengers',
+		component: Map,
+		meta: {requiresAuth: true}
+  },
+  {
+		path: '/rides',
+		name: 'rides',
+		component: Map,
+		meta: {requiresAuth: true}
 	},
 	{
 		path: '/profile',

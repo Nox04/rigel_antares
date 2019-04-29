@@ -6,17 +6,17 @@
         <div class="kt-header__topbar-wrapper" @click="toggleMenu()">
           <div class="kt-header__topbar-user">
             <span class="kt-header__topbar-welcome kt-hidden-mobile">Hola,</span>
-            <span class="kt-header__topbar-username kt-hidden-mobile">{{name}}</span>
-            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">{{name.charAt(0)}}</span>
+            <span class="kt-header__topbar-username kt-hidden-mobile">{{username}}</span>
+            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">{{username.charAt(0)}}</span>
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl" :class="dynamicClass" @click="toggleMenu()">
           <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x card-background">
             <div class="kt-user-card__avatar">
-              <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{name.charAt(0)}}</span>
+              <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{username.charAt(0)}}</span>
             </div>
             <div class="kt-user-card__name">
-              {{name}}
+              {{username}}
             </div>
           </div>
           <div class="kt-notification">
@@ -58,7 +58,7 @@ export default {
   computed: {
     ...mapGetters([
       'isLoggedIn',
-      'name'
+      'username'
     ]),
     dynamicClass() {
       if(this.menuIsOpen)

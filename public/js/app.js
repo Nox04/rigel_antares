@@ -22867,7 +22867,7 @@ var UNSET_USER = 'UNSET_USER';
 |--------------------------------------------------------------------------
 */
 var initialState = {
-	name: null,
+	name: 'Invitado',
 	email: null
 };
 
@@ -22907,7 +22907,7 @@ var getters = {
 	isLoggedIn: function isLoggedIn(state) {
 		return !!(state.name && state.email);
 	},
-	name: function name(state) {
+	username: function username(state) {
 		return state.name;
 	}
 };
@@ -22956,6 +22956,16 @@ var getters = {
 }, {
 	path: '/map',
 	name: 'map',
+	component: __WEBPACK_IMPORTED_MODULE_1__components_map_Map_vue___default.a,
+	meta: { requiresAuth: true }
+}, {
+	path: '/messengers',
+	name: 'messengers',
+	component: __WEBPACK_IMPORTED_MODULE_1__components_map_Map_vue___default.a,
+	meta: { requiresAuth: true }
+}, {
+	path: '/rides',
+	name: 'rides',
 	component: __WEBPACK_IMPORTED_MODULE_1__components_map_Map_vue___default.a,
 	meta: { requiresAuth: true }
 }, {
@@ -25284,7 +25294,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['isLoggedIn', 'name']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['isLoggedIn', 'username']), {
     dynamicClass: function dynamicClass() {
       if (this.menuIsOpen) return 'showDropDown';else return '';
     }
@@ -25357,7 +25367,7 @@ var render = function() {
                     {
                       staticClass: "kt-header__topbar-username kt-hidden-mobile"
                     },
-                    [_vm._v(_vm._s(_vm.name))]
+                    [_vm._v(_vm._s(_vm.username))]
                   ),
                   _vm._v(" "),
                   _c(
@@ -25366,7 +25376,7 @@ var render = function() {
                       staticClass:
                         "kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold"
                     },
-                    [_vm._v(_vm._s(_vm.name.charAt(0)))]
+                    [_vm._v(_vm._s(_vm.username.charAt(0)))]
                   )
                 ])
               ]
@@ -25399,13 +25409,13 @@ var render = function() {
                           staticClass:
                             "kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success"
                         },
-                        [_vm._v(_vm._s(_vm.name.charAt(0)))]
+                        [_vm._v(_vm._s(_vm.username.charAt(0)))]
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "kt-user-card__name" }, [
                       _vm._v(
-                        "\n            " + _vm._s(_vm.name) + "\n          "
+                        "\n            " + _vm._s(_vm.username) + "\n          "
                       )
                     ])
                   ]

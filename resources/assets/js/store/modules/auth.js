@@ -12,7 +12,7 @@ export const UNSET_USER = 'UNSET_USER';
 |--------------------------------------------------------------------------
 */
 const initialState = {
-	name: null,
+	name: 'Invitado',
 	email: null
 };
 
@@ -55,7 +55,7 @@ const getters = {
 	isLoggedIn: (state) => {
 		return !!(state.name && state.email);
   },
-  name: (state) => {
+  username: (state) => {
 		return state.name;
 	}
 };
