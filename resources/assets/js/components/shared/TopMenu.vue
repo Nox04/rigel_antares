@@ -76,7 +76,7 @@ export default {
       jwtToken.removeToken();
       this.$store.dispatch('unsetAuthUser')
         .then(() => {
-          this.$noty.success('Cerraste sesión con éxito');
+          this.$toastr('success', 'Sesión finalizada', '');
           this.$router.push({name: 'index'});
         });
     }

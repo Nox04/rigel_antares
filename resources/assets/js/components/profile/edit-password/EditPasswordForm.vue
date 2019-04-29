@@ -70,11 +70,11 @@ export default {
       axios.post(api.updateUserPassword, this.form)
         .then((res) => {
           this.loading = false;
-          this.$noty.success('Password updated');
+          this.$toastr('success', 'Contraseña actualizada con éxito', '');
           this.$emit('updateSuccess');
         })
         .catch(err => {
-          (err.response.data.error) && this.$noty.error(err.response.data.error);
+          (err.response.data.error) && this.$toastr('error', 'Ocurrió un error actualizando su contraseña', '');;
 
           (err.response.data.errors)
             ? this.setErrors(err.response.data.errors)

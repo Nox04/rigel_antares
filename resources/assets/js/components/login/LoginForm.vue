@@ -48,8 +48,8 @@
     </div>
     <div class="kt-login__actions">
       <button id="kt_login_signin_submit" type="submit" :disabled="loading" class="btn btn-brand btn-pill kt-login__btn-primary">
-        <span v-show="loading">Iniciando sesión</span>
-        <span v-show="!loading">Iniciar sesión</span>
+        <span v-show="loading"><i class="fab fa-500px"></i> Iniciando sesión</span>
+        <span v-show="!loading"><i class="fab fa-500px"></i> Iniciar sesión</span>
       </button>
     </div>
   </form>
@@ -77,11 +77,11 @@ export default {
       axios.post(api.login, this.form)
         .then(res => {
           this.loading = false;
-          this.$noty.success('Bienvenido de vuelta');
+          this.$toastr('success','Bienvenido de vuelta', '');
           this.$emit('loginSuccess', res.data);
         })
         .catch(err => {
-          (err.response.data.error) && this.$noty.error(err.response.data.error);
+          (err.response.data.error) && this.$toastr('error', 'Sus credenciales son inválidas', '');;
           (err.response.data.errors)
             ? this.setErrors(err.response.data.errors)
             : this.clearErrors();

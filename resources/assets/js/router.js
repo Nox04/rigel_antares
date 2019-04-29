@@ -29,7 +29,7 @@ router.beforeEach(async (to, from, next) => {
 	}
 	if (to.meta.requiresGuest) {
 		if (store.getters.isLoggedIn || jwtToken.getToken())
-			return next({name: 'profile'});
+			return next({name: 'map'});
 		else
 			return next();
 	}

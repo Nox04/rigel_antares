@@ -72,11 +72,11 @@ export default {
       axios.post(api.updateUserProfile, this.form)
         .then((res) => {
           this.loading = false;
-          this.$noty.success('Profile Updated');
+          this.$toastr('success', 'Datos actualizados con éxito', '');
           this.$emit('updateSuccess', res.data);
         })
         .catch(err => {
-          (err.response.data.error) && this.$noty.error(err.response.data.error);
+          (err.response.data.error) && this.$toastr('error', 'Ocurrió un error actualizando sus datos', '');;
 
           (err.response.data.errors)
             ? this.setErrors(err.response.data.errors)

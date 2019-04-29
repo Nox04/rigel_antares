@@ -1,15 +1,18 @@
 import Vue from 'vue';
-import VueNoty from 'vuejs-noty';
+import VueToastr from '@deveodk/vue-toastr'
 import axios from 'axios';
 import * as VueGoogleMaps from 'vue2-google-maps';
+import router from './router';
+import store from './store/index';
+import App from './components/App.vue';
+import jwtToken from './helpers/jwt-token';
 
 window.axios = axios;
 
-Vue.use(VueNoty, {
-	progressBar: false,
-	layout: 'bottomRight',
-	theme: 'bootstrap-v4',
-	timeout: 3000
+Vue.use(VueToastr, {
+  defaultPosition: 'toast-bottom-right',
+  defaultType: 'success',
+  defaultTimeout: 3000
 });
 
 Vue.use(VueGoogleMaps, {
@@ -18,11 +21,6 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places'
   }
 });
-
-import router from './router';
-import store from './store/index';
-import App from './components/App.vue';
-import jwtToken from './helpers/jwt-token';
 
 axios.interceptors.request.use(config => {
 	config.headers['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
