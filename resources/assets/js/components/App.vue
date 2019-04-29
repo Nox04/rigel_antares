@@ -1,25 +1,44 @@
 <template>
   <div>
-    <top-menu v-if="!isLoginPage" />
-    <div id="main">
-      <transition
-        name="fade"
-        mode="out-in"
-      >
-        <router-view />
-      </transition>
-    </div>
-    <app-footer v-if="!isLoginPage" />
+    <top-mobile v-if="!isLoginPage" />
+		<div class="kt-grid kt-grid--hor kt-grid--root" v-if="!isLoginPage">
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+        <sidebar />
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+          <top-menu  />
+					<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+						<div class="kt-grid__item kt-grid__item--fluid" id="kt_content">
+              <div id="main">
+                <transition
+                  name="fade"
+                  mode="out-in"
+                >
+                  <router-view />
+                </transition>
+              </div>
+						</div>
+					</div>
+          <app-footer />
+				</div>
+			</div>
+		</div>
+    <home v-if="isLoginPage"/>
   </div>
 </template>
 
 <script>
 import TopMenu from './shared/TopMenu.vue';
+import TopMobile from './shared/TopMobile.vue';
+import Sidebar from './shared/Sidebar.vue';
 import AppFooter from './shared/AppFooter.vue';
+import Home from './home/Home.vue';
 
 export default {
   components: {
     'top-menu': TopMenu,
+    'top-mobile': TopMobile,
+    'home': Home,
+    'sidebar': Sidebar,
     'app-footer': AppFooter
   },
   computed: {
