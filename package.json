@@ -26,6 +26,7 @@
     "dependencies": {
         "@deveodk/vue-toastr": "^1.0.4",
         "bootstrap": "^4.3.1",
+        "vue-loading-overlay": "^3.2.0",
         "vue2-google-maps": "^0.10.6"
     }
 }

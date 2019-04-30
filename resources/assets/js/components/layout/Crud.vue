@@ -3,8 +3,17 @@
     <div class="col-xl-8 col-md-8">
       <div class="kt-portlet kt-portlet--mobile">
         <div class="kt-portlet__head kt-portlet__head--lg">
+          <div class="kt-portlet__head-label">
+            <span class="kt-portlet__head-icon">
+              <i class="kt-font-brand fa fa-motorcycle"></i>
+            </span>
+            <h3 class="kt-portlet__head-title">
+              Mensajeros
+              <small>Gestione sus trabajadores</small>
+            </h3>
+          </div>
         </div>
-        <div class="kt-portlet__body kt-portlet__body--fit">
+        <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
           <datatable />
         </div>
       </div>
@@ -13,7 +22,7 @@
       <div class="kt-portlet kt-portlet--mobile">
         <div class="kt-portlet__head kt-portlet__head--lg">
         </div>
-        <div class="kt-portlet__body kt-portlet__body--fit">
+        <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
 
         </div>
       </div>
@@ -30,3 +39,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.internal-padding{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+</style>
