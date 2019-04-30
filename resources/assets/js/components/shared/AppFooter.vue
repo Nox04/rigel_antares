@@ -10,7 +10,7 @@
     </div>
     <div class="kt-footer__menu">
       <a
-        href="http://keenthemes.com/metronic"
+        href="https://rigel.digital/contact"
         target="_blank"
         class="kt-footer__menu-link kt-link"
       >Contacto</a>
