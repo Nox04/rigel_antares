@@ -19,7 +19,7 @@
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
               <div
                 id="kt_content"
-                class="kt-grid__item kt-grid__item--fluid"
+                class="kt-content kt-grid__item kt-grid__item--fluid"
               >
                 <div id="main">
                   <transition
@@ -69,6 +69,6 @@ export default {
 </script>
 <style lang="css">
 #main {
-  min-height: calc(100vh - 125px);
+  min-height: calc(100vh - 175px);
 }
 </style>

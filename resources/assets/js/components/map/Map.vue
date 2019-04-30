@@ -52,8 +52,9 @@ export default {
 
 <style>
 #map {
-  width: 100%;
+  width: calc(100% + 50px);
   min-height: calc(100vh - 125px);
+  margin: -25px;
 }
 </style>
 

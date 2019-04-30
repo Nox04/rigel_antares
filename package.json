@@ -13,12 +13,14 @@
     "devDependencies": {
         "axios": "^0.18",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-stage-2": "^6.24.1",
         "cross-env": "^5.2.0",
         "eslint": "^5.16.0",
         "eslint-plugin-vue": "^5.2.2",
         "laravel-mix": "^2.1.14",
         "vue": "^2.6.10",
         "vue-router": "^3.0.6",
+        "vuetable-2": "^1.7.5",
         "vuex": "^3.1.0"
     },
     "dependencies": {
