@@ -14,6 +14,7 @@
     :css="css"
     :sort-order="sortOrder"
     pagination-path=""
+    :append-params="moreParams"
     @vuetable:pagination-data="onPaginationData"
     @vuetable:loading="showLoading"
     @vuetable:load-success="hideLoading"
@@ -26,6 +27,8 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import {mapGetters} from 'vuex';
 import Vuetable from 'vuetable-2/src/components/Vuetable';
 import Pagination from './Pagination';
 import Filters from './Filters';
@@ -52,6 +55,7 @@ export default {
           direction: 'asc'
         }
       ],
+      moreParams: {},
       fields: [
         {
           name: 'name',
@@ -63,9 +67,9 @@ export default {
           title: 'Telefono',
         },
         {
-          name: 'group_id',
+          name: 'gender',
           title: 'Estado',
-          sortField: 'group_id',
+          sortField: 'gender',
           dataClass: 'center aligned',
           callback: 'statusLabel'
         }
@@ -92,10 +96,23 @@ export default {
     },
     statusLabel (value) {
       
-      return value === 1
+      return value === 'F'
         ? '<span class="kt-font-bold kt-font-success"><i class="fa fa-check-square"></i></span>'
         : '<span class="kt-font-bold kt-font-danger"><i class="fa fa-window-close"></i></span>'
     }
-  }
+  },
+  computed: {
+    ...mapGetters([
+      'textInBar'
+    ])
+  },
+  watch: {
+    textInBar: function(val) {
+      this.moreParams = {
+          'filter': val
+      }
+      Vue.nextTick( () => this.$refs.vuetable.refresh());
+    }
+  },
 }
 </script>

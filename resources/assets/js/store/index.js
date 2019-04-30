@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import auth from "./modules/auth";
+import auth from './modules/auth';
+import datatable from './modules/datatable';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	modules: {
-		auth
+    auth,
+    datatable
 	},
 	strict: true
 });
