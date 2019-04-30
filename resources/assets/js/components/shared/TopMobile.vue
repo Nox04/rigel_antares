@@ -11,6 +11,10 @@
       >
         <img
           alt="Logo"
+          src="../../../static/images/logos/icon.png"
+        >
+        <img
+          alt="Logo"
           src="../../../static/images/logos/logo-light.png"
         >
       </router-link>
