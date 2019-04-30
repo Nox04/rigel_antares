@@ -9,6 +9,7 @@
         <title>{{ config('app.name') }}</title>
 
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+        <meta name="theme-color" content="#1a1029" />
         <script>
             window.Laravel = {!! json_encode([
                 'csrfToken' => csrf_token(),
