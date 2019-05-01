@@ -17,6 +17,7 @@ class CreateMessengersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('phone', 25);
+            $table->integer('pin', 4);
             $table->boolean('enabled')->default(1);
             $table->integer('user_id')->unsigned();
             $table->timestamps();
