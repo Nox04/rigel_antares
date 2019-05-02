@@ -16,7 +16,11 @@ class CreateRidesTable extends Migration
         Schema::create('rides', function (Blueprint $table) {
             $table->increments('id');
             $table->string('address');
-            $table->enum('status', ['active', 'finished']);
+            $table->string('name');
+            $table->string('phone', 25);
+            $table->string('neighborhood')->nullable();
+            $table->text('details');
+            $table->enum('status', ['pending', 'active', 'finished']);
             $table->dateTime('start');
             $table->dateTime('end');
             $table->integer('messenger_id')->unsigned();
