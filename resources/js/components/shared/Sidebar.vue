@@ -32,50 +32,39 @@
         class="kt-aside-menu "
       >
         <ul class="kt-menu__nav ">
-          <li
-            class="kt-menu__item  kt-menu__item--active"
-            aria-haspopup="true"
+          <li v-for="(m, index) in menu"
+          :key="index"
+          aria-haspopup="true"
+          :class="[{'kt-menu__item' : m.url !== null},{'kt-menu__section' : m.url === null}, {'kt-menu__item--active': $route.name === m.url}]"
           >
             <router-link
-              :to="{name:'map'}"
-              class="kt-menu__link "
+              v-if="m.url !== null"
+              :to="{name: m.url}"
+              class="kt-menu__link"
             >
-              <span class="kt-menu__link-icon"><i class="fa fa-map-marked-alt" /></span>
-              <span class="kt-menu__link-text">Mapa</span>
+              <span class="kt-menu__link-icon"><i :class="['fa', m.icon]" /></span>
+              <span class="kt-menu__link-text">{{m.name}}</span>
             </router-link>
-          </li>
-          <li class="kt-menu__section ">
-            <h4 class="kt-menu__section-text">
-              Gestión
-            </h4>
-            <i class="kt-menu__section-icon flaticon-more-v2" />
-          </li>
-          <li
-            class="kt-menu__item"
-            aria-haspopup="true"
-          >
-            <router-link
-              :to="{name:'messengers'}"
-              class="kt-menu__link "
-            >
-              <span class="kt-menu__link-icon"><i class="fa fa-motorcycle" /></span>
-              <span class="kt-menu__link-text">Mensajeros</span>
-            </router-link>
-          </li>
-          <li
-            class="kt-menu__item"
-            aria-haspopup="true"
-          >
-            <router-link
-              :to="{name:'rides'}"
-              class="kt-menu__link "
-            >
-              <span class="kt-menu__link-icon"><i class="fa fa-route" /></span>
-              <span class="kt-menu__link-text">Domicilios</span>
-            </router-link>
+            <template v-else>
+              <h4 class="kt-menu__section-text">
+                {{m.name}}
+              </h4>
+              <i class="kt-menu__section-icon flaticon-more-v2" />
+            </template>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import {menu} from '../../config';
+export default {
+  data() {
+    return {
+      menu
+    }
+  },
+}
+</script>
