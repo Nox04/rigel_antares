@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -11,11 +13,18 @@
 |
 */
 
-Route::post('authenticate', 'AuthenticateController@authenticate');
+Route::prefix('auth')->group(function () {
+    // Login User
+    Route::post('login', 'AuthController@login');
 
-Route::group(['middleware' => 'jwt.auth'], function()
-{
-    Route::get('user', 'UserController@show');
-    Route::post('user/profile/update', 'UserController@updateProfile');
-    Route::post('user/password/update', 'UserController@updatePassword');
+    // Refresh the JWT Token
+    Route::get('refresh', 'AuthController@refresh');
+
+    // Below mention routes are available only for the authenticated users.
+    Route::middleware('auth:api')->group(function () {
+        // Get user info
+        Route::get('user', 'AuthController@user');
+        // Logout user from application
+        Route::post('logout', 'AuthController@logout');
+    });
 });

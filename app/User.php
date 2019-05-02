@@ -3,18 +3,22 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [''];
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -26,20 +30,21 @@ class User extends Authenticatable
     ];
 
     /**
-     * Messengers relationship
+     * The attributes that should be cast to native types.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @var array
      */
-    public function messengers() {
-        return $this->hasMany(Messenger::class);
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
     }
 
-    /**
-     * Rides relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function rides() {
-        return $this->hasMany(Ride::class);
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

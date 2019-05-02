@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name'      =>  'Administrador',
             'email'     =>  'admin@rigel.digital',
-            'password'  =>  bcrypt('secret')
+            'password'  =>  bcrypt('secret123')
         ]);
     }
 }

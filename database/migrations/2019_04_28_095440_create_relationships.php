@@ -33,7 +33,7 @@ class CreateRelationships extends Migration
         Schema::table('messengers', function (Blueprint $table) {
             $table->dropforeign('messengers_user_id_foreign');
         });
-        
+
         Schema::table('rides', function (Blueprint $table) {
             $table->dropforeign('rides_messenger_id_foreign');
             $table->dropforeign('rides_user_id_foreign');

@@ -1,33 +1,39 @@
 {
     "private": true,
     "scripts": {
-        "lint": "eslint --ext .js,.vue resources/assets/js/",
+        "lint": "eslint --ext .js,.vue resources/js/",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.18",
+        "@deveodk/vue-toastr": "^1.0.4",
+        "@websanova/vue-auth": "^2.21.14-beta",
+        "axios": "^0.18.0",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-preset-stage-2": "^6.24.1",
-        "cross-env": "^5.2.0",
+        "bootstrap": "^4.3.1",
+        "cross-env": "^5.1",
         "eslint": "^5.16.0",
-        "eslint-plugin-vue": "^5.2.2",
-        "laravel-mix": "^2.1.14",
+        "laravel-mix": "^4.0.7",
+        "lodash": "^4.17.11",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.15.2",
+        "sass-loader": "^7.1.0",
         "vue": "^2.6.10",
+        "vue-loading-overlay": "^3.2.0",
         "vue-router": "^3.0.6",
+        "vue-template-compiler": "^2.6.10",
+        "vue2-google-maps": "^0.10.6",
         "vuetable-2": "^1.7.5",
         "vuex": "^3.1.0"
     },
     "dependencies": {
-        "@deveodk/vue-toastr": "^1.0.4",
-        "bootstrap": "^4.3.1",
-        "lodash": "^4.17.11",
-        "vue-loading-overlay": "^3.2.0",
-        "vue2-google-maps": "^0.10.6"
+        "es6-promise": "^4.2.6",
+        "vue-axios": "^2.1.4"
     }
 }
