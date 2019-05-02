@@ -11,8 +11,6 @@ class MessengersTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 50; $i++) {
-            factory(App\Messenger::class, 20)->create();
-        }
+        factory(App\Messenger::class, 50)->create();
     }
 }

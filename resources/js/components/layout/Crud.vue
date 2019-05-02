@@ -5,16 +5,18 @@
         <div class="kt-portlet__head kt-portlet__head--lg">
           <div class="kt-portlet__head-label">
             <span class="kt-portlet__head-icon">
-              <i class="kt-font-brand fa fa-motorcycle"></i>
+              <i :class="['kt-font-brand fa', icon]"></i>
             </span>
             <h3 class="kt-portlet__head-title">
-              Mensajeros
-              <small>Gestione sus trabajadores</small>
+              {{title}}
+              <small>{{desc}}</small>
             </h3>
           </div>
         </div>
         <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
-          <datatable />
+          <datatable
+          :end-point="endPoint"
+          />
         </div>
       </div>
     </div>
@@ -34,6 +36,7 @@
 import Datatable from '../controls/Datatable.vue';
 
 export default {
+  props: ['title', 'desc', 'icon', 'endPoint'],
   components: {
     'datatable': Datatable
   }

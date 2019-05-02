@@ -28,3 +28,7 @@ Route::prefix('auth')->group(function () {
         Route::post('logout', 'AuthController@logout');
     });
 });
+
+Route::middleware('auth:api')->group(function () {
+    Route::resource('messengers', 'MessengerController', ['except' => ['create', 'edit']]);
+});
