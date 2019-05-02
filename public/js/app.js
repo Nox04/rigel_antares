@@ -4669,18 +4669,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuetable-2/src/components/Vuetable */ "./node_modules/vuetable-2/src/components/Vuetable.vue");
-/* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/controls/Pagination.vue");
-/* harmony import */ var _Filters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Filters */ "./resources/js/components/controls/Filters.vue");
-/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-loading-overlay */ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js");
-/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
-/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_6__);
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetable-2/src/components/Vuetable */ "./node_modules/vuetable-2/src/components/Vuetable.vue");
+/* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/controls/Pagination.vue");
+/* harmony import */ var _Filters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Filters */ "./resources/js/components/controls/Filters.vue");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-loading-overlay */ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5__);
 //
 //
 //
@@ -4710,7 +4705,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
+//
+//
+//
 
 
 
@@ -4720,10 +4717,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['endPoint'],
   components: {
-    Vuetable: vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Pagination: _Pagination__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Loading: vue_loading_overlay__WEBPACK_IMPORTED_MODULE_5___default.a,
-    Filters: _Filters__WEBPACK_IMPORTED_MODULE_4__["default"]
+    Vuetable: vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Pagination: _Pagination__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Loading: vue_loading_overlay__WEBPACK_IMPORTED_MODULE_4___default.a,
+    Filters: _Filters__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
@@ -4743,7 +4740,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         sortField: 'name',
         direction: 'asc'
       }],
-      moreParams: {},
+      moreParams: {
+        filters: {
+          name: '',
+          enabled: ''
+        }
+      },
       fields: [{
         name: 'name',
         title: 'Nombre',
@@ -4770,7 +4772,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$refs.pagination.setPaginationData(paginationData);
     },
     showLoading: function showLoading() {
-      console.log(axios);
       this.isLoading = true;
     },
     hideLoading: function hideLoading() {
@@ -4781,16 +4782,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     statusLabel: function statusLabel(value) {
       return value === 1 ? '<span class="kt-font-bold kt-font-success"><i class="fa fa-check-square"></i></span>' : '<span class="kt-font-bold kt-font-danger"><i class="fa fa-window-close"></i></span>';
-    }
-  },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['textInBar'])),
-  watch: {
-    textInBar: function textInBar(val) {
+    },
+    setFilters: function setFilters(val) {
       var _this = this;
 
-      this.moreParams = {
-        'filter': val
-      };
+      this.moreParams.filters.name = val.name;
+      this.moreParams.filters.enabled = val.enabled;
       vue__WEBPACK_IMPORTED_MODULE_0___default.a.nextTick(function () {
         return _this.$refs.vuetable.refresh();
       });
@@ -4809,13 +4806,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -4829,20 +4821,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      filterText: ''
+      filters: {
+        name: '',
+        enabled: ''
+      }
     };
   },
   methods: {
-    doFilter: lodash__WEBPACK_IMPORTED_MODULE_1___default.a.debounce(function () {
-      this.$store.dispatch('setFilterText', this.filterText);
+    doFilter: lodash__WEBPACK_IMPORTED_MODULE_0___default.a.debounce(function () {
+      this.$emit('changedFilters', this.filters);
     }, 400)
-  },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['textInBar']))
+  }
 });
 
 /***/ }),
@@ -27374,7 +27378,10 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("filters", { staticClass: "kt-margin-t-20 kt-margin-b-20" }),
+      _c("filters", {
+        staticClass: "kt-margin-t-20 kt-margin-b-20",
+        on: { changedFilters: _vm.setFilters }
+      }),
       _vm._v(" "),
       _c("vuetable", {
         ref: "vuetable",
@@ -27426,36 +27433,80 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row align-items-center" }, [
-    _c("div", { staticClass: "col-md-12 kt-margin-b-20-tablet-and-mobile" }, [
+    _c("div", { staticClass: "col-md-8 kt-margin-b-20-tablet-and-mobile" }, [
       _c("div", { staticClass: "kt-input-icon kt-input-icon--left" }, [
         _c("input", {
           directives: [
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.filterText,
-              expression: "filterText"
+              value: _vm.filters.name,
+              expression: "filters.name"
             }
           ],
           staticClass: "form-control",
-          attrs: {
-            type: "text",
-            placeholder: "Buscar...",
-            id: "generalSearch"
-          },
-          domProps: { value: _vm.filterText },
+          attrs: { type: "text", placeholder: "Nombre..." },
+          domProps: { value: _vm.filters.name },
           on: {
             keyup: _vm.doFilter,
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.filterText = $event.target.value
+              _vm.$set(_vm.filters, "name", $event.target.value)
             }
           }
         }),
         _vm._v(" "),
         _vm._m(0)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-4 kt-margin-b-20-tablet-and-mobile" }, [
+      _c("div", { staticClass: "kt-form__group kt-form__group--inline" }, [
+        _c("div", { staticClass: "kt-form__control" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters.enabled,
+                  expression: "filters.enabled"
+                }
+              ],
+              staticClass: "form-control bootstrap-select",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.filters,
+                      "enabled",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  _vm.doFilter
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("Todos")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "1" } }, [_vm._v("Activos")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "0" } }, [_vm._v("Inactivos")])
+            ]
+          )
+        ])
       ])
     ])
   ])
@@ -51333,12 +51384,12 @@ var getters = {
 /*!*************************************************!*\
   !*** ./resources/js/store/modules/datatable.js ***!
   \*************************************************/
-/*! exports provided: SET_FILTER_TEXT, default */
+/*! exports provided: SET_FILTERS, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_FILTER_TEXT", function() { return SET_FILTER_TEXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_FILTERS", function() { return SET_FILTERS; });
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /*
@@ -51346,7 +51397,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 | Mutation Types
 |--------------------------------------------------------------------------
 */
-var SET_FILTER_TEXT = 'SET_FILTER_TEXT';
+var SET_FILTERS = 'SET_FILTERS';
 /*
 |--------------------------------------------------------------------------
 | Initial State
@@ -51354,7 +51405,7 @@ var SET_FILTER_TEXT = 'SET_FILTER_TEXT';
 */
 
 var initialState = {
-  filterText: {}
+  filters: []
 };
 /*
 |--------------------------------------------------------------------------
@@ -51362,8 +51413,8 @@ var initialState = {
 |--------------------------------------------------------------------------
 */
 
-var mutations = _defineProperty({}, SET_FILTER_TEXT, function (state, payload) {
-  state.filterText = payload.filterText;
+var mutations = _defineProperty({}, SET_FILTERS, function (state, payload) {
+  state.filters = payload.filters;
 });
 /*
 |--------------------------------------------------------------------------
@@ -51373,9 +51424,9 @@ var mutations = _defineProperty({}, SET_FILTER_TEXT, function (state, payload) {
 
 
 var actions = {
-  setFilterText: function setFilterText(context, filterText) {
-    context.commit(SET_FILTER_TEXT, {
-      filterText: filterText
+  setFilters: function setFilters(context, filters) {
+    context.commit(SET_FILTERS, {
+      filters: filters
     });
   }
 };
@@ -51386,8 +51437,8 @@ var actions = {
 */
 
 var getters = {
-  textInBar: function textInBar(state) {
-    return state.filterText;
+  currentFilters: function currentFilters(state) {
+    return state.filters;
   }
 };
 /*

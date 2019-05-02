@@ -3,7 +3,7 @@
 | Mutation Types
 |--------------------------------------------------------------------------
 */
-export const SET_FILTER_TEXT = 'SET_FILTER_TEXT';
+export const SET_FILTERS = 'SET_FILTERS';
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ export const SET_FILTER_TEXT = 'SET_FILTER_TEXT';
 |--------------------------------------------------------------------------
 */
 const initialState = {
-	filterText: {}
+	filters: []
 };
 
 /*
@@ -20,8 +20,8 @@ const initialState = {
 |--------------------------------------------------------------------------
 */
 const mutations = {
-	[SET_FILTER_TEXT](state, payload) {
-		state.filterText = payload.filterText;
+	[SET_FILTERS](state, payload) {
+		state.filters = payload.filters;
 	}
 };
 
@@ -31,8 +31,8 @@ const mutations = {
 |--------------------------------------------------------------------------
 */
 const actions = {
-	setFilterText: (context, filterText) => {
-		context.commit(SET_FILTER_TEXT, {filterText})
+	setFilters: (context, filters) => {
+		context.commit(SET_FILTERS, {filters})
 	}
 };
 
@@ -42,8 +42,8 @@ const actions = {
 |--------------------------------------------------------------------------
 */
 const getters = {
-	textInBar: (state) => {
-		return state.filterText;
+	currentFilters: (state) => {
+		return state.filters;
   }
 };
 

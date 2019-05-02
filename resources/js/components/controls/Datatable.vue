@@ -6,7 +6,10 @@
     color="#5d78ff"
     :is-full-page="fullPage"></loading>
 
-    <filters class="kt-margin-t-20 kt-margin-b-20"></filters>
+    <filters
+    class="kt-margin-t-20 kt-margin-b-20"
+    @changedFilters="setFilters"
+    />
 
     <vuetable ref="vuetable"
     :api-url="endPoint"
@@ -29,7 +32,6 @@
 
 <script>
 import Vue from 'vue';
-import {mapGetters} from 'vuex';
 import Vuetable from 'vuetable-2/src/components/Vuetable';
 import Pagination from './Pagination';
 import Filters from './Filters';
@@ -65,7 +67,12 @@ export default {
           direction: 'asc'
         }
       ],
-      moreParams: {},
+      moreParams: {
+        filters: {
+          name: '',
+          enabled: ''
+        }
+      },
       fields: [
         {
           name: 'name',
@@ -96,7 +103,6 @@ export default {
       this.$refs.pagination.setPaginationData(paginationData);
     },
     showLoading () {
-      console.log(axios);
       this.isLoading = true;
     },
     hideLoading () {
@@ -106,24 +112,15 @@ export default {
       this.$refs.vuetable.changePage(page);
     },
     statusLabel (value) {
-
       return value === 1
         ? '<span class="kt-font-bold kt-font-success"><i class="fa fa-check-square"></i></span>'
         : '<span class="kt-font-bold kt-font-danger"><i class="fa fa-window-close"></i></span>'
+    },
+    setFilters(val) {
+        this.moreParams.filters.name = val.name;
+        this.moreParams.filters.enabled = val.enabled;
+        Vue.nextTick( () => this.$refs.vuetable.refresh());
     }
-  },
-  computed: {
-    ...mapGetters([
-      'textInBar'
-    ])
-  },
-  watch: {
-    textInBar: function(val) {
-      this.moreParams = {
-          'filter': val
-      }
-      Vue.nextTick( () => this.$refs.vuetable.refresh());
-    }
-  },
+  }
 }
 </script>
