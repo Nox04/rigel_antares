@@ -11,7 +11,7 @@
     <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
       <div class="kt-form__group kt-form__group--inline">
         <div class="kt-form__control">
-          <select class="form-control bootstrap-select" v-model="filters.enabled" @change="doFilter">
+          <select class="form-control bootstrap-select" v-model="filters.enabled" @change="doFilterNoWait">
             <option value="">Todos</option>
             <option value="1">Activos</option>
             <option value="0">Inactivos</option>
@@ -37,7 +37,10 @@ export default {
   methods: {
     doFilter: _.debounce(function() {
       this.$emit('changedFilters', this.filters);
-    }, 400)
+    }, 200),
+    doFilterNoWait () {
+      this.$emit('changedFilters', this.filters);
+    }
   }
 }
 </script>

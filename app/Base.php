@@ -30,6 +30,12 @@ class Base extends Model
         return $query->where('enabled', true);
     }
 
+    /**
+     * Return filtered data
+     *
+     * @param Request
+     * @return array
+     */
     public function format(Request $request) {
         $order = explode("|", $request->sort);
         $filters = json_decode($request->filters, true);

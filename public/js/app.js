@@ -4845,7 +4845,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     doFilter: lodash__WEBPACK_IMPORTED_MODULE_0___default.a.debounce(function () {
       this.$emit('changedFilters', this.filters);
-    }, 400)
+    }, 200),
+    doFilterNoWait: function doFilterNoWait() {
+      this.$emit('changedFilters', this.filters);
+    }
   }
 });
 
@@ -27494,7 +27497,7 @@ var render = function() {
                       $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                     )
                   },
-                  _vm.doFilter
+                  _vm.doFilterNoWait
                 ]
               }
             },
@@ -51274,16 +51277,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
-/* harmony import */ var _modules_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/datatable */ "./resources/js/store/modules/datatable.js");
-
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
-    datatable: _modules_datatable__WEBPACK_IMPORTED_MODULE_3__["default"]
+    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   strict: true
 }));
@@ -51363,82 +51363,6 @@ var getters = {
   },
   username: function username(state) {
     return state.name;
-  }
-};
-/*
-|--------------------------------------------------------------------------
-| Export the module
-|--------------------------------------------------------------------------
-*/
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  state: initialState,
-  mutations: mutations,
-  actions: actions,
-  getters: getters
-});
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/datatable.js":
-/*!*************************************************!*\
-  !*** ./resources/js/store/modules/datatable.js ***!
-  \*************************************************/
-/*! exports provided: SET_FILTERS, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_FILTERS", function() { return SET_FILTERS; });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-/*
-|--------------------------------------------------------------------------
-| Mutation Types
-|--------------------------------------------------------------------------
-*/
-var SET_FILTERS = 'SET_FILTERS';
-/*
-|--------------------------------------------------------------------------
-| Initial State
-|--------------------------------------------------------------------------
-*/
-
-var initialState = {
-  filters: []
-};
-/*
-|--------------------------------------------------------------------------
-| Mutations
-|--------------------------------------------------------------------------
-*/
-
-var mutations = _defineProperty({}, SET_FILTERS, function (state, payload) {
-  state.filters = payload.filters;
-});
-/*
-|--------------------------------------------------------------------------
-| Actions
-|--------------------------------------------------------------------------
-*/
-
-
-var actions = {
-  setFilters: function setFilters(context, filters) {
-    context.commit(SET_FILTERS, {
-      filters: filters
-    });
-  }
-};
-/*
-|--------------------------------------------------------------------------
-| Getters
-|--------------------------------------------------------------------------
-*/
-
-var getters = {
-  currentFilters: function currentFilters(state) {
-    return state.filters;
   }
 };
 /*
