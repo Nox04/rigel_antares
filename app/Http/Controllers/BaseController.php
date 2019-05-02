@@ -25,16 +25,7 @@ class BaseController extends Controller
      */
     public function index(Request $request)
     {
-        $order = explode("|", $request->sort);
-        $filters = json_decode($request->filters, true);
-        $model = $this->entity->query();
-
-        foreach($filters as $key => $filter) {
-            if($filter != '') {
-                $model = $model->where($key, 'like', '%'.$filter.'%');
-            }
-        }
-        return $model->orderBy($order[0], $order[1])->paginate($request->per_page);
+        return $this->entity->format($request);
     }
 
     /**
