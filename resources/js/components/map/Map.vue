@@ -5,7 +5,7 @@
     :zoom="14"
   >
     <GmapMarker
-      v-for="(m, index) in markers"
+      v-for="(m, index) in messengers"
       :key="index"
       :position="m.position"
       :clickable="true"
@@ -18,35 +18,34 @@
 
 <script>
 import markerIcon from '../../../static/images/map/marker.png';
+import {api} from '../../config';
 export default {
   data() {
     return {
       markerIcon: markerIcon,
-      markers: [{
-          position: {
-            lat: 10.470012,
-            lng: -73.248427
-          }
-        }, {
-          position: {
-            lat: 10.467733,
-            lng: -73.241993
-          }
-        }]
+      messengers: []
     }
   },
   mounted() {
-    setTimeout(() => {
-      setInterval(() => {
-        const value = Math.round(Math.random());
-        if(value === 1) {
-          this.markers[value].position.lng -= 0.0001;
-        } else {
-          this.markers[value].position.lat -= 0.0001;
-        }
-      }, 800);
-    }, 1000);
-  }
+    this.requestWorkingMessengers();
+  },
+  methods: {
+    requestWorkingMessengers() {
+      axios.get(api.workingMessengers)
+      .then(response => {
+          this.messengers = response.data;
+          this.messengers.forEach((item, index) => {
+            this.messengers[index].position = {
+              lat: parseFloat(this.messengers[index].latitude),
+              lng: parseFloat(this.messengers[index].longitude)
+            }
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  },
 }
 </script>
 

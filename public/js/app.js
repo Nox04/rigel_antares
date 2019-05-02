@@ -5155,6 +5155,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../static/images/map/marker.png */ "./resources/static/images/map/marker.png");
 /* harmony import */ var _static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
 //
 //
 //
@@ -5173,38 +5174,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       markerIcon: _static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0___default.a,
-      markers: [{
-        position: {
-          lat: 10.470012,
-          lng: -73.248427
-        }
-      }, {
-        position: {
-          lat: 10.467733,
-          lng: -73.241993
-        }
-      }]
+      messengers: []
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    this.requestWorkingMessengers();
+  },
+  methods: {
+    requestWorkingMessengers: function requestWorkingMessengers() {
+      var _this = this;
 
-    setTimeout(function () {
-      setInterval(function () {
-        var value = Math.round(Math.random());
+      axios.get(_config__WEBPACK_IMPORTED_MODULE_1__["api"].workingMessengers).then(function (response) {
+        _this.messengers = response.data;
 
-        if (value === 1) {
-          _this.markers[value].position.lng -= 0.0001;
-        } else {
-          _this.markers[value].position.lat -= 0.0001;
-        }
-      }, 800);
-    }, 1000);
+        _this.messengers.forEach(function (item, index) {
+          _this.messengers[index].position = {
+            lat: parseFloat(_this.messengers[index].latitude),
+            lng: parseFloat(_this.messengers[index].longitude)
+          };
+        });
+      })["catch"](function (error) {
+        console.error(error);
+      });
+    }
   }
 });
 
@@ -28098,7 +28096,7 @@ var render = function() {
     {
       attrs: { id: "map", center: { lat: 10.46314, lng: -73.25322 }, zoom: 14 }
     },
-    _vm._l(_vm.markers, function(m, index) {
+    _vm._l(_vm.messengers, function(m, index) {
       return _c("GmapMarker", {
         key: index,
         attrs: {
@@ -51062,7 +51060,8 @@ var siteName = Laravel.siteName;
 var apiDomain = Laravel.apiDomain;
 var csrfToken = Laravel.csrfToken;
 var api = {
-  messengers: 'messengers'
+  messengers: 'messengers',
+  workingMessengers: 'messengers/list/working'
 };
 
 /***/ }),
