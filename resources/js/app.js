@@ -16,6 +16,7 @@ import VueAuth from '@websanova/vue-auth';
 import VueAxios from 'vue-axios';
 import VueRouter from 'vue-router';
 import auth from './auth';
+import {apiDomain} from './config';
 
 
 /**
@@ -41,7 +42,7 @@ Vue.router = router;
 Vue.use(VueRouter);
 
 Vue.use(VueAxios, axios);
-axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`;
+axios.defaults.baseURL = apiDomain;
 Vue.use(VueAuth, auth);
 
 axios.interceptors.response.use(response => {
