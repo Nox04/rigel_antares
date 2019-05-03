@@ -8,12 +8,10 @@
       class="kt-header-menu-wrapper"
     />
     <div class="kt-header__topbar">
-      <div class="kt-header__topbar-item kt-header__topbar-item--user">
-        <dropdown
-        :username="username"
-        @logout="logout"
-        />
-      </div>
+      <dropdown
+      :username="username"
+      @logout="logout"
+      />
     </div>
   </div>
 </template>
