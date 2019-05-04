@@ -18,7 +18,7 @@
     </div>
     <div class="kt-portlet__foot custom-padding">
       <div class="kt-form__actions">
-        <button type="submit" class="btn btn-primary">Crear</button>
+        <button type="submit" :disabled="this.errorsCount > 0 || this.fieldsCount < 1" class="btn btn-primary">Crear</button>
         <button type="reset" class="btn btn-secondary">Cancelar</button>
       </div>
     </div>
@@ -40,18 +40,23 @@ export default {
     ]),
     save () {
       if(this.errorsCount === 0) {
-        this.fields.forEach(field => {
-          if(field.required && this.formData) {
-            console.log(this.formData[field.databaseName]);
-          }
-        });
+        if(this.fieldsCount > 0) {
+          this.fields.forEach(field => {
+            if(field.required && !this.formData[field.databaseName]) {
+              this.$toastr('error', 'Por favor llene todos los campos requeridos', '');
+            } else {
+              //send
+            }
+          });
+        }
       }
     }
   },
   computed: {
     ...mapGetters([
       'formData',
-      'errorsCount'
+      'errorsCount',
+      'fieldsCount'
     ])
   }
 }

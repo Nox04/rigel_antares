@@ -4971,15 +4971,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       if (this.errorsCount === 0) {
-        this.fields.forEach(function (field) {
-          if (field.required && _this.formData) {
-            console.log(_this.formData[field.databaseName]);
-          }
-        });
+        if (this.fieldsCount > 0) {
+          this.fields.forEach(function (field) {
+            if (field.required && !_this.formData[field.databaseName]) {
+              _this.$toastr('error', 'Por favor llene todos los campos requeridos', '');
+            } else {//send
+            }
+          });
+        }
       }
     }
   }),
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount', 'fieldsCount']))
 });
 
 /***/ }),
@@ -28260,32 +28263,31 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "kt-portlet__foot custom-padding" }, [
+        _c("div", { staticClass: "kt-form__actions" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: {
+                type: "submit",
+                disabled: this.errorsCount > 0 || this.fieldsCount < 1
+              }
+            },
+            [_vm._v("Crear")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-secondary", attrs: { type: "reset" } },
+            [_vm._v("Cancelar")]
+          )
+        ])
+      ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "kt-portlet__foot custom-padding" }, [
-      _c("div", { staticClass: "kt-form__actions" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Crear")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-secondary", attrs: { type: "reset" } },
-          [_vm._v("Cancelar")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52450,6 +52452,9 @@ var getters = {
   },
   errorsCount: function errorsCount(state) {
     if (state.errors) return Object.keys(state.errors).length;else return 0;
+  },
+  fieldsCount: function fieldsCount(state) {
+    if (state.data) return Object.keys(state.data).length;else return 0;
   }
 };
 /*

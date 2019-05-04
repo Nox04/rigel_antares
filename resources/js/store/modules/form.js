@@ -72,6 +72,12 @@ const getters = {
       return Object.keys(state.errors).length;
     else
       return 0;
+  },
+  fieldsCount: state => {
+    if(state.data)
+      return Object.keys(state.data).length;
+    else
+      return 0;
   }
 };
 
