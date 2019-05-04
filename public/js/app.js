@@ -4791,6 +4791,9 @@ __webpack_require__.r(__webpack_exports__);
       vue__WEBPACK_IMPORTED_MODULE_0___default.a.nextTick(function () {
         return _this.$refs.vuetable.refresh();
       });
+    },
+    refresh: function refresh() {
+      this.$refs.vuetable.reload();
     }
   }
 });
@@ -4992,6 +4995,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       axios.post(_config__WEBPACK_IMPORTED_MODULE_2__["api"].messengers, this.formData).then(function (response) {
         _this2.$toastr('success', 'Registro creado con éxito', '');
+
+        _this2.$emit('needRefresh');
       })["catch"](function (error) {
         _this2.$toastr('error', 'Ocurrió un error al guardar su información', '');
       });
@@ -5200,6 +5205,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5207,6 +5213,11 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     'datatable': _controls_Datatable_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     'data-form': _controls_form_Form_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    refreshDatatable: function refreshDatatable() {
+      this.$refs.datatable.refresh();
+    }
   }
 });
 
@@ -28593,7 +28604,12 @@ var render = function() {
             staticClass:
               "kt-portlet__body kt-portlet__body--fit internal-padding"
           },
-          [_c("datatable", { attrs: { "end-point": _vm.endPoint } })],
+          [
+            _c("datatable", {
+              ref: "datatable",
+              attrs: { "end-point": _vm.endPoint }
+            })
+          ],
           1
         )
       ])
@@ -28619,7 +28635,12 @@ var render = function() {
             staticClass:
               "kt-portlet__body kt-portlet__body--fit internal-padding"
           },
-          [_c("data-form", { attrs: { fields: _vm.fields } })],
+          [
+            _c("data-form", {
+              attrs: { fields: _vm.fields },
+              on: { needRefresh: _vm.refreshDatatable }
+            })
+          ],
           1
         )
       ])

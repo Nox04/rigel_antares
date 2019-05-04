@@ -59,6 +59,7 @@ export default {
       axios.post(api.messengers, this.formData)
         .then(response => {
           this.$toastr('success', 'Registro creado con éxito', '');
+          this.$emit('needRefresh');
         })
         .catch(error => {
           this.$toastr('error', 'Ocurrió un error al guardar su información', '');

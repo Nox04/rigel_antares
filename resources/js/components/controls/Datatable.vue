@@ -120,6 +120,9 @@ export default {
         this.moreParams.filters.name = val.name;
         this.moreParams.filters.enabled = val.enabled;
         Vue.nextTick( () => this.$refs.vuetable.refresh());
+    },
+    refresh() {
+      this.$refs.vuetable.reload();
     }
   }
 }

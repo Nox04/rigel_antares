@@ -15,6 +15,7 @@
         </div>
         <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
           <datatable
+          ref="datatable"
           :end-point="endPoint"
           />
         </div>
@@ -30,7 +31,7 @@
           </div>
         </div>
         <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
-          <data-form :fields="fields" />
+          <data-form :fields="fields" @needRefresh="refreshDatatable"/>
         </div>
       </div>
     </div>
@@ -46,7 +47,12 @@ export default {
   components: {
     'datatable': Datatable,
     'data-form': Form
-  }
+  },
+  methods: {
+    refreshDatatable() {
+      this.$refs.datatable.refresh();
+    }
+  },
 }
 </script>
 
