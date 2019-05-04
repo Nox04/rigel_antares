@@ -27,6 +27,7 @@
 
 <script>
 import TextInput from './TextInput';
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   props: ['fields'],
@@ -34,10 +35,25 @@ export default {
     TextInput
   },
   methods: {
-    save (e) {
-      e.preventDefault();
+    ...mapActions([
+      'unsetData'
+    ]),
+    save () {
+      if(this.errorsCount === 0) {
+        this.fields.forEach(field => {
+          if(field.required && this.formData) {
+            console.log(this.formData[field.databaseName]);
+          }
+        });
+      }
     }
   },
+  computed: {
+    ...mapGetters([
+      'formData',
+      'errorsCount'
+    ])
+  }
 }
 </script>
 

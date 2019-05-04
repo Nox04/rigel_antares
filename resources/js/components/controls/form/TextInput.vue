@@ -1,9 +1,8 @@
 <template>
   <div class="form-group">
-    <label class="capitalized">{{label}}</label>
+    <label class="capitalized">{{label}} <span v-show="required">*</span></label>
     <input @keyup="validate" :type="type" v-model="value" class="form-control" :placeholder="'Ingrese el ' + label">
     <span v-show="error" class="form-text text-danger">{{errorMessage}}</span>
-    {{errorsCount}}
   </div>
 </template>
 
@@ -14,7 +13,10 @@ export default {
   props: {
     label: String,
     databaseName: String,
-    required: Boolean,
+    required: {
+      type: Boolean,
+      default: false
+    },
     type: String,
     min: {
       type: Number,
@@ -37,7 +39,7 @@ export default {
   mounted() {
     if(this.type === 'number') {
       this.canContains = 'números';
-      this.pattern = /^\d+$/;
+      this.pattern = /^(\s*|\d+)$/;
     }
   },
   methods: {
@@ -52,7 +54,7 @@ export default {
         this.error = true;
         this.addError(this.databaseName);
         return;
-      } else if(this.value.length < this.min || this.value.length > this.max) {
+      } else if((this.value.length < this.min || this.value.length > this.max) && this.value !== '') {
         this.errorMessage = `El ${this.label} debe contener entre ${this.min} y ${this.max} caracteres.`;
         this.error = true;
         this.addError(this.databaseName);

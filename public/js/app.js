@@ -4927,6 +4927,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextInput */ "./resources/js/components/controls/form/TextInput.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4955,16 +4960,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['fields'],
   components: {
     TextInput: _TextInput__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  methods: {
-    save: function save(e) {
-      e.preventDefault();
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['unsetData']), {
+    save: function save() {
+      var _this = this;
+
+      if (this.errorsCount === 0) {
+        this.fields.forEach(function (field) {
+          if (field.required && _this.formData) {
+            console.log(_this.formData[field.databaseName]);
+          }
+        });
+      }
     }
-  }
+  }),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount']))
 });
 
 /***/ }),
@@ -4991,13 +5006,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     label: String,
     databaseName: String,
-    required: Boolean,
+    required: {
+      type: Boolean,
+      "default": false
+    },
     type: String,
     min: {
       type: Number,
@@ -5020,7 +5037,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     if (this.type === 'number') {
       this.canContains = 'números';
-      this.pattern = /^\d+$/;
+      this.pattern = /^(\s*|\d+)$/;
     }
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setData', 'addError', 'removeError']), {
@@ -5030,7 +5047,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.error = true;
         this.addError(this.databaseName);
         return;
-      } else if (this.value.length < this.min || this.value.length > this.max) {
+      } else if ((this.value.length < this.min || this.value.length > this.max) && this.value !== '') {
         this.errorMessage = "El ".concat(this.label, " debe contener entre ").concat(this.min, " y ").concat(this.max, " caracteres.");
         this.error = true;
         this.addError(this.databaseName);
@@ -28291,7 +28308,23 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "form-group" }, [
-    _c("label", { staticClass: "capitalized" }, [_vm._v(_vm._s(_vm.label))]),
+    _c("label", { staticClass: "capitalized" }, [
+      _vm._v(_vm._s(_vm.label) + " "),
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.required,
+              expression: "required"
+            }
+          ]
+        },
+        [_vm._v("*")]
+      )
+    ]),
     _vm._v(" "),
     _vm.type === "checkbox"
       ? _c("input", {
@@ -28388,8 +28421,7 @@ var render = function() {
         staticClass: "form-text text-danger"
       },
       [_vm._v(_vm._s(_vm.errorMessage))]
-    ),
-    _vm._v("\n  " + _vm._s(_vm.errorsCount) + "\n")
+    )
   ])
 }
 var staticRenderFns = []
@@ -52417,11 +52449,7 @@ var getters = {
     return state.data;
   },
   errorsCount: function errorsCount(state) {
-    try {
-      return Object.keys(state.errors).length;
-    } catch (e) {
-      return 0;
-    }
+    if (state.errors) return Object.keys(state.errors).length;else return 0;
   }
 };
 /*

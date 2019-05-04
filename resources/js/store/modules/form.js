@@ -68,12 +68,10 @@ const getters = {
 		return state.data;
   },
   errorsCount: state => {
-    try {
+    if(state.errors)
       return Object.keys(state.errors).length;
-    }
-    catch(e) {
+    else
       return 0;
-    }
   }
 };
 
