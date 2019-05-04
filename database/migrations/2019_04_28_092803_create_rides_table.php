@@ -24,7 +24,6 @@ class CreateRidesTable extends Migration
             $table->dateTime('start');
             $table->dateTime('end');
             $table->integer('messenger_id')->unsigned();
-            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }

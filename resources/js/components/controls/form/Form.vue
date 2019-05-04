@@ -6,7 +6,7 @@
     <div class="kt-section top-padding">
       <template v-for="field in fields">
         <text-input
-        v-if="field.type === 'text' || field.type === 'number'"
+        v-if="field.type === 'text' || field.type === 'number' || field.type === 'pin'"
         :label="field.label"
         :database-name="field.databaseName"
         :type="field.type"
@@ -28,6 +28,7 @@
 <script>
 import TextInput from './TextInput';
 import {mapActions, mapGetters} from "vuex";
+import {api} from '../../../config';
 
 export default {
   props: ['fields'],
@@ -41,15 +42,27 @@ export default {
     save () {
       if(this.errorsCount === 0) {
         if(this.fieldsCount > 0) {
+          let error = false;
           this.fields.forEach(field => {
             if(field.required && !this.formData[field.databaseName]) {
               this.$toastr('error', 'Por favor llene todos los campos requeridos', '');
-            } else {
-              //send
+              error = true;
+              return;
             }
           });
+          if(!error)
+            this.sendToServer();
         }
       }
+    },
+    sendToServer() {
+      axios.post(api.messengers, this.formData)
+        .then(response => {
+          this.$toastr('success', 'Registro creado con éxito', '');
+        })
+        .catch(error => {
+          this.$toastr('error', 'Ocurrió un error al guardar su información', '');
+        });
     }
   },
   computed: {

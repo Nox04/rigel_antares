@@ -11,6 +11,5 @@ $factory->define(App\Messenger::class, function (Faker $faker) {
         'longitude' => $this->faker->longitude($min = -73.23, $max = -73.28),
         'working' => random_int(0, 1),
         'enabled' => random_int(0, 1),
-        'user_id' => 1,
     ];
 });

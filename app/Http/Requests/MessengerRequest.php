@@ -15,14 +15,16 @@ class MessengerRequest extends BaseRequest
             case 'POST':
             {
                 return [
-                    'name' => 'required|max:200|unique:messengers,name'
+                    'name' => 'required|max:100|unique:messengers,name',
+                    'phone' => 'required|min:7|max:12|unique:messengers,phone'
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
                 return [
-                    'name' => 'required|max:200|unique:messengers,name,' . $this->id
+                    'name' => 'required|max:100|unique:messengers,name,' . $this->id,
+                    'phone' => 'required|min:7|max:12|unique:messengers,phone,' . $this->id
                 ];
             }
             case 'GET':

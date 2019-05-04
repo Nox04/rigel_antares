@@ -33,6 +33,14 @@ export default {
           max: 12,
           min: 7,
           required: true
+        },
+        {
+          label: "pin de seguridad",
+          databaseName: "pin",
+          type: "pin",
+          max: 4,
+          min: 4,
+          required: true
         }
       ]
     }

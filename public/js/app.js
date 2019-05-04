@@ -4928,6 +4928,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextInput */ "./resources/js/components/controls/form/TextInput.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../config */ "./resources/js/config.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -4961,6 +4962,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['fields'],
   components: {
@@ -4972,14 +4974,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (this.errorsCount === 0) {
         if (this.fieldsCount > 0) {
+          var error = false;
           this.fields.forEach(function (field) {
             if (field.required && !_this.formData[field.databaseName]) {
               _this.$toastr('error', 'Por favor llene todos los campos requeridos', '');
-            } else {//send
+
+              error = true;
+              return;
             }
           });
+          if (!error) this.sendToServer();
         }
       }
+    },
+    sendToServer: function sendToServer() {
+      var _this2 = this;
+
+      axios.post(_config__WEBPACK_IMPORTED_MODULE_2__["api"].messengers, this.formData).then(function (response) {
+        _this2.$toastr('success', 'Registro creado con éxito', '');
+      })["catch"](function (error) {
+        _this2.$toastr('error', 'Ocurrió un error al guardar su información', '');
+      });
     }
   }),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount', 'fieldsCount']))
@@ -5039,6 +5054,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mounted: function mounted() {
     if (this.type === 'number') {
+      this.canContains = 'números';
+      this.pattern = /^(\s*|\d+)$/;
+    } else if (this.type === 'pin') {
       this.canContains = 'números';
       this.pattern = /^(\s*|\d+)$/;
     }
@@ -5407,6 +5425,13 @@ __webpack_require__.r(__webpack_exports__);
         type: "number",
         max: 12,
         min: 7,
+        required: true
+      }, {
+        label: "pin de seguridad",
+        databaseName: "pin",
+        type: "pin",
+        max: 4,
+        min: 4,
         required: true
       }]
     };
@@ -28245,7 +28270,9 @@ var render = function() {
         [
           _vm._l(_vm.fields, function(field) {
             return [
-              field.type === "text" || field.type === "number"
+              field.type === "text" ||
+              field.type === "number" ||
+              field.type === "pin"
                 ? _c("text-input", {
                     attrs: {
                       label: field.label,
@@ -28328,7 +28355,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm.type === "checkbox"
+    (_vm.type === "pin" ? "password" : _vm.type) === "checkbox"
       ? _c("input", {
           directives: [
             {
@@ -28366,7 +28393,7 @@ var render = function() {
             }
           }
         })
-      : _vm.type === "radio"
+      : (_vm.type === "pin" ? "password" : _vm.type) === "radio"
       ? _c("input", {
           directives: [
             {
@@ -28396,7 +28423,10 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { placeholder: "Ingrese el " + _vm.label, type: _vm.type },
+          attrs: {
+            placeholder: "Ingrese el " + _vm.label,
+            type: _vm.type === "pin" ? "password" : _vm.type
+          },
           domProps: { value: _vm.value },
           on: {
             keyup: _vm.validate,

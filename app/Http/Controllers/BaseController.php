@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
 class BaseController extends Controller
 {
