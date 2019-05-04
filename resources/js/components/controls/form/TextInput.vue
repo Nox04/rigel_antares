@@ -1,0 +1,75 @@
+<template>
+  <div class="form-group">
+    <label class="capitalized">{{label}}</label>
+    <input @keyup="validate" :type="type" v-model="value" class="form-control" :placeholder="'Ingrese el ' + label">
+    <span v-show="error" class="form-text text-danger">{{errorMessage}}</span>
+  </div>
+</template>
+
+<script>
+import {mapActions, mapGetters} from "vuex";
+
+export default {
+  props: {
+    label: String,
+    databaseName: String,
+    type: String,
+    min: {
+      type: Number,
+      default: 3
+    },
+    max: {
+      type: Number,
+      default: 100
+    }
+  },
+  data() {
+    return {
+      value: '',
+      error: false,
+      errorMessage: '',
+      canContains: 'texto',
+      pattern: /^[A-zÀ-ú ]*$/
+    }
+  },
+  mounted() {
+    if(this.type === 'number') {
+      this.canContains = 'números';
+      this.pattern = /^\d+$/;
+    }
+  },
+  methods: {
+    ...mapActions([
+      'setData'
+    ]),
+    validate() {
+      if(!this.pattern.test(this.value)) {
+        this.errorMessage = `El ${this.label} sólo puede contener ${this.canContains}.`;
+        this.error = true;
+        return;
+      } else if(this.value.length < this.min || this.value.length > this.max) {
+        this.errorMessage = `El ${this.label} debe contener entre ${this.min} y ${this.max} caracteres.`;
+        this.error = true;
+        return;
+      }
+      this.setData({
+        ...this.formData,
+        [this.databaseName]: this.value
+      });
+      this.error = false;
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'formData',
+    ])
+  }
+}
+</script>
+
+<style scoped>
+.capitalized{
+  text-transform: capitalize;
+}
+</style>
+

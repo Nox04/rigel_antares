@@ -5,6 +5,7 @@
     icon="fa-motorcycle"
     end-point="messengers"
     desc="Gestione sus trabajadores"
+    :fields="fields"
     />
   </div>
 </template>
@@ -15,6 +16,24 @@ import Crud from '../layout/Crud.vue';
 export default {
   components: {
     'crud': Crud
+  },
+  data() {
+    return {
+      fields: [
+        {
+          label: "nombre",
+          databaseName: "name",
+          type: "text"
+        },
+        {
+          label: "teléfono",
+          databaseName: "phone",
+          type: "number",
+          max: 12,
+          min: 7
+        }
+      ]
+    }
   },
 }
 </script>

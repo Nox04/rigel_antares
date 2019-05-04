@@ -33,6 +33,7 @@
 <script>
 import LoginForm from './../login/LoginForm.vue';
 import {mapActions} from "vuex";
+
 export default {
   components: {
     'login-form': LoginForm
