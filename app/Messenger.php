@@ -6,6 +6,15 @@ class Messenger extends Base
 {
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'pin'
+    ];
+
+    /**
      * Rides relationship
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

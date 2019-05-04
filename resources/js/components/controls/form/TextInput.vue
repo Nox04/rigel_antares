@@ -74,9 +74,25 @@ export default {
   computed: {
     ...mapGetters([
       'formData',
-      'errorsCount'
-    ])
-  }
+      'errorsCount',
+      'updating'
+    ]),
+  },
+  watch: {
+    formData: {
+      deep: true,
+      handler() {
+        if(this.formData[this.databaseName]) {
+          this.value = this.formData[this.databaseName];
+        } else {
+          this.value = '';
+        }
+      }
+    },
+    updating() {
+      this.error = false;
+    }
+  },
 }
 </script>
 

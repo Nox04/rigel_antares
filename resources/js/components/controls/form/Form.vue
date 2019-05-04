@@ -18,8 +18,8 @@
     </div>
     <div class="kt-portlet__foot custom-padding">
       <div class="kt-form__actions">
-        <button type="submit" :disabled="this.errorsCount > 0 || this.fieldsCount < 1" class="btn btn-primary">Crear</button>
-        <button type="reset" class="btn btn-secondary">Cancelar</button>
+        <button type="submit" :disabled="this.errorsCount > 0 || this.fieldsCount < 1" class="btn btn-primary">Guardar</button>
+        <button type="reset" @click="removeUpdating" class="btn btn-secondary">Cancelar</button>
       </div>
     </div>
   </form>
@@ -37,7 +37,9 @@ export default {
   },
   methods: {
     ...mapActions([
-      'unsetData'
+      'unsetData',
+      'setUpdating',
+      'resetErrors'
     ]),
     save () {
       if(this.errorsCount === 0) {
@@ -45,9 +47,11 @@ export default {
           let error = false;
           this.fields.forEach(field => {
             if(field.required && !this.formData[field.databaseName]) {
-              this.$toastr('error', 'Por favor llene todos los campos requeridos', '');
-              error = true;
-              return;
+              if(!(field.ignoreUpdate && this.updating)) {
+                this.$toastr('error', 'Por favor llene todos los campos requeridos', '');
+                error = true;
+                return;
+              }
             }
           });
           if(!error)
@@ -56,21 +60,31 @@ export default {
       }
     },
     sendToServer() {
-      axios.post(api.messengers, this.formData)
+      axios({
+        method:this.updating ? 'PUT' : 'POST',
+        url:this.updating ? `${api.messengers}/${this.formData.id}` : api.messengers,
+        data: this.formData
+        })
         .then(response => {
           this.$toastr('success', 'Registro creado con éxito', '');
+          this.unsetData();
+          this.removeUpdating();
           this.$emit('needRefresh');
         })
         .catch(error => {
           this.$toastr('error', 'Ocurrió un error al guardar su información', '');
         });
+    },
+    removeUpdating() {
+      this.setUpdating(false);
     }
   },
   computed: {
     ...mapGetters([
       'formData',
       'errorsCount',
-      'fieldsCount'
+      'fieldsCount',
+      'updating'
     ])
   }
 }

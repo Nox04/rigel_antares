@@ -22,6 +22,7 @@
     @vuetable:pagination-data="onPaginationData"
     @vuetable:loading="showLoading"
     @vuetable:load-success="hideLoading"
+    @vuetable:row-clicked="onRowCLicked"
     ></vuetable>
 
     <pagination ref="pagination"
@@ -37,6 +38,7 @@ import Pagination from './Pagination';
 import Filters from './Filters';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import {mapActions} from "vuex";
 
 export default {
   props: ['endPoint'],
@@ -99,6 +101,11 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'setData',
+      'setUpdating',
+      'resetErrors'
+    ]),
     onPaginationData (paginationData) {
       this.$refs.pagination.setPaginationData(paginationData);
     },
@@ -123,6 +130,11 @@ export default {
     },
     refresh() {
       this.$refs.vuetable.reload();
+    },
+    onRowCLicked(row) {
+      this.setUpdating(true);
+      this.setData(row);
+      this.resetErrors();
     }
   }
 }

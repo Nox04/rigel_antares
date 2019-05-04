@@ -32,7 +32,7 @@ export default {
           type: "number",
           max: 12,
           min: 7,
-          required: true
+          required: true,
         },
         {
           label: "pin de seguridad",
@@ -40,7 +40,8 @@ export default {
           type: "pin",
           max: 4,
           min: 4,
-          required: true
+          required: true,
+          ignoreUpdate: true
         }
       ]
     }

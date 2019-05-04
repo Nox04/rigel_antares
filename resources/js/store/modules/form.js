@@ -7,6 +7,8 @@ export const SET_DATA = 'SET_DATA';
 export const UNSET_DATA = 'UNSET_DATA';
 export const ADD_ERROR = 'ADD_ERROR';
 export const REMOVE_ERROR = 'REMOVE_ERROR';
+export const SET_UPDATING = 'SET_UPDATING';
+export const RESET_ERRORS = 'RESET_ERRORS';
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,9 @@ export const REMOVE_ERROR = 'REMOVE_ERROR';
 |--------------------------------------------------------------------------
 */
 const initialState = {
-  data: null,
-  errors: null
+  data: {},
+  errors: null,
+  updating: false
 };
 
 /*
@@ -28,13 +31,19 @@ const mutations = {
 		state.data = payload.data;
   },
   [UNSET_DATA](state) {
-		state.data = null;
+		state.data = {};
   },
   [ADD_ERROR](state, payload) {
     state.errors = {...state.errors, [payload.error]: true};
   },
   [REMOVE_ERROR](state, payload) {
     Vue.delete(state.errors, payload.error);
+  },
+  [SET_UPDATING](state, payload) {
+    state.updating = payload.updating;
+  },
+  [RESET_ERRORS](state, payload) {
+    state.errors = null;
   }
 };
 
@@ -55,7 +64,13 @@ const actions = {
   },
   removeError: (context, error) => {
 		context.commit(REMOVE_ERROR, {error});
-	}
+  },
+  setUpdating: (context, updating) => {
+    context.commit(SET_UPDATING, {updating});
+  },
+  resetErrors: context => {
+    context.commit(RESET_ERRORS);
+  }
 };
 
 /*
@@ -78,7 +93,10 @@ const getters = {
       return Object.keys(state.data).length;
     else
       return 0;
-  }
+  },
+  updating: state => {
+		return state.updating;
+  },
 };
 
 /*
