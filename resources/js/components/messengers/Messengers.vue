@@ -23,14 +23,16 @@ export default {
         {
           label: "nombre",
           databaseName: "name",
-          type: "text"
+          type: "text",
+          required: true
         },
         {
           label: "teléfono",
           databaseName: "phone",
           type: "number",
           max: 12,
-          min: 7
+          min: 7,
+          required: true
         }
       ]
     }

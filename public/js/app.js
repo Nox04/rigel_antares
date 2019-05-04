@@ -4953,6 +4953,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['fields'],
@@ -4990,11 +4991,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     label: String,
     databaseName: String,
+    required: Boolean,
     type: String,
     min: {
       type: Number,
@@ -5020,23 +5023,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.pattern = /^\d+$/;
     }
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setData']), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setData', 'addError', 'removeError']), {
     validate: function validate() {
       if (!this.pattern.test(this.value)) {
         this.errorMessage = "El ".concat(this.label, " s\xF3lo puede contener ").concat(this.canContains, ".");
         this.error = true;
+        this.addError(this.databaseName);
         return;
       } else if (this.value.length < this.min || this.value.length > this.max) {
         this.errorMessage = "El ".concat(this.label, " debe contener entre ").concat(this.min, " y ").concat(this.max, " caracteres.");
         this.error = true;
+        this.addError(this.databaseName);
         return;
       }
 
       this.setData(_objectSpread({}, this.formData, _defineProperty({}, this.databaseName, this.value)));
+      this.removeError(this.databaseName);
       this.error = false;
     }
   }),
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['formData']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['formData', 'errorsCount']))
 });
 
 /***/ }),
@@ -5373,13 +5379,15 @@ __webpack_require__.r(__webpack_exports__);
       fields: [{
         label: "nombre",
         databaseName: "name",
-        type: "text"
+        type: "text",
+        required: true
       }, {
         label: "teléfono",
         databaseName: "phone",
         type: "number",
         max: 12,
-        min: 7
+        min: 7,
+        required: true
       }]
     };
   }
@@ -28224,7 +28232,8 @@ var render = function() {
                       "database-name": field.databaseName,
                       type: field.type,
                       min: field.min,
-                      max: field.max
+                      max: field.max,
+                      required: field.required
                     }
                   })
                 : _vm._e()
@@ -28379,7 +28388,8 @@ var render = function() {
         staticClass: "form-text text-danger"
       },
       [_vm._v(_vm._s(_vm.errorMessage))]
-    )
+    ),
+    _vm._v("\n  " + _vm._s(_vm.errorsCount) + "\n")
   ])
 }
 var staticRenderFns = []
@@ -52321,14 +52331,18 @@ var getters = {
 /*!********************************************!*\
   !*** ./resources/js/store/modules/form.js ***!
   \********************************************/
-/*! exports provided: SET_DATA, UNSET_DATA, default */
+/*! exports provided: SET_DATA, UNSET_DATA, ADD_ERROR, REMOVE_ERROR, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_DATA", function() { return SET_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNSET_DATA", function() { return UNSET_DATA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ERROR", function() { return ADD_ERROR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ERROR", function() { return REMOVE_ERROR; });
 var _mutations;
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -52339,6 +52353,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 */
 var SET_DATA = 'SET_DATA';
 var UNSET_DATA = 'UNSET_DATA';
+var ADD_ERROR = 'ADD_ERROR';
+var REMOVE_ERROR = 'REMOVE_ERROR';
 /*
 |--------------------------------------------------------------------------
 | Initial State
@@ -52346,7 +52362,8 @@ var UNSET_DATA = 'UNSET_DATA';
 */
 
 var initialState = {
-  data: null
+  data: null,
+  errors: null
 };
 /*
 |--------------------------------------------------------------------------
@@ -52358,6 +52375,10 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, SET_DATA, function
   state.data = payload.data;
 }), _defineProperty(_mutations, UNSET_DATA, function (state) {
   state.data = null;
+}), _defineProperty(_mutations, ADD_ERROR, function (state, payload) {
+  state.errors = _objectSpread({}, state.errors, _defineProperty({}, payload.error, true));
+}), _defineProperty(_mutations, REMOVE_ERROR, function (state, payload) {
+  Vue["delete"](state.errors, payload.error);
 }), _mutations);
 /*
 |--------------------------------------------------------------------------
@@ -52373,6 +52394,16 @@ var actions = {
   },
   unsetData: function unsetData(context) {
     context.commit(UNSET_DATA);
+  },
+  addError: function addError(context, error) {
+    context.commit(ADD_ERROR, {
+      error: error
+    });
+  },
+  removeError: function removeError(context, error) {
+    context.commit(REMOVE_ERROR, {
+      error: error
+    });
   }
 };
 /*
@@ -52384,6 +52415,13 @@ var actions = {
 var getters = {
   formData: function formData(state) {
     return state.data;
+  },
+  errorsCount: function errorsCount(state) {
+    try {
+      return Object.keys(state.errors).length;
+    } catch (e) {
+      return 0;
+    }
   }
 };
 /*

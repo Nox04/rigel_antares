@@ -3,6 +3,7 @@
     <label class="capitalized">{{label}}</label>
     <input @keyup="validate" :type="type" v-model="value" class="form-control" :placeholder="'Ingrese el ' + label">
     <span v-show="error" class="form-text text-danger">{{errorMessage}}</span>
+    {{errorsCount}}
   </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
   props: {
     label: String,
     databaseName: String,
+    required: Boolean,
     type: String,
     min: {
       type: Number,
@@ -40,28 +42,34 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setData'
+      'setData',
+      'addError',
+      'removeError'
     ]),
     validate() {
       if(!this.pattern.test(this.value)) {
         this.errorMessage = `El ${this.label} sólo puede contener ${this.canContains}.`;
         this.error = true;
+        this.addError(this.databaseName);
         return;
       } else if(this.value.length < this.min || this.value.length > this.max) {
         this.errorMessage = `El ${this.label} debe contener entre ${this.min} y ${this.max} caracteres.`;
         this.error = true;
+        this.addError(this.databaseName);
         return;
       }
       this.setData({
         ...this.formData,
         [this.databaseName]: this.value
       });
+      this.removeError(this.databaseName);
       this.error = false;
     }
   },
   computed: {
     ...mapGetters([
       'formData',
+      'errorsCount'
     ])
   }
 }

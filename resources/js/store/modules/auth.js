@@ -41,7 +41,7 @@ const actions = {
 	setAuthUser: (context, user) => {
 		context.commit(SET_USER, {user});
 	},
-	unsetAuthUser: (context) => {
+	unsetAuthUser: context => {
 		context.commit(UNSET_USER);
 	}
 };
@@ -52,10 +52,10 @@ const actions = {
 |--------------------------------------------------------------------------
 */
 const getters = {
-	isLoggedIn: (state) => {
+	isLoggedIn: state => {
 		return !!(state.name && state.email);
   },
-  username: (state) => {
+  username: state => {
 		return state.name;
 	}
 };

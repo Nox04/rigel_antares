@@ -5,6 +5,8 @@
 */
 export const SET_DATA = 'SET_DATA';
 export const UNSET_DATA = 'UNSET_DATA';
+export const ADD_ERROR = 'ADD_ERROR';
+export const REMOVE_ERROR = 'REMOVE_ERROR';
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,8 @@ export const UNSET_DATA = 'UNSET_DATA';
 |--------------------------------------------------------------------------
 */
 const initialState = {
-	data: null
+  data: null,
+  errors: null
 };
 
 /*
@@ -26,7 +29,13 @@ const mutations = {
   },
   [UNSET_DATA](state) {
 		state.data = null;
-	}
+  },
+  [ADD_ERROR](state, payload) {
+    state.errors = {...state.errors, [payload.error]: true};
+  },
+  [REMOVE_ERROR](state, payload) {
+    Vue.delete(state.errors, payload.error);
+  }
 };
 
 /*
@@ -38,8 +47,14 @@ const actions = {
 	setData: (context, data) => {
 		context.commit(SET_DATA, {data});
   },
-  unsetData: (context) => {
+  unsetData: context => {
 		context.commit(UNSET_DATA);
+  },
+  addError: (context, error) => {
+		context.commit(ADD_ERROR, {error});
+  },
+  removeError: (context, error) => {
+		context.commit(REMOVE_ERROR, {error});
 	}
 };
 
@@ -49,8 +64,16 @@ const actions = {
 |--------------------------------------------------------------------------
 */
 const getters = {
-	formData: (state) => {
+	formData: state => {
 		return state.data;
+  },
+  errorsCount: state => {
+    try {
+      return Object.keys(state.errors).length;
+    }
+    catch(e) {
+      return 0;
+    }
   }
 };
 

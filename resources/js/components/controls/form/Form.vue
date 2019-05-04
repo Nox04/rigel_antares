@@ -12,6 +12,7 @@
         :type="field.type"
         :min="field.min"
         :max="field.max"
+        :required="field.required"
         />
       </template>
     </div>
