@@ -30,7 +30,11 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware('auth:api')->group(function () {
+    //Messengers
     Route::resource('messengers', 'MessengerController', ['except' => ['create', 'edit']]);
     Route::get('messengers/list/working', 'MessengerController@workingMessengers');
     Route::post('messengers/status', 'MessengerController@status');
+
+    //Rides
+    Route::resource('rides', 'RideController', ['except' => ['create', 'edit']]);
 });

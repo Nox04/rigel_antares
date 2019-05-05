@@ -22,13 +22,5 @@ class Messenger extends Base
     public function rides() {
         return $this->hasMany(Ride::class);
     }
-
-    /**
-     * User relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
+    
 }
