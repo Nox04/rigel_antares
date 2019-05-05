@@ -22,7 +22,8 @@
     @vuetable:pagination-data="onPaginationData"
     @vuetable:loading="showLoading"
     @vuetable:load-success="hideLoading"
-    @vuetable:row-clicked="onRowCLicked"
+    @vuetable:row-clicked="onRowClicked"
+    :row-class="onRowClass"
     ></vuetable>
 
     <pagination ref="pagination"
@@ -89,8 +90,14 @@ export default {
           name: 'enabled',
           title: 'Estado',
           sortField: 'enabled',
-          dataClass: 'center aligned',
+          dataClass: 'text-center',
           callback: 'statusLabel'
+        },
+        {
+          name: 'id',
+          title: 'Acciones',
+          dataClass: 'text-center',
+          callback: 'actions'
         }
       ],
       css: {
@@ -115,13 +122,23 @@ export default {
     hideLoading () {
       this.isLoading = false;
     },
+    onRowClass (dataItem, index) {
+      //console.log(index);
+      return (dataItem.isOverdue) ? 'color-red' : 'color-white'
+    },
     onChangePage (page) {
       this.$refs.vuetable.changePage(page);
     },
     statusLabel (value) {
       return value === 1
-        ? '<span class="kt-font-bold kt-font-success"><i class="fa fa-check-square"></i></span>'
-        : '<span class="kt-font-bold kt-font-danger"><i class="fa fa-window-close"></i></span>'
+        ? '<span class="kt-badge kt-badge--success kt-badge--md">✔</span>'
+        : '<span class="kt-badge kt-badge--danger kt-badge--md">✘</span>'
+    },
+    actions (value) {
+      return `<a href="javascript:" class="btn btn-sm btn-outline-info btn-hover-info btn-elevate btn-circle btn-icon">
+                <i class="fa fa-check-square"></i>
+              </a>`;
+      //
     },
     setFilters(val) {
         this.moreParams.filters.name = val.name;
@@ -131,7 +148,7 @@ export default {
     refresh() {
       this.$refs.vuetable.reload();
     },
-    onRowCLicked(row) {
+    onRowClicked(row) {
       this.setUpdating(true);
       this.setData(row);
       this.resetErrors();
@@ -139,3 +156,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.vuetable th#_enabled {
+  width: 10%;
+}
+.vuetable th#_id {
+  width: 10%;
+}
+</style>
