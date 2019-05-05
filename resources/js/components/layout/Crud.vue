@@ -22,18 +22,7 @@
       </div>
     </div>
     <div class="col-xl-4 col-md-4">
-      <div class="kt-portlet kt-portlet--mobile">
-        <div class="kt-portlet__head kt-portlet__head--lg">
-          <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title">
-              Crear nuevos {{title.toLowerCase()}}
-            </h3>
-          </div>
-        </div>
-        <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
-          <data-form :fields="fields" @needRefresh="refreshDatatable"/>
-        </div>
-      </div>
+      <data-form :fields="fields" @needRefresh="refreshDatatable" :title="title" />
     </div>
   </div>
 </template>
@@ -55,10 +44,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.internal-padding {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-</style>

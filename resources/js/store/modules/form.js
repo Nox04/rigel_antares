@@ -37,7 +37,8 @@ const mutations = {
     state.errors = {...state.errors, [payload.error]: true};
   },
   [REMOVE_ERROR](state, payload) {
-    Vue.delete(state.errors, payload.error);
+    if(state.errors)
+      Vue.delete(state.errors, payload.error);
   },
   [SET_UPDATING](state, payload) {
     state.updating = payload.updating;
