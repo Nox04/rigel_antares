@@ -5,6 +5,7 @@ export const csrfToken = Laravel.csrfToken;
 export const api = {
   messengers: 'messengers',
   workingMessengers: 'messengers/list/working',
+  rides: 'rides',
 }
 
 export const menu = [

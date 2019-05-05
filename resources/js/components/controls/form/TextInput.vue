@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label class="capitalized">{{label}} <span v-show="required">*</span></label>
-    <input @change="validate" :type="type === 'pin' ? 'password': type" v-model="value" class="form-control" :placeholder="`Ingrese el ${label}`">
+    <input @change="validate" ref="input" :type="inputType" v-model="value" class="form-control" :placeholder="`Ingrese el ${label}`">
     <span v-show="error" class="form-text text-danger">{{errorMessage}}</span>
   </div>
 </template>
@@ -43,6 +43,9 @@ export default {
     } else if(this.type === 'pin') {
       this.canContains = 'números';
       this.pattern = /^(\s*|\d+)$/;
+    } else if(this.type === 'alpha') {
+      this.canContains = 'letras y números';
+      this.pattern = null;
     }
   },
   methods: {
@@ -51,8 +54,11 @@ export default {
       'addError',
       'removeError'
     ]),
+    focus() {
+      this.$refs.input.focus();
+    },
     validate() {
-      if(!this.pattern.test(this.value)) {
+      if(this.pattern !== null && !this.pattern.test(this.value)) {
         this.errorMessage = `El ${this.label} sólo puede contener ${this.canContains}.`;
         this.error = true;
         this.addError(this.databaseName);
@@ -77,6 +83,15 @@ export default {
       'errorsCount',
       'updating'
     ]),
+    inputType() {
+      if(this.type === 'pin') {
+        return 'password';
+      } else if(this.type === 'alpha') {
+        return 'text';
+      } else {
+        return this.type;
+      }
+    }
   },
   watch: {
     formData: {

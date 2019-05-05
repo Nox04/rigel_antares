@@ -16,30 +16,7 @@
           </div>
         </a>
       </div>
-      <a href="javascript:" v-shortkey.once="['n']" @shortkey="loadForm" @click="loadForm" class="btn btn-brand btn-lg btn-icon btn-circle float"><i class="fa fa-plus"></i></a>
     </div>
   </div>
 </template>
 
-<script>
-
-export default {
-  methods: {
-    loadForm() {
-      this.$router.push({ name: 'map.ridesForm'});
-    }
-  },
-}
-</script>
-
-
-<style>
-.float {
-	position:fixed;
-	width:80px;
-	height:80px;
-	bottom:70px;
-  right:20px;
-  box-shadow: 2px 2px 3px #999;
-}
-</style>

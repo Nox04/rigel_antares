@@ -1,37 +1,37 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Messenger;
-use App\Http\Requests\MessengerRequest;
+use App\Ride;
+use App\Http\Requests\RideRequest;
 
-class MessengerController extends BaseController
+class RideController extends BaseController
 {
     /**
      * Create a controller instance.
      *
      */
-    public function __construct(Messenger $messenger)
+    public function __construct(Ride $ride)
     {
-        parent::__construct($messenger);
+        parent::__construct($ride);
     }
     /**
      * Store a newly created resource in storage.
      *
-     * @param MessengerRequest $request
+     * @param RideRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MessengerRequest $request)
+    public function store(RideRequest $request)
     {
         return parent::storeBase($request);
     }
     /**
      * Update the specified resource in storage.
      *
-     * @param MessengerRequest $request
+     * @param RideRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MessengerRequest $request, int $id)
+    public function update(RideRequest $request, int $id)
     {
         return parent::updateBase($request, $id);
     }

@@ -44,6 +44,7 @@ Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 axios.defaults.baseURL = apiDomain;
 Vue.use(VueAuth, auth);
+Vue.use(require('vue-shortkey'));
 
 axios.interceptors.response.use(response => {
 	return response;

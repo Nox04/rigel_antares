@@ -18,20 +18,21 @@
       </GmapMap>
     </div>
     <div class="col-md-2 kt-hidden-mobile">
-      <rides-panel class="rides" />
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <router-view class="rides" />
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
-import RidesPanel from './RidesPanel';
 import markerIcon from '../../../static/images/map/marker.png';
 import {api} from '../../config';
 
 export default {
-  components: {
-    RidesPanel
-  },
   data() {
     return {
       markerIcon: markerIcon,
@@ -40,6 +41,7 @@ export default {
   },
   mounted() {
     this.requestWorkingMessengers();
+    this.$router.push({ name: 'map.ridesPanel'});
   },
   methods: {
     requestWorkingMessengers() {
