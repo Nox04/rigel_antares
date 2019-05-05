@@ -46,6 +46,9 @@ export default {
   components: {
     TextInput
   },
+  mounted() {
+    this.unsetData();
+  },
   methods: {
     ...mapActions([
       'unsetData',

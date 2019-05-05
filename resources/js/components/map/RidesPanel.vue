@@ -11,7 +11,7 @@
               Envío #{{ride.id}}
             </div>
             <div class="kt-notification__item-time">
-              <timeago :datetime="ride.created_at" :auto-update="5"></timeago>
+              <timeago :datetime="ride.created_at" :auto-update="30"></timeago>
             </div>
           </div>
         </a>

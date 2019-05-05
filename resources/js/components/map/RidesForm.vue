@@ -52,6 +52,7 @@ export default {
     TextInput
   },
   mounted() {
+    this.unsetData();
     this.$refs['first'][0].focus();
   },
   data() {
