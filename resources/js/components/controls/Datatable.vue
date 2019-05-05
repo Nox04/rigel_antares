@@ -24,7 +24,9 @@
     @vuetable:load-success="hideLoading"
     @vuetable:row-clicked="onRowClicked"
     :row-class="onRowClass"
-    ></vuetable>
+    >
+      <actions />
+    </vuetable>
 
     <pagination ref="pagination"
     :infoTemplate="'Mostrando {from} a {to} de {total} elementos'"
@@ -39,7 +41,10 @@ import Pagination from './Pagination';
 import Filters from './Filters';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import {mapActions} from "vuex";
+import {mapActions} from 'vuex';
+import Actions from './Actions';
+
+Vue.component('actions', Actions);
 
 export default {
   props: ['endPoint'],
@@ -47,7 +52,8 @@ export default {
     Vuetable,
     Pagination,
     Loading,
-    Filters
+    Filters,
+    Actions
   },
   data() {
     return {
@@ -91,13 +97,14 @@ export default {
           title: 'Estado',
           sortField: 'enabled',
           dataClass: 'text-center',
-          callback: 'statusLabel'
+          callback: 'statusLabel',
+          width: '10%'
         },
         {
-          name: 'id',
+          name: '__component:actions',
           title: 'Acciones',
           dataClass: 'text-center',
-          callback: 'actions'
+          width: '10%'
         }
       ],
       css: {
@@ -134,12 +141,6 @@ export default {
         ? '<span class="kt-badge kt-badge--success kt-badge--md">✔</span>'
         : '<span class="kt-badge kt-badge--danger kt-badge--md">✘</span>'
     },
-    actions (value) {
-      return `<a href="javascript:" class="btn btn-sm btn-outline-info btn-hover-info btn-elevate btn-circle btn-icon">
-                <i class="fa fa-check-square"></i>
-              </a>`;
-      //
-    },
     setFilters(val) {
         this.moreParams.filters.name = val.name;
         this.moreParams.filters.enabled = val.enabled;
@@ -156,12 +157,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.vuetable th#_enabled {
-  width: 10%;
-}
-.vuetable th#_id {
-  width: 10%;
-}
-</style>

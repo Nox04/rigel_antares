@@ -73,17 +73,13 @@ class BaseController extends Controller
      */
     public function status(Request $request)
     {
-        foreach($request->massive as $item){
-            $entity = $this->entity->find($item);
-            $entity->enabled = $request->status;
-            $entity->save();
-            if($entity instanceof Staff)
-                $entity->notifyUpdate();
-            activity()
-                ->causedBy(Auth::id())
-                ->performedOn($entity)
-                ->log($entity->enabled ? 'enabled' : 'disabled');
-        }
+        $entity = $this->entity->find($request->id);
+        $entity->enabled = $request->status;
+        $entity->save();
+        activity()
+            ->causedBy(Auth::id())
+            ->performedOn($entity)
+            ->log($entity->enabled ? 'enabled' : 'disabled');
         return response()->json($request->all());
     }
 
