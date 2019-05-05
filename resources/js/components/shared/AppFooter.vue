@@ -10,7 +10,7 @@
     </div>
     <div class="kt-footer__menu">
       <a
-        href="https://rigel.digital/contact"
+        href="https://rigel.digital#contact"
         target="_blank"
         class="kt-footer__menu-link kt-link"
       >Contacto</a>
