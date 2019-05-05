@@ -4695,6 +4695,8 @@ __webpack_require__.r(__webpack_exports__);
         status: !this.rowData.enabled,
         id: this.rowData.id
       }).then(function (response) {
+        _this.$parent.$emit('reloadNeeded');
+
         _this.$toastr('success', 'Registro actualizado con éxito', '');
       })["catch"](function (error) {
         _this.$toastr('error', 'Ocurrió un error al guardar su información', '');
@@ -4764,7 +4766,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -4780,8 +4781,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('actions', _Actions__WEBPAC
     Vuetable: vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_1__["default"],
     Pagination: _Pagination__WEBPACK_IMPORTED_MODULE_2__["default"],
     Loading: vue_loading_overlay__WEBPACK_IMPORTED_MODULE_4___default.a,
-    Filters: _Filters__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Actions: _Actions__WEBPACK_IMPORTED_MODULE_7__["default"]
+    Filters: _Filters__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
@@ -28070,30 +28070,26 @@ var render = function() {
         on: { changedFilters: _vm.setFilters }
       }),
       _vm._v(" "),
-      _c(
-        "vuetable",
-        {
-          ref: "vuetable",
-          attrs: {
-            "api-url": _vm.endPoint,
-            fields: _vm.fields,
-            css: _vm.css,
-            "sort-order": _vm.sortOrder,
-            "http-options": _vm.httpOptions,
-            "pagination-path": "",
-            "append-params": _vm.moreParams,
-            "row-class": _vm.onRowClass
-          },
-          on: {
-            "vuetable:pagination-data": _vm.onPaginationData,
-            "vuetable:loading": _vm.showLoading,
-            "vuetable:load-success": _vm.hideLoading,
-            "vuetable:row-clicked": _vm.onRowClicked
-          }
+      _c("vuetable", {
+        ref: "vuetable",
+        attrs: {
+          "api-url": _vm.endPoint,
+          fields: _vm.fields,
+          css: _vm.css,
+          "sort-order": _vm.sortOrder,
+          "http-options": _vm.httpOptions,
+          "pagination-path": "",
+          "append-params": _vm.moreParams,
+          "row-class": _vm.onRowClass
         },
-        [_c("actions")],
-        1
-      ),
+        on: {
+          "vuetable:pagination-data": _vm.onPaginationData,
+          "vuetable:loading": _vm.showLoading,
+          "vuetable:load-success": _vm.hideLoading,
+          "vuetable:row-clicked": _vm.onRowClicked,
+          reloadNeeded: _vm.refresh
+        }
+      }),
       _vm._v(" "),
       _c("pagination", {
         ref: "pagination",

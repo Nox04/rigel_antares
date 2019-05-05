@@ -26,6 +26,7 @@ export default {
           id: this.rowData.id
         })
         .then(response => {
+          this.$parent.$emit('reloadNeeded');
           this.$toastr('success', 'Registro actualizado con éxito', '');
         })
         .catch(error => {

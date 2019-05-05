@@ -23,10 +23,9 @@
     @vuetable:loading="showLoading"
     @vuetable:load-success="hideLoading"
     @vuetable:row-clicked="onRowClicked"
+    @reloadNeeded="refresh"
     :row-class="onRowClass"
-    >
-      <actions />
-    </vuetable>
+    ></vuetable>
 
     <pagination ref="pagination"
     :infoTemplate="'Mostrando {from} a {to} de {total} elementos'"
@@ -52,8 +51,7 @@ export default {
     Vuetable,
     Pagination,
     Loading,
-    Filters,
-    Actions
+    Filters
   },
   data() {
     return {
