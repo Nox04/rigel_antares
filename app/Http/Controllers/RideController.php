@@ -35,4 +35,16 @@ class RideController extends BaseController
     {
         return parent::updateBase($request, $id);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function pendingRides()
+    {
+        return $this->entity->where('status', 'pending')->orWhere('status', 'active')->latest()->paginate(20);
+    }
 }

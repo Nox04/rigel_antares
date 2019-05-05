@@ -37,4 +37,5 @@ Route::middleware('auth:api')->group(function () {
 
     //Rides
     Route::resource('rides', 'RideController', ['except' => ['create', 'edit']]);
+    Route::get('rides/list/pending', 'RideController@pendingRides');
 });

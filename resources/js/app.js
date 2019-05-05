@@ -14,6 +14,7 @@ import store from './store/index';
 import App from './components/App.vue';
 import VueAuth from '@websanova/vue-auth';
 import VueAxios from 'vue-axios';
+import VueTimeago from 'vue-timeago';
 import VueRouter from 'vue-router';
 import auth from './auth';
 import {apiDomain} from './config';
@@ -35,6 +36,16 @@ Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBVzxYskKUvuoV68FulOZBOee2VXnaKgvM',
     libraries: 'places'
+  }
+});
+
+Vue.use(VueTimeago, {
+  name: 'Timeago', // Component name, `Timeago` by default
+  locale: 'es', // Default locale
+  // We use `date-fns` under the hood
+  // So you can use all locales from it
+  locales: {
+    es: require('date-fns/locale/es')
   }
 });
 

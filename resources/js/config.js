@@ -6,6 +6,7 @@ export const api = {
   messengers: 'messengers',
   workingMessengers: 'messengers/list/working',
   rides: 'rides',
+  pendingRides: 'rides/list/pending',
 }
 
 export const menu = [
