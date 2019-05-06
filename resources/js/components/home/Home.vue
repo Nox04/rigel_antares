@@ -44,7 +44,7 @@ export default {
     ]),
     loginSuccess(data) {
       this.setAuthUser(data.user);
-      this.$router.push({name: 'map'});
+      this.$router.push({name: 'map.ridesPanel'});
     }
   }
 }

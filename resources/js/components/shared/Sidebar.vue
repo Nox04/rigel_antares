@@ -9,7 +9,7 @@
     >
       <div class="kt-aside__brand-logo">
         <router-link
-          :to="{name:'map'}"
+          :to="{name:'map.ridesPanel'}"
           class="kt-menu__link "
         >
           <img

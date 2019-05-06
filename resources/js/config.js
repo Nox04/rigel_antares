@@ -11,7 +11,7 @@ export const api = {
 
 export const menu = [
   {
-    url: 'map',
+    url: 'map.ridesPanel',
     icon: 'fa-map-marked-alt',
     name: 'Mapa',
     type: 'link'

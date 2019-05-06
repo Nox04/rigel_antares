@@ -43,7 +43,7 @@ export default [
       {
         path: '*',
         redirect: {
-          name: 'map'
+          name: 'map.ridesPanel'
         }
       }
     ]
