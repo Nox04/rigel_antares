@@ -36,9 +36,6 @@ export default {
       loading: false
     }
   },
-  mounted() {
-    this.playSound();
-  },
   methods: {
     playSound() {
       const audio = new Audio('/sounds/notification.mp3');
@@ -60,6 +57,12 @@ export default {
       } else {
         console.log('other');
       }
+    }
+  },
+  watch: {
+    ride() {
+      if(this.ride.status === 'inactive')
+        this.playSound();
     }
   }
 }
