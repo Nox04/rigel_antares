@@ -12,7 +12,7 @@
           :position="m.position"
           :clickable="true"
           :draggable="false"
-          :icon="m.id === 28 ? redMarker : greenMarker"
+          :icon="m.id % 2 === 0 ? redMarker : greenMarker"
           @click="center=m.position"
         />
       </GmapMap>
