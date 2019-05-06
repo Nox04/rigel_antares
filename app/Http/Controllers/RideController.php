@@ -45,6 +45,6 @@ class RideController extends BaseController
      */
     public function pendingRides()
     {
-        return $this->entity->where('status', 'pending')->orWhere('status', 'active')->latest()->paginate(20);
+        return $this->entity->where('status', '!=','finished')->latest()->paginate(20);
     }
 }

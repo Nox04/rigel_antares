@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Events\RideCreated;
+use App\Events\RideUpdated;
+use App\Jobs\ResendRide;
 use App\Utils\DistanceCalculator;
 
 class Ride extends Base
@@ -19,17 +22,33 @@ class Ride extends Base
     public static function boot() {
         parent::boot();
         self::created(function ($ride) {
-            $messengers = new Messenger();
-            $messengers = $messengers->getWorkingMessengers();
-            $distances = [];
-            foreach($messengers as $messenger) {
-                $calculator = new DistanceCalculator($messenger->latitude, $messenger->longitude, 10.480639, -73.272768);
-                $distance = $calculator->getDistanceInMetersTo();
-                array_push($distances, ["distance" => $distance, "id" => $messenger->id]);
-            }
-            sort($distances);
-            dd($distances);
+
+            $ride->sendRideToMessengers();
+            $ride->status = 'pending';
+            $ride->save();
+
+            ResendRide::dispatch($ride)->delay(now()->addSeconds(20));
         });
 
+        self::updated(function($ride) {
+            event(new RideUpdated($ride));
+        });
+
+    }
+
+    public function sendRideToMessengers() {
+        $messengers = new Messenger();
+        $messengers = $messengers->getWorkingMessengers();
+        $distances = [];
+
+        foreach($messengers as $messenger) {
+            $calculator = new DistanceCalculator($messenger->latitude, $messenger->longitude, 10.480639, -73.272768);
+            $distance = $calculator->getDistanceInMetersTo();
+            array_push($distances, ["distance" => $distance, "id" => $messenger->id]);
+        }
+
+        sort($distances);
+
+        event(new RideCreated($this, array_slice($distances, 0, 5)));
     }
 }

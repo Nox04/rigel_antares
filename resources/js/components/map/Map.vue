@@ -42,8 +42,8 @@ export default {
     }
   },
   mounted() {
-    this.requestWorkingMessengers();
     this.$router.push({ name: 'map.ridesPanel'});
+    this.requestWorkingMessengers();
   },
   methods: {
     requestWorkingMessengers() {

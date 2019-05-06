@@ -15,7 +15,7 @@
             <i :class="['fa fa-box',
             {'kt-font-warning' : ride.status === 'pending'},
             {'kt-font-success' : ride.status === 'active'},
-            {'kt-font-danger' : ride.status === 'inactive'}
+            {'kt-font-danger fa-pulse' : ride.status === 'inactive'}
           ]" />
           </div>
           <div class="kt-notification__item-details">
@@ -53,6 +53,7 @@ export default {
   },
   mounted() {
     this.requestPendingRides();
+    this.listenUpdates();
   },
   methods: {
     loadForm() {
@@ -66,11 +67,15 @@ export default {
         .catch(error => {
           console.error(error);
         });
+    },
+    listenUpdates() {
+      Echo.private('ride-updates').listen('RideUpdated', e => {
+        this.requestPendingRides();
+      });
     }
   },
 }
 </script>
-
 
 <style>
 .float {
@@ -80,5 +85,38 @@ export default {
 	bottom:70px;
   right:20px;
   box-shadow: 2px 2px 3px #999;
+}
+.fa-pulse {
+	display: inline-block;
+	-moz-animation: pulse 2s infinite linear;
+	-o-animation: pulse 2s infinite linear;
+	-webkit-animation: pulse 2s infinite linear;
+	animation: pulse 2s infinite linear;
+}
+
+@-webkit-keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-moz-keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-o-keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-ms-keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
 }
 </style>

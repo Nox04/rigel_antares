@@ -16,7 +16,10 @@ import VueAuth from '@websanova/vue-auth';
 import VueAxios from 'vue-axios';
 import VueTimeago from 'vue-timeago';
 import VueRouter from 'vue-router';
+import VueEcho from 'vue-echo';
 import auth from './auth';
+import Echo from 'laravel-echo';
+window.Pusher = require('pusher-js');
 import {apiDomain} from './config';
 
 
@@ -40,10 +43,8 @@ Vue.use(VueGoogleMaps, {
 });
 
 Vue.use(VueTimeago, {
-  name: 'Timeago', // Component name, `Timeago` by default
-  locale: 'es', // Default locale
-  // We use `date-fns` under the hood
-  // So you can use all locales from it
+  name: 'Timeago',
+  locale: 'es',
   locales: {
     es: require('date-fns/locale/es')
   }
@@ -76,5 +77,25 @@ Vue.component('app', App);
 
 const app = new Vue({
   router,
-	store
+  store,
+  computed: {
+    isAuthenticated() {
+      return this.$auth.check();
+    },
+  },
+  watch: {
+    isAuthenticated() {
+      window.Echo = new Echo({
+        broadcaster: 'pusher',
+        key: '2d250613bf1826bdc4c5',
+        cluster: 'us2',
+        encrypted: true,
+        auth: {
+          headers: {
+              Authorization: 'Bearer ' + this.$auth.token(),
+          },
+        },
+      });
+    }
+  }
 }).$mount('#app');
