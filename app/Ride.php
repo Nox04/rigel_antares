@@ -22,12 +22,7 @@ class Ride extends Base
     public static function boot() {
         parent::boot();
         self::created(function ($ride) {
-
-            $ride->sendRideToMessengers();
-            $ride->status = 'pending';
-            $ride->save();
-
-            ResendRide::dispatch($ride)->delay(now()->addSeconds(20));
+            $ride->reactivate();
         });
 
         self::updated(function($ride) {
@@ -50,5 +45,13 @@ class Ride extends Base
         sort($distances);
 
         event(new RideCreated($this, array_slice($distances, 0, 5)));
+    }
+
+    public function reactivate() {
+        $this->sendRideToMessengers();
+        $this->status = 'pending';
+        $this->save();
+
+        ResendRide::dispatch($this)->delay(now()->addSeconds(20));
     }
 }

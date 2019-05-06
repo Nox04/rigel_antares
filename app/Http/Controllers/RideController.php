@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Ride;
 use App\Http\Requests\RideRequest;
+use Illuminate\Http\Request;
 
 class RideController extends BaseController
 {
@@ -46,5 +47,18 @@ class RideController extends BaseController
     public function pendingRides()
     {
         return $this->entity->where('status', '!=','finished')->latest()->paginate(20);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function reactivateRide(Request $request)
+    {
+        $ride = $this->entity->find($request->id);
+        return $ride->reactivate();
     }
 }
