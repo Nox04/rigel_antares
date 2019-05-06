@@ -6336,8 +6336,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['username'],
   data: function data() {
     return {
-      menuIsOpen: false,
-      awayClicks: 0
+      menuIsOpen: false
     };
   },
   methods: {
@@ -6345,13 +6344,7 @@ __webpack_require__.r(__webpack_exports__);
       this.menuIsOpen = !this.menuIsOpen;
     },
     away: function away() {
-      if (this.awayClicks === 1) {
-        this.closeMenu();
-        this.awayClicks = 0;
-        return;
-      }
-
-      this.awayClicks++;
+      this.closeMenu();
     },
     closeMenu: function closeMenu() {
       this.menuIsOpen = false;
@@ -31942,7 +31935,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "kt-header__topbar-item kt-header__topbar-item--user" },
+    {
+      directives: [
+        {
+          name: "on-clickaway",
+          rawName: "v-on-clickaway",
+          value: _vm.away,
+          expression: "away"
+        }
+      ],
+      staticClass: "kt-header__topbar-item kt-header__topbar-item--user"
+    },
     [
       _c(
         "div",
@@ -31987,14 +31990,6 @@ var render = function() {
           _c(
             "div",
             {
-              directives: [
-                {
-                  name: "on-clickaway",
-                  rawName: "v-on-clickaway",
-                  value: _vm.away,
-                  expression: "away"
-                }
-              ],
               staticClass:
                 "kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x card-background"
             },

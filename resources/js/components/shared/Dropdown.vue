@@ -1,5 +1,5 @@
 <template>
-  <div class="kt-header__topbar-item kt-header__topbar-item--user">
+  <div class="kt-header__topbar-item kt-header__topbar-item--user" v-on-clickaway="away">
     <div
       class="kt-header__topbar-wrapper"
       @click="openMenu"
@@ -14,7 +14,7 @@
       class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl"
       :class="dynamicClass"
     >
-      <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x card-background" v-on-clickaway="away">
+      <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x card-background">
         <div class="kt-user-card__avatar">
           <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{ username.charAt(0) }}</span>
         </div>
@@ -59,8 +59,7 @@ export default {
   props: ['username'],
   data() {
     return {
-      menuIsOpen: false,
-      awayClicks: 0
+      menuIsOpen: false
     }
   },
   methods: {
@@ -68,12 +67,7 @@ export default {
       this.menuIsOpen = !this.menuIsOpen;
     },
     away() {
-      if(this.awayClicks === 1) {
-        this.closeMenu();
-        this.awayClicks = 0;
-        return;
-      }
-      this.awayClicks++;
+      this.closeMenu();
     },
     closeMenu() {
       this.menuIsOpen = false;
