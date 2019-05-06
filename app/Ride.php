@@ -25,8 +25,9 @@ class Ride extends Base
             foreach($messengers as $messenger) {
                 $calculator = new DistanceCalculator($messenger->latitude, $messenger->longitude, 10.480639, -73.272768);
                 $distance = $calculator->getDistanceInMetersTo();
-                array_push($distances, [$messenger->id, $distance]);
+                array_push($distances, ["distance" => $distance, "id" => $messenger->id]);
             }
+            sort($distances);
             dd($distances);
         });
 

@@ -12,7 +12,11 @@
           class="kt-notification__item"
         >
           <div class="kt-notification__item-icon">
-            <i class="fa fa-box kt-font-danger" />
+            <i :class="['fa fa-box',
+            {'kt-font-warning' : ride.status === 'pending'},
+            {'kt-font-success' : ride.status === 'active'},
+            {'kt-font-danger' : ride.status === 'inactive'}
+          ]" />
           </div>
           <div class="kt-notification__item-details">
             <div class="kt-notification__item-title">

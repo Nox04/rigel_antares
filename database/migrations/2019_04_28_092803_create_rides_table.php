@@ -20,7 +20,7 @@ class CreateRidesTable extends Migration
             $table->string('phone', 25);
             $table->string('neighborhood')->nullable();
             $table->text('details')->nullable();
-            $table->enum('status', ['pending', 'active', 'finished'])->default('pending');
+            $table->enum('status', ['inactive', 'pending', 'active', 'finished'])->default('inactive');
             $table->dateTime('end')->nullable();
             $table->integer('messenger_id')->unsigned()->nullable();
             $table->timestamps();
