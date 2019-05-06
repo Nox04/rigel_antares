@@ -5561,9 +5561,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../static/images/map/marker.png */ "./resources/static/images/map/marker.png");
-/* harmony import */ var _static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
+/* harmony import */ var _static_images_map_red_marker_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../static/images/map/red_marker.png */ "./resources/static/images/map/red_marker.png");
+/* harmony import */ var _static_images_map_red_marker_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_static_images_map_red_marker_png__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _static_images_map_green_marker_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../static/images/map/green_marker.png */ "./resources/static/images/map/green_marker.png");
+/* harmony import */ var _static_images_map_green_marker_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_static_images_map_green_marker_png__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
 //
 //
 //
@@ -5594,12 +5596,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      markerIcon: _static_images_map_marker_png__WEBPACK_IMPORTED_MODULE_0___default.a,
+      redMarker: _static_images_map_red_marker_png__WEBPACK_IMPORTED_MODULE_0___default.a,
+      greenMarker: _static_images_map_green_marker_png__WEBPACK_IMPORTED_MODULE_1___default.a,
       messengers: []
     };
   },
@@ -5613,7 +5617,7 @@ __webpack_require__.r(__webpack_exports__);
     requestWorkingMessengers: function requestWorkingMessengers() {
       var _this = this;
 
-      axios.get(_config__WEBPACK_IMPORTED_MODULE_1__["api"].workingMessengers).then(function (response) {
+      axios.get(_config__WEBPACK_IMPORTED_MODULE_2__["api"].workingMessengers).then(function (response) {
         _this.messengers = response.data;
 
         _this.messengers.forEach(function (item, index) {
@@ -31049,7 +31053,7 @@ var render = function() {
                 position: m.position,
                 clickable: true,
                 draggable: false,
-                icon: _vm.markerIcon
+                icon: m.id === 28 ? _vm.redMarker : _vm.greenMarker
               },
               on: {
                 click: function($event) {
@@ -55600,14 +55604,25 @@ module.exports = "/images/logo-light.png?7de27d2b677e9e63c47da9564eb667b4";
 
 /***/ }),
 
-/***/ "./resources/static/images/map/marker.png":
-/*!************************************************!*\
-  !*** ./resources/static/images/map/marker.png ***!
-  \************************************************/
+/***/ "./resources/static/images/map/green_marker.png":
+/*!******************************************************!*\
+  !*** ./resources/static/images/map/green_marker.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/marker.png?8d63a1c862d808a39f34c52061e6b3fc";
+module.exports = "/images/green_marker.png?ba0e825f03c7656cc196b08e530e017b";
+
+/***/ }),
+
+/***/ "./resources/static/images/map/red_marker.png":
+/*!****************************************************!*\
+  !*** ./resources/static/images/map/red_marker.png ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/red_marker.png?e5c1b9be8ef4cf7c1735a65558eacaf8";
 
 /***/ }),
 

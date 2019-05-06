@@ -22,5 +22,8 @@ class Messenger extends Base
     public function rides() {
         return $this->hasMany(Ride::class);
     }
-    
+
+    public function getWorkingMessengers() {
+        return $this->where('working', 1)->get();
+    }
 }

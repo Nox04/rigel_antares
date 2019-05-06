@@ -12,7 +12,7 @@
           :position="m.position"
           :clickable="true"
           :draggable="false"
-          :icon="markerIcon"
+          :icon="m.id === 28 ? redMarker : greenMarker"
           @click="center=m.position"
         />
       </GmapMap>
@@ -29,13 +29,15 @@
 </template>
 
 <script>
-import markerIcon from '../../../static/images/map/marker.png';
+import redMarker from '../../../static/images/map/red_marker.png';
+import greenMarker from '../../../static/images/map/green_marker.png';
 import {api} from '../../config';
 
 export default {
   data() {
     return {
-      markerIcon: markerIcon,
+      redMarker: redMarker,
+      greenMarker: greenMarker,
       messengers: []
     }
   },

@@ -45,6 +45,6 @@ class MessengerController extends BaseController
      */
     public function workingMessengers()
     {
-        return $this->entity->where('working', 1)->get();
+        return $this->entity->getWorkingMessengers();
     }
 }
