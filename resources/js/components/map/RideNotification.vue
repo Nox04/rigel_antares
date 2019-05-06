@@ -33,11 +33,17 @@ export default {
   props: ['ride'],
   data() {
     return {
-      loading: false,
-      ride: {}
+      loading: false
     }
   },
+  mounted() {
+    this.playSound();
+  },
   methods: {
+    playSound() {
+      const audio = new Audio('/sounds/notification.mp3');
+      audio.play();
+    },
     show(id, status) {
       this.loading = true;
       if(status === 'inactive') {
