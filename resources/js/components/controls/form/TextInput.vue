@@ -1,8 +1,18 @@
 <template>
   <div class="form-group">
-    <label class="capitalized">{{label}} <span v-show="required">*</span></label>
-    <input @change="validate" ref="input" :type="inputType" v-model="value" class="form-control" :placeholder="`Ingrese el ${label}`">
-    <span v-show="error" class="form-text text-danger">{{errorMessage}}</span>
+    <label class="capitalized">{{ label }} <span v-show="required">*</span></label>
+    <input
+      ref="input"
+      v-model="value"
+      :type="inputType"
+      class="form-control"
+      :placeholder="`Ingrese el ${label}`"
+      @change="validate"
+    >
+    <span
+      v-show="error"
+      class="form-text text-danger"
+    >{{ errorMessage }}</span>
   </div>
 </template>
 

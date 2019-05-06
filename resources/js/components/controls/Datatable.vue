@@ -1,35 +1,40 @@
 <template>
   <div>
-    <loading :active.sync="isLoading"
-    :can-cancel="false"
-    loader="bars"
-    color="#5d78ff"
-    :is-full-page="fullPage"></loading>
-
-    <filters
-    class="kt-margin-t-20 kt-margin-b-20"
-    @changedFilters="setFilters"
+    <loading
+      :active.sync="isLoading"
+      :can-cancel="false"
+      loader="bars"
+      color="#5d78ff"
+      :is-full-page="fullPage"
     />
 
-    <vuetable ref="vuetable"
-    :api-url="endPoint"
-    :fields="fields"
-    :css="css"
-    :sort-order="sortOrder"
-    :http-options="httpOptions"
-    pagination-path=""
-    :append-params="moreParams"
-    @vuetable:pagination-data="onPaginationData"
-    @vuetable:loading="showLoading"
-    @vuetable:load-success="hideLoading"
-    @vuetable:row-clicked="onRowClicked"
-    @reloadNeeded="refresh"
-    :row-class="onRowClass"
-    ></vuetable>
+    <filters
+      class="kt-margin-t-20 kt-margin-b-20"
+      @changedFilters="setFilters"
+    />
 
-    <pagination ref="pagination"
-    :infoTemplate="'Mostrando {from} a {to} de {total} elementos'"
-    @vuetable-pagination:change-page="onChangePage"></pagination>
+    <vuetable
+      ref="vuetable"
+      :api-url="endPoint"
+      :fields="fields"
+      :css="css"
+      :sort-order="sortOrder"
+      :http-options="httpOptions"
+      pagination-path=""
+      :append-params="moreParams"
+      :row-class="onRowClass"
+      @vuetable:pagination-data="onPaginationData"
+      @vuetable:loading="showLoading"
+      @vuetable:load-success="hideLoading"
+      @vuetable:row-clicked="onRowClicked"
+      @reloadNeeded="refresh"
+    />
+
+    <pagination
+      ref="pagination"
+      :info-template="'Mostrando {from} a {to} de {total} elementos'"
+      @vuetable-pagination:change-page="onChangePage"
+    />
   </div>
 </template>
 
@@ -46,13 +51,13 @@ import Actions from './Actions';
 Vue.component('actions', Actions);
 
 export default {
-  props: ['endPoint'],
   components: {
     Vuetable,
     Pagination,
     Loading,
     Filters
   },
+  props: ['endPoint'],
   data() {
     return {
       httpOptions: {

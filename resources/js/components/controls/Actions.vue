@@ -1,7 +1,11 @@
 <template>
   <div class="actions">
-    <a href="javascript:" @click="itemAction" class="btn btn-sm btn-outline-info btn-hover-info btn-elevate btn-circle btn-icon">
-      <i class="fa fa-check-square"></i>
+    <a
+      href="javascript:"
+      class="btn btn-sm btn-outline-info btn-hover-info btn-elevate btn-circle btn-icon"
+      @click="itemAction"
+    >
+      <i class="fa fa-check-square" />
     </a>
   </div>
 </template>

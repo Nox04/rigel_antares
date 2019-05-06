@@ -32,10 +32,11 @@
         class="kt-aside-menu "
       >
         <ul class="kt-menu__nav ">
-          <li v-for="(m, index) in menu"
-          :key="index"
-          aria-haspopup="true"
-          :class="[{'kt-menu__item' : m.url !== null},{'kt-menu__section' : m.url === null}, {'kt-menu__item--active': $route.name === m.url}]"
+          <li
+            v-for="(m, index) in menu"
+            :key="index"
+            aria-haspopup="true"
+            :class="[{'kt-menu__item' : m.url !== null},{'kt-menu__section' : m.url === null}, {'kt-menu__item--active': $route.name === m.url}]"
           >
             <router-link
               v-if="m.url !== null"
@@ -43,11 +44,11 @@
               class="kt-menu__link"
             >
               <span class="kt-menu__link-icon"><i :class="['fa', m.icon]" /></span>
-              <span class="kt-menu__link-text">{{m.name}}</span>
+              <span class="kt-menu__link-text">{{ m.name }}</span>
             </router-link>
             <template v-else>
               <h4 class="kt-menu__section-text">
-                {{m.name}}
+                {{ m.name }}
               </h4>
               <i class="kt-menu__section-icon flaticon-more-v2" />
             </template>

@@ -4676,6 +4676,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -4766,6 +4770,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -4776,13 +4785,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('actions', _Actions__WEBPACK_IMPORTED_MODULE_7__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['endPoint'],
   components: {
     Vuetable: vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_1__["default"],
     Pagination: _Pagination__WEBPACK_IMPORTED_MODULE_2__["default"],
     Loading: vue_loading_overlay__WEBPACK_IMPORTED_MODULE_4___default.a,
     Filters: _Filters__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
+  props: ['endPoint'],
   data: function data() {
     return {
       httpOptions: {
@@ -4911,6 +4920,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4944,6 +4969,36 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetable_2_src_components_VuetablePaginationMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuetable-2/src/components/VuetablePaginationMixin */ "./node_modules/vuetable-2/src/components/VuetablePaginationMixin.vue");
 /* harmony import */ var vuetable_2_src_components_VuetablePaginationInfoMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetable-2/src/components/VuetablePaginationInfoMixin */ "./node_modules/vuetable-2/src/components/VuetablePaginationInfoMixin.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5050,17 +5105,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['fields', 'title'],
   components: {
     TextInput: _TextInput__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  props: ['fields', 'title'],
   mounted: function mounted() {
     this.unsetData();
   },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount', 'fieldsCount', 'updating']), {
+    portletTitle: function portletTitle() {
+      if (this.updating) {
+        return "Editando ".concat(this.formData.name);
+      } else {
+        return "Crear nuevo ".concat(this.title.toLowerCase());
+      }
+    }
+  }),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['unsetData', 'setUpdating', 'resetErrors']), {
     save: function save() {
       var _this = this;
@@ -5104,15 +5181,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     removeUpdating: function removeUpdating() {
       this.setUpdating(false);
     }
-  }),
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount', 'fieldsCount', 'updating']), {
-    portletTitle: function portletTitle() {
-      if (this.updating) {
-        return "Editando ".concat(this.formData.name);
-      } else {
-        return "Crear nuevo ".concat(this.title.toLowerCase());
-      }
-    }
   })
 });
 
@@ -5132,6 +5200,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5337,14 +5415,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'desc', 'icon', 'endPoint', 'fields'],
   components: {
     'datatable': _controls_Datatable_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     'data-form': _controls_form_Form_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  props: ['title', 'desc', 'icon', 'endPoint', 'fields'],
   methods: {
     refreshDatatable: function refreshDatatable() {
       this.$refs.datatable.refresh();
@@ -5363,6 +5445,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5600,18 +5690,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title'],
   components: {
     TextInput: _controls_form_TextInput__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
-    this.unsetData();
-    this.$refs['first'][0].focus();
-  },
+  props: ['title'],
   data: function data() {
     return {
       details: '',
@@ -5639,6 +5748,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         required: true
       }]
     };
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount', 'fieldsCount']), {
+    portletTitle: function portletTitle() {
+      return "Nuevo Domicilio";
+    }
+  }),
+  mounted: function mounted() {
+    this.unsetData();
+    this.$refs['first'][0].focus();
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['unsetData', 'setUpdating', 'resetErrors', 'setData']), {
     goBack: function goBack() {
@@ -5690,11 +5808,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         details: this.details
       }));
     }
-  }),
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['formData', 'errorsCount', 'fieldsCount']), {
-    portletTitle: function portletTitle() {
-      return "Nuevo Domicilio";
-    }
   })
 });
 
@@ -5710,6 +5823,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6330,6 +6460,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [vue_clickaway__WEBPACK_IMPORTED_MODULE_0__["mixin"]],
@@ -6338,6 +6474,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       menuIsOpen: false
     };
+  },
+  computed: {
+    dynamicClass: function dynamicClass() {
+      if (this.menuIsOpen) return 'showDropDown';else return '';
+    }
   },
   methods: {
     openMenu: function openMenu() {
@@ -6351,11 +6492,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     logout: function logout() {
       this.$emit('logout');
-    }
-  },
-  computed: {
-    dynamicClass: function dynamicClass() {
-      if (this.menuIsOpen) return 'showDropDown';else return '';
     }
   }
 });
@@ -6372,6 +6508,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
+//
 //
 //
 //
@@ -29940,7 +30077,9 @@ var render = function() {
       _vm._v(" "),
       _c("pagination", {
         ref: "pagination",
-        attrs: { infoTemplate: "Mostrando {from} a {to} de {total} elementos" },
+        attrs: {
+          "info-template": "Mostrando {from} a {to} de {total} elementos"
+        },
         on: { "vuetable-pagination:change-page": _vm.onChangePage }
       })
     ],
@@ -30036,11 +30175,17 @@ var render = function() {
               }
             },
             [
-              _c("option", { attrs: { value: "" } }, [_vm._v("Todos")]),
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("\n            Todos\n          ")
+              ]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "1" } }, [_vm._v("Activos")]),
+              _c("option", { attrs: { value: "1" } }, [
+                _vm._v("\n            Activos\n          ")
+              ]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "0" } }, [_vm._v("Inactivos")])
+              _c("option", { attrs: { value: "0" } }, [
+                _vm._v("\n            Inactivos\n          ")
+              ])
             ]
           )
         ])
@@ -30142,7 +30287,7 @@ var render = function() {
               _vm._v(" "),
               _vm.notEnoughPages
                 ? _vm._l(_vm.totalPage, function(n) {
-                    return _c("li", [
+                    return _c("li", { key: n }, [
                       _c("a", {
                         class: [
                           "kt-datatable__pager-link kt-datatable__pager-link-number",
@@ -30163,7 +30308,7 @@ var render = function() {
                     ])
                   })
                 : _vm._l(_vm.windowSize, function(n) {
-                    return _c("li", [
+                    return _c("li", { key: n }, [
                       _c("a", {
                         class: [
                           "kt-datatable__pager-link kt-datatable__pager-link-number",
@@ -30292,12 +30437,13 @@ var render = function() {
               "div",
               { staticClass: "kt-section top-padding" },
               [
-                _vm._l(_vm.fields, function(field) {
+                _vm._l(_vm.fields, function(field, index) {
                   return [
                     field.type === "text" ||
                     field.type === "number" ||
                     field.type === "pin"
                       ? _c("text-input", {
+                          key: index,
                           attrs: {
                             label: field.label,
                             "database-name": field.databaseName,
@@ -30322,10 +30468,10 @@ var render = function() {
                     staticClass: "btn btn-primary",
                     attrs: {
                       type: "submit",
-                      disabled: this.errorsCount > 0 || this.fieldsCount < 1
+                      disabled: _vm.errorsCount > 0 || _vm.fieldsCount < 1
                     }
                   },
-                  [_vm._v("Guardar")]
+                  [_vm._v("\n            Guardar\n          ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -30335,7 +30481,7 @@ var render = function() {
                     attrs: { type: "reset" },
                     on: { click: _vm.removeUpdating }
                   },
-                  [_vm._v("Cancelar")]
+                  [_vm._v("\n            Cancelar\n          ")]
                 )
               ])
             ])
@@ -30768,7 +30914,7 @@ var render = function() {
           _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "alert-text" }, [
-            _vm._v("Sus datos no son válidos")
+            _vm._v("\n      Sus datos no son válidos\n    ")
           ])
         ]
       ),
@@ -30955,56 +31101,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "kt-portlet kt-portlet--mobile",
-      staticStyle: { "overflow-y": "scroll" }
-    },
-    [
-      _c("div", { staticClass: "kt-portlet__body kt-portlet__body--fit" }, [
-        _c(
-          "div",
-          { staticClass: "kt-notification" },
-          _vm._l(20, function(n) {
-            return _c(
-              "a",
-              { staticClass: "kt-notification__item", attrs: { href: "#" } },
-              [
-                _vm._m(0, true),
-                _vm._v(" "),
-                _c("div", { staticClass: "kt-notification__item-details" }, [
-                  _c("div", { staticClass: "kt-notification__item-title" }, [
-                    _vm._v(
-                      "\n            Envío #" + _vm._s(21 - n) + "\n          "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "kt-notification__item-time" }, [
-                    _vm._v(
-                      "\n            Hace " +
-                        _vm._s(n * 2) +
-                        " minutos\n          "
-                    )
-                  ])
-                ])
-              ]
-            )
-          }),
-          0
-        )
-      ])
-    ]
-  )
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "kt-notification__item-icon" }, [
-      _c("i", { staticClass: "fa fa-box kt-font-danger" })
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "kt-portlet kt-portlet--mobile",
+        staticStyle: { "overflow-y": "scroll" }
+      },
+      [
+        _c("div", { staticClass: "kt-portlet__body kt-portlet__body--fit" }, [
+          _c("div", { staticClass: "kt-notification" })
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -31032,7 +31147,7 @@ var render = function() {
     _c("div", { staticClass: "kt-portlet__head kt-portlet__head--lg" }, [
       _c("div", { staticClass: "kt-portlet__head-label" }, [
         _c("h3", { staticClass: "kt-portlet__head-title" }, [
-          _vm._v("\n          " + _vm._s(_vm.portletTitle) + "\n        ")
+          _vm._v("\n        " + _vm._s(_vm.portletTitle) + "\n      ")
         ])
       ])
     ]),
@@ -31061,6 +31176,7 @@ var render = function() {
                   field.type === "pin" ||
                   field.type === "alpha"
                     ? _c("text-input", {
+                        key: index,
                         ref: "first",
                         refInFor: true,
                         attrs: {
@@ -31124,10 +31240,10 @@ var render = function() {
                     staticClass: "btn btn-primary col-md-12",
                     attrs: {
                       type: "submit",
-                      disabled: this.errorsCount > 0 || this.fieldsCount < 1
+                      disabled: _vm.errorsCount > 0 || _vm.fieldsCount < 1
                     }
                   },
-                  [_vm._v("Guardar")]
+                  [_vm._v("\n            Guardar\n          ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -31146,7 +31262,7 @@ var render = function() {
                     attrs: { type: "reset" },
                     on: { shortkey: _vm.goBack, click: _vm.goBack }
                   },
-                  [_vm._v("Cancelar")]
+                  [_vm._v("\n            Cancelar\n          ")]
                 )
               ])
             ]
@@ -31192,7 +31308,11 @@ var render = function() {
           _vm._l(_vm.rides, function(ride) {
             return _c(
               "a",
-              { staticClass: "kt-notification__item", attrs: { href: "#" } },
+              {
+                key: ride.id,
+                staticClass: "kt-notification__item",
+                attrs: { href: "#" }
+              },
               [
                 _vm._m(0, true),
                 _vm._v(" "),

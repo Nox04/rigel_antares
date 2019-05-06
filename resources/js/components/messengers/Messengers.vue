@@ -1,11 +1,11 @@
 <template>
   <div>
     <crud
-    title="Mensajeros"
-    icon="fa-motorcycle"
-    end-point="messengers"
-    desc="Gestione sus trabajadores"
-    :fields="fields"
+      title="Mensajeros"
+      icon="fa-motorcycle"
+      end-point="messengers"
+      desc="Gestione sus trabajadores"
+      :fields="fields"
     />
   </div>
 </template>

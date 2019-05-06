@@ -9,8 +9,8 @@
     />
     <div class="kt-header__topbar">
       <dropdown
-      :username="username"
-      @logout="logout"
+        :username="username"
+        @logout="logout"
       />
     </div>
   </div>

@@ -1,5 +1,8 @@
 <template>
-  <div class="kt-header__topbar-item kt-header__topbar-item--user" v-on-clickaway="away">
+  <div
+    v-on-clickaway="away"
+    class="kt-header__topbar-item kt-header__topbar-item--user"
+  >
     <div
       class="kt-header__topbar-wrapper"
       @click="openMenu"
@@ -22,7 +25,10 @@
           {{ username }}
         </div>
       </div>
-      <div class="kt-notification" @click="closeMenu">
+      <div
+        class="kt-notification"
+        @click="closeMenu"
+      >
         <router-link
           :to="{name:'profile'}"
           class="kt-notification__item"
@@ -62,6 +68,14 @@ export default {
       menuIsOpen: false
     }
   },
+  computed: {
+    dynamicClass() {
+      if(this.menuIsOpen)
+        return 'showDropDown';
+      else
+        return '';
+    }
+  },
   methods: {
     openMenu() {
       this.menuIsOpen = !this.menuIsOpen;
@@ -74,14 +88,6 @@ export default {
     },
     logout() {
       this.$emit('logout');
-    }
-  },
-  computed: {
-    dynamicClass() {
-      if(this.menuIsOpen)
-        return 'showDropDown';
-      else
-        return '';
     }
   },
 }

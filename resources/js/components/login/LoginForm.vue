@@ -42,9 +42,17 @@
         >¿Olvidaste tu contraseña?</a>
       </div>
     </div>
-    <div class="alert alert-danger" role="alert" v-show="has_error">
-        <div class="alert-icon"><i class="flaticon-questions-circular-button"></i></div>
-        <div class="alert-text">Sus datos no son válidos</div>
+    <div
+      v-show="has_error"
+      class="alert alert-danger"
+      role="alert"
+    >
+      <div class="alert-icon">
+        <i class="flaticon-questions-circular-button" />
+      </div>
+      <div class="alert-text">
+        Sus datos no son válidos
+      </div>
     </div>
     <div class="kt-login__actions">
       <button

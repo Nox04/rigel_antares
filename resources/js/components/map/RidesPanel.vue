@@ -1,22 +1,39 @@
 <template>
-  <div class="kt-portlet kt-portlet--mobile" style="overflow-y: scroll;">
+  <div
+    class="kt-portlet kt-portlet--mobile"
+    style="overflow-y: scroll;"
+  >
     <div class="kt-portlet__body kt-portlet__body--fit">
       <div class="kt-notification">
-        <a href="#" v-for="ride in rides" class="kt-notification__item">
+        <a
+          v-for="ride in rides"
+          :key="ride.id"
+          href="#"
+          class="kt-notification__item"
+        >
           <div class="kt-notification__item-icon">
-            <i class="fa fa-box kt-font-danger"></i>
+            <i class="fa fa-box kt-font-danger" />
           </div>
           <div class="kt-notification__item-details">
             <div class="kt-notification__item-title">
-              Envío #{{ride.id}}
+              Envío #{{ ride.id }}
             </div>
             <div class="kt-notification__item-time">
-              <timeago :datetime="ride.created_at" :auto-update="30"></timeago>
+              <timeago
+                :datetime="ride.created_at"
+                :auto-update="30"
+              />
             </div>
           </div>
         </a>
       </div>
-      <a href="javascript:" v-shortkey.once="['n']" @shortkey="loadForm" @click="loadForm" class="btn btn-brand btn-lg btn-icon btn-circle float"><i class="fa fa-plus"></i></a>
+      <a
+        v-shortkey.once="['n']"
+        href="javascript:"
+        class="btn btn-brand btn-lg btn-icon btn-circle float"
+        @shortkey="loadForm"
+        @click="loadForm"
+      ><i class="fa fa-plus" /></a>
     </div>
   </div>
 </template>

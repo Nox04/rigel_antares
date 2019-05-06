@@ -5,24 +5,28 @@
         <div class="kt-portlet__head kt-portlet__head--lg">
           <div class="kt-portlet__head-label">
             <span class="kt-portlet__head-icon">
-              <i :class="['kt-font-brand fa', icon]"></i>
+              <i :class="['kt-font-brand fa', icon]" />
             </span>
             <h3 class="kt-portlet__head-title">
-              {{title}}
-              <small>{{desc}}</small>
+              {{ title }}
+              <small>{{ desc }}</small>
             </h3>
           </div>
         </div>
         <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
           <datatable
-          ref="datatable"
-          :end-point="endPoint"
+            ref="datatable"
+            :end-point="endPoint"
           />
         </div>
       </div>
     </div>
     <div class="col-xl-4 col-md-4">
-      <data-form :fields="fields" @needRefresh="refreshDatatable" :title="title" />
+      <data-form
+        :fields="fields"
+        :title="title"
+        @needRefresh="refreshDatatable"
+      />
     </div>
   </div>
 </template>
@@ -32,11 +36,11 @@ import Datatable from '../controls/Datatable.vue';
 import Form from '../controls/form/Form.vue';
 
 export default {
-  props: ['title', 'desc', 'icon', 'endPoint', 'fields'],
   components: {
     'datatable': Datatable,
     'data-form': Form
   },
+  props: ['title', 'desc', 'icon', 'endPoint', 'fields'],
   methods: {
     refreshDatatable() {
       this.$refs.datatable.refresh();
