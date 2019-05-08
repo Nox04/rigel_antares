@@ -80,12 +80,12 @@ class Messenger extends Authenticatable implements JWTSubject
     }
 
     /**
-     * Get the password for the user.
+     * Return enabled elements.
      *
-     * @return string
+     * @param $query
+     * @return array
      */
-    public function getAuthPassword()
-    {
-        return $this->pin;
+    public function scopeEnabled($query) {
+        return $query->where('enabled', true);
     }
 }

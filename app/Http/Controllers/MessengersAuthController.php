@@ -13,7 +13,7 @@ class MessengersAuthController extends Controller
      */
     public function login(Request $request)
     {
-        $user = Messenger::where('phone', $request->phone)->where('pin', $request->pin)->first();
+        $user = Messenger::where('phone', $request->phone)->where('pin', $request->pin)->enabled()->first();
 
         if(!is_null($user)) {
             $token = $this->guard()->fromUser($user);
