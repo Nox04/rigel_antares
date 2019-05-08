@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'mobile' => [
+            'driver' => 'jwt',
+            'provider' => 'mobile',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +74,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'mobile' => [
+            'driver' => 'eloquent',
+            'model' => App\Messenger::class,
         ],
 
         // 'users' => [

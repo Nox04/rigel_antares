@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+
 class AuthController extends Controller
 {
 
@@ -62,6 +63,6 @@ class AuthController extends Controller
      */
     private function guard()
     {
-        return Auth::guard();
+        return Auth::guard('api');
     }
 }

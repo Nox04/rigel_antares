@@ -29,6 +29,22 @@ Route::prefix('auth')->group(function () {
     });
 });
 
+Route::prefix('mauth')->group(function () {
+    // Login User
+    Route::post('login', 'MessengersAuthController@login');
+
+    // Refresh the JWT Token
+    Route::get('refresh', 'MessengersAuthController@refresh');
+
+    // Below mention routes are available only for the authenticated users.
+    Route::middleware('auth:mobile')->group(function () {
+        // Get user info
+        Route::get('user', 'MessengersAuthController@user');
+        // Logout user from application
+        Route::post('logout', 'MessengersAuthController@logout');
+    });
+});
+
 Route::middleware('auth:api')->group(function () {
     //Messengers
     Route::resource('messengers', 'MessengerController', ['except' => ['create', 'edit']]);
