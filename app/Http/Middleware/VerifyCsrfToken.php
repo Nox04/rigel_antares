@@ -19,6 +19,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'https://antares.rigel.digital/api/mauth',
+        'https://antares.rigel.digital/api/mobile',
+        'http://antares.nox/api/mauth',
+        'http://antares.nox/api/mobile',
     ];
 }
