@@ -26,6 +26,7 @@
       @vuetable:pagination-data="onPaginationData"
       @vuetable:loading="showLoading"
       @vuetable:load-success="hideLoading"
+      @vuetable:load-error="showError"
       @vuetable:row-clicked="onRowClicked"
       @reloadNeeded="refresh"
     />
@@ -151,6 +152,10 @@ export default {
     },
     refresh() {
       this.$refs.vuetable.reload();
+    },
+    showError() {
+      this.$toastr('error', 'Ocurrió un error al hacer la consulta', '');
+      this.hideLoading();
     },
     onRowClicked(row) {
       this.setUpdating(true);
