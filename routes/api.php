@@ -57,3 +57,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('rides/list/pending', 'RideController@pendingRides');
     Route::post('rides/reactivate', 'RideController@reactivateRide');
 });
+
+Route::middleware('auth:mobile')->group(function () {
+    //Messengers
+    Route::post('messengers/geo', 'MessengerController@updateGeo');
+});
