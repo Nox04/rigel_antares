@@ -19,6 +19,15 @@ class Ride extends Base
         return $this->belongsTo(Messenger::class);
     }
 
+    /**
+     * Neighborhood relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function neighborhood() {
+        return $this->belongsTo(Neighborhood::class);
+    }
+
     public static function boot() {
         parent::boot();
         self::created(function ($ride) {
