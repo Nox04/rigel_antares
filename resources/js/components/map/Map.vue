@@ -44,6 +44,7 @@ export default {
   mounted() {
     this.$router.push({ name: 'map.ridesPanel'});
     this.requestWorkingMessengers();
+    this.listenUpdates();
   },
   methods: {
     requestWorkingMessengers() {
@@ -60,6 +61,11 @@ export default {
         .catch(error => {
           console.error(error);
         });
+    },
+    listenUpdates() {
+      Echo.private('messenger-updates').listen('RideUpdated', e => {
+        this.requestWorkingMessengers();
+      });
     }
   },
 }

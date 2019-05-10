@@ -5789,6 +5789,7 @@ __webpack_require__.r(__webpack_exports__);
       name: 'map.ridesPanel'
     });
     this.requestWorkingMessengers();
+    this.listenUpdates();
   },
   methods: {
     requestWorkingMessengers: function requestWorkingMessengers() {
@@ -5805,6 +5806,13 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         console.error(error);
+      });
+    },
+    listenUpdates: function listenUpdates() {
+      var _this2 = this;
+
+      Echo["private"]('messenger-updates').listen('RideUpdated', function (e) {
+        _this2.requestWorkingMessengers();
       });
     }
   }
