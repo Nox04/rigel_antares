@@ -92,7 +92,7 @@ const app = new Vue({
         encrypted: true,
         auth: {
           headers: {
-              Authorization: 'Bearer ' + this.$auth.token(),
+            Authorization: 'Bearer ' + this.$auth.token(),
           },
         },
       });
