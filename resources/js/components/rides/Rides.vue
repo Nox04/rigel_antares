@@ -7,6 +7,7 @@
       desc="Historial de domicilios"
       :fields="fields"
       :has-form="false"
+      :custom-datatable="true"
     />
   </div>
 </template>

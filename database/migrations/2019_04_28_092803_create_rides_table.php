@@ -16,6 +16,7 @@ class CreateRidesTable extends Migration
         Schema::create('rides', function (Blueprint $table) {
             $table->increments('id');
             $table->string('address');
+            $table->string('address2');
             $table->string('name');
             $table->string('phone', 25);
             $table->string('neighborhood')->nullable();

@@ -48,11 +48,18 @@ class Base extends Model
     public function format(Request $request) {
         $order = explode("|", $request->sort);
         $filters = json_decode($request->filters, true);
+        $relations = json_decode($request->relations, true);
         $model = $this->query();
 
         foreach($filters as $key => $filter) {
             if($filter != '') {
                 $model = $model->where($key, 'like', '%'.$filter.'%');
+            }
+        }
+
+        foreach($relations as $key => $relation) {
+            if($relation != '') {
+                $model = $model->with($key);
             }
         }
 

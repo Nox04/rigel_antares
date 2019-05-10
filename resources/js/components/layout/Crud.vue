@@ -14,9 +14,15 @@
           </div>
         </div>
         <div class="kt-portlet__body kt-portlet__body--fit internal-padding">
+          <ride-datatable
+            ref="datatable"
+            :end-point="endPoint"
+            v-if="customDatatable"
+          />
           <datatable
             ref="datatable"
             :end-point="endPoint"
+            v-else
           />
         </div>
       </div>
@@ -33,14 +39,16 @@
 
 <script>
 import Datatable from '../controls/Datatable.vue';
+import RideDatatable from '../controls/RideDatatable.vue';
 import Form from '../controls/form/Form.vue';
 
 export default {
   components: {
     'datatable': Datatable,
-    'data-form': Form
+    'data-form': Form,
+    'ride-datatable': RideDatatable
   },
-  props: ['title', 'desc', 'icon', 'endPoint', 'fields', 'hasForm'],
+  props: ['title', 'desc', 'icon', 'endPoint', 'fields', 'hasForm', 'customDatatable'],
   methods: {
     refreshDatatable() {
       this.$refs.datatable.refresh();

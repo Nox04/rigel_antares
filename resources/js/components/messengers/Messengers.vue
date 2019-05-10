@@ -7,6 +7,7 @@
       desc="Gestione sus trabajadores"
       :fields="fields"
       :has-form="true"
+      :custom-datatable="false"
     />
   </div>
 </template>

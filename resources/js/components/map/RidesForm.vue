@@ -84,9 +84,15 @@ export default {
           type: "text",
           required: true
         },
-         {
-          label: "dirección",
+        {
+          label: "dirección de salida",
           databaseName: "address",
+          type: "alpha",
+          required: true
+        },
+        {
+          label: "dirección de llegada",
+          databaseName: "address2",
           type: "alpha",
           required: true
         },

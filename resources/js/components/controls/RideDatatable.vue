@@ -8,11 +8,6 @@
       :is-full-page="fullPage"
     />
 
-    <filters
-      class="kt-margin-t-20 kt-margin-b-20"
-      @changedFilters="setFilters"
-    />
-
     <vuetable
       ref="vuetable"
       :api-url="endPoint"
@@ -22,12 +17,10 @@
       :http-options="httpOptions"
       pagination-path=""
       :append-params="moreParams"
-      :row-class="onRowClass"
       @vuetable:pagination-data="onPaginationData"
       @vuetable:loading="showLoading"
       @vuetable:load-success="hideLoading"
       @vuetable:load-error="showError"
-      @vuetable:row-clicked="onRowClicked"
       @reloadNeeded="refresh"
     />
 
@@ -81,35 +74,40 @@ export default {
         }
       ],
       moreParams: {
-        filters: {
-          name: '',
-          enabled: ''
-        },
-        relations: {}
+        filters: {},
+        relations: {
+          messenger: true,
+        }
       },
       fields: [
         {
           name: 'name',
-          title: 'Nombre',
+          title: 'Cliente',
           sortField:'name'
+        },
+        {
+          name: 'address',
+          title: 'D. Salida',
+        },
+        {
+          name: 'address2',
+          title: 'D. llegada',
         },
         {
           name: 'phone',
           title: 'Telefono',
         },
         {
-          name: 'enabled',
-          title: 'Estado',
-          sortField: 'enabled',
-          dataClass: 'text-center',
-          callback: 'statusLabel',
-          width: '10%'
+          name: 'created_at',
+          title: 'Fecha inicio',
         },
         {
-          name: '__component:actions',
-          title: 'Acciones',
-          dataClass: 'text-center',
-          width: '10%'
+          name: 'end',
+          title: 'Fecha final',
+        },
+        {
+          name: 'messenger.name',
+          title: 'Mensajero'
         }
       ],
       css: {
@@ -120,11 +118,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'setData',
-      'setUpdating',
-      'resetErrors'
-    ]),
     onPaginationData (paginationData) {
       this.$refs.pagination.setPaginationData(paginationData);
     },
@@ -133,10 +126,6 @@ export default {
     },
     hideLoading () {
       this.isLoading = false;
-    },
-    onRowClass (dataItem, index) {
-      //console.log(index);
-      return (dataItem.isOverdue) ? 'color-red' : 'color-white'
     },
     onChangePage (page) {
       this.$refs.vuetable.changePage(page);
@@ -157,11 +146,6 @@ export default {
     showError() {
       this.$toastr('error', 'Ocurrió un error al hacer la consulta', '');
       this.hideLoading();
-    },
-    onRowClicked(row) {
-      this.setUpdating(true);
-      this.setData(row);
-      this.resetErrors();
     }
   }
 }
