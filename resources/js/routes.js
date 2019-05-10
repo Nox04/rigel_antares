@@ -8,6 +8,7 @@ import Profile from './components/profile/Profile.vue';
 import EditProfile from './components/profile/edit-profile/EditProfile.vue';
 import EditPassword from './components/profile/edit-password/EditPassword.vue';
 import Messengers from './components/messengers/Messengers.vue';
+import Rides from './components/rides/Rides.vue';
 
 export default [
 	{
@@ -57,7 +58,7 @@ export default [
   {
 		path: '/rides',
 		name: 'rides',
-		component: Map,
+		component: Rides,
 		meta: {requiresAuth: true}
 	},
 	{

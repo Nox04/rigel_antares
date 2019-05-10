@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-xl-8 col-md-8">
+    <div :class="[hasForm ? 'col-xl-8 col-md-8' : 'col-xl-12 col-md-12']">
       <div class="kt-portlet kt-portlet--mobile">
         <div class="kt-portlet__head kt-portlet__head--lg">
           <div class="kt-portlet__head-label">
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-4 col-md-4">
+    <div class="col-xl-4 col-md-4" v-show="hasForm">
       <data-form
         :fields="fields"
         :title="title"
@@ -40,7 +40,7 @@ export default {
     'datatable': Datatable,
     'data-form': Form
   },
-  props: ['title', 'desc', 'icon', 'endPoint', 'fields'],
+  props: ['title', 'desc', 'icon', 'endPoint', 'fields', 'hasForm'],
   methods: {
     refreshDatatable() {
       this.$refs.datatable.refresh();

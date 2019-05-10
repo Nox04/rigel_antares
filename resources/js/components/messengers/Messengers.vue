@@ -6,6 +6,7 @@
       end-point="messengers"
       desc="Gestione sus trabajadores"
       :fields="fields"
+      :has-form="true"
     />
   </div>
 </template>
