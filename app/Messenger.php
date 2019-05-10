@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
+use App\Events\MessengerUpdated;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -87,5 +88,13 @@ class Messenger extends Authenticatable implements JWTSubject
      */
     public function scopeEnabled($query) {
         return $query->where('enabled', true);
+    }
+
+    public function updateGeo(Request $request) {
+        $this->latitude = $request->latitude;
+        $this->longitude = $request->longitude;
+        $this->save();
+
+        event(new MessengerUpdated($this));
     }
 }

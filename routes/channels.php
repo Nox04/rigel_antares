@@ -22,3 +22,7 @@ Broadcast::channel('new-rides', function () {
 Broadcast::channel('ride-updates', function () {
     return true;
 });
+
+Broadcast::channel('messenger-updates', function () {
+    return true;
+});

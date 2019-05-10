@@ -50,6 +50,7 @@ Route::middleware('auth:api')->group(function () {
     Route::resource('messengers', 'MessengerController', ['except' => ['create', 'edit']]);
     Route::get('messengers/list/working', 'MessengerController@workingMessengers');
     Route::post('messengers/status', 'MessengerController@status');
+    Route::post('messengers/geo', 'MessengerController@updateGeo');
 
     //Rides
     Route::resource('rides', 'RideController', ['except' => ['create', 'edit']]);

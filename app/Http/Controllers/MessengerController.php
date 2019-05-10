@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Messenger;
 use App\Http\Requests\MessengerRequest;
+use Illuminate\Http\Request;
 
 class MessengerController extends BaseController
 {
@@ -46,5 +47,17 @@ class MessengerController extends BaseController
     public function workingMessengers()
     {
         return $this->entity->getWorkingMessengers();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateGeo(Request $request)
+    {
+        return $this->entity->updateGeo($request);
     }
 }
