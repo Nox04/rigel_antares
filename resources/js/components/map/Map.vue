@@ -63,7 +63,7 @@ export default {
         });
     },
     listenUpdates() {
-      Echo.private('messenger-updates').listen('RideUpdated', e => {
+      Echo.private('messenger-updates').listen('MessengerUpdated', e => {
         this.requestWorkingMessengers();
       });
     }

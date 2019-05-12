@@ -58,6 +58,6 @@ class MessengerController extends BaseController
      */
     public function updateGeo(Request $request)
     {
-        return $this->entity->updateGeo($request);
+        return $this->entity->find($request->id)->updateGeo($request);
     }
 }
