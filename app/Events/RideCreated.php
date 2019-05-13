@@ -48,6 +48,24 @@ class RideCreated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        $headings = [];
+        $headings['en'] = 'Nuevo domicilio';
+        $tags = [];
+
+        foreach($this->messengers as $messenger) {
+            array_push($tags, ["field" => "phone", "relation" => "=", "value" => $messenger->phone]);
+        }
+
+        OneSignal::setParam('headings', $headings)
+        ->sendNotificationUsingTags(
+            "Barrio " . $this->ride->neighborhood,
+            $tags,
+            $url = null,
+            $data = ["ride_id" => $this->ride->id],
+            $buttons = [["id" => "1", "text" => "Aceptar", "icon" => ""], ["id" => "2", "text" => "Rechazar", "icon" => ""]],
+            $schedule = null
+        );
+
         return new PrivateChannel('new-rides');
     }
 }
