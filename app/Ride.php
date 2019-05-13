@@ -53,7 +53,23 @@ class Ride extends Base
 
         sort($distances);
 
-        event(new RideCreated($this, array_slice($distances, 0, 5)));
+        $headings = [];
+        $headings['en'] = 'Nuevo domicilio';
+        $tags = [];
+
+        foreach(array_slice($distances, 0, 5) as $messenger) {
+            array_push($tags, ["field" => "phone", "relation" => "=", "value" => $messenger->phone]);
+        }
+
+        OneSignal::setParam('headings', $headings)
+        ->sendNotificationUsingTags(
+            "Barrio " . $this->ride->neighborhood,
+            $tags,
+            $url = null,
+            $data = ["ride_id" => $this->ride->id],
+            $buttons = [["id" => "1", "text" => "Aceptar", "icon" => ""], ["id" => "2", "text" => "Rechazar", "icon" => ""]],
+            $schedule = null
+        );
     }
 
     public function reactivate() {
