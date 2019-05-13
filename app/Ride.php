@@ -59,14 +59,18 @@ class Ride extends Base
         $tags = [];
         $fiveMessengers = array_slice($distances, 0, 5);
 
-        foreach($fiveMessengers as $messenger) {
+        $count = count($fiveMessengers);
+
+        foreach($fiveMessengers as $key => $messenger) {
             array_push($tags, [
                 "field" => "tag",
                 "key" => "phone",
                 "relation" => "=",
                 "value" => $messenger['phone']]);
+            if($key != $count - 1)
+                array_push($tags, ["operator" => "OR"]);
         }
-        dd([$fiveMessengers, $tags]);
+
         OneSignal::setParam('headings', $headings)
         ->sendNotificationUsingTags(
             "Barrio " . $ride->neighborhood,
