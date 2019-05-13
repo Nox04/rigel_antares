@@ -6,6 +6,7 @@ use App\Events\RideCreated;
 use App\Events\RideUpdated;
 use App\Jobs\ResendRide;
 use App\Utils\DistanceCalculator;
+use OneSignal;
 
 class Ride extends Base
 {
@@ -40,7 +41,7 @@ class Ride extends Base
 
     }
 
-    public function sendRideToMessengers() {
+    public function sendRideToMessengers($ride) {
         $messengers = new Messenger();
         $messengers = $messengers->getWorkingMessengers();
         $distances = [];
@@ -59,22 +60,26 @@ class Ride extends Base
         $messengers = array_slice($distances, 0, 5);
 
         foreach($messengers as $messenger) {
-            array_push($tags, ["field" => "phone", "relation" => "=", "value" => $messenger->phone]);
+            array_push($tags, [
+                "field" => "tag",
+                "key" => "phone",
+                "relation" => "=",
+                "value" => $messenger['phone']]);
         }
 
         OneSignal::setParam('headings', $headings)
         ->sendNotificationUsingTags(
-            "Barrio " . $this->ride->neighborhood,
+            "Barrio " . $ride->neighborhood,
             $tags,
             $url = null,
-            $data = ["ride_id" => $this->ride->id],
+            $data = ["ride_id" => $ride->id],
             $buttons = [["id" => "1", "text" => "Aceptar", "icon" => ""], ["id" => "2", "text" => "Rechazar", "icon" => ""]],
             $schedule = null
         );
     }
 
     public function reactivate() {
-        $this->sendRideToMessengers();
+        $this->sendRideToMessengers($this);
         $this->status = 'pending';
         $this->save();
 
