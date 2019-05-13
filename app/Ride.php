@@ -49,7 +49,7 @@ class Ride extends Base
         foreach($messengers as $messenger) {
             $calculator = new DistanceCalculator($messenger->latitude, $messenger->longitude, 10.480639, -73.272768);
             $distance = $calculator->getDistanceInMetersTo();
-            array_push($distances, ["distance" => $distance, "id" => $messenger->id]);
+            array_push($distances, ["distance" => $distance, "id" => $messenger->id, "phone" => $messenger->phone]);
         }
 
         sort($distances);
@@ -57,9 +57,9 @@ class Ride extends Base
         $headings = [];
         $headings['en'] = 'Nuevo domicilio';
         $tags = [];
-        $messengers = array_slice($distances, 0, 5);
+        $fiveMessengers = array_slice($distances, 0, 5);
 
-        foreach($messengers as $messenger) {
+        foreach($fiveMessengers as $messenger) {
             array_push($tags, [
                 "field" => "tag",
                 "key" => "phone",
