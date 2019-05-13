@@ -66,7 +66,7 @@ class Ride extends Base
                 "relation" => "=",
                 "value" => $messenger['phone']]);
         }
-
+        dd([$fiveMessengers, $tags]);
         OneSignal::setParam('headings', $headings)
         ->sendNotificationUsingTags(
             "Barrio " . $ride->neighborhood,
