@@ -56,8 +56,9 @@ class Ride extends Base
         $headings = [];
         $headings['en'] = 'Nuevo domicilio';
         $tags = [];
+        $messengers = array_slice($distances, 0, 5);
 
-        foreach(array_slice($distances, 0, 5) as $messenger) {
+        foreach($messengers as $messenger) {
             array_push($tags, ["field" => "phone", "relation" => "=", "value" => $messenger->phone]);
         }
 
