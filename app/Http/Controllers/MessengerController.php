@@ -68,7 +68,7 @@ class MessengerController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function startJourney(Request $request)
+    public function startJourny(Request $request)
     {
         return $this->entity->find($request->id)->stopJourny();
     }
