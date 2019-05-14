@@ -70,7 +70,7 @@ class MessengerController extends BaseController
      */
     public function startJourny(Request $request)
     {
-        return $this->entity->find($request->id)->stopJourny();
+        return $this->entity->find($request->id)->startJourny();
     }
 
     /**
