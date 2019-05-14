@@ -61,4 +61,17 @@ class RideController extends BaseController
         $ride = $this->entity->find($request->id);
         return $ride->reactivate();
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function linkRide(Request $request)
+    {
+        $ride = $this->entity->find($request->id);
+        return $ride->linkToMessenger($request->messenger_id);
+    }
 }

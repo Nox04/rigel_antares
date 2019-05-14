@@ -89,4 +89,15 @@ class Ride extends Base
 
         ResendRide::dispatch($this)->delay(now()->addSeconds(20));
     }
+
+    public function linkToMessenger($id) {
+        if($this->messenger_id == null) {
+            $this->messenger_id = $id;
+            $this->save();
+            return response()->json(['success' => 'successfully linked'], 200);
+        } else {
+            return response()->json(['error' => 'ride_taken'], 402);
+        }
+
+    }
 }
