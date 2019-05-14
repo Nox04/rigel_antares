@@ -93,6 +93,7 @@ class Ride extends Base
     public function linkToMessenger($id) {
         if($this->messenger_id == null) {
             $this->messenger_id = $id;
+            $this->status = 'active';
             $this->save();
             return response()->json(['success' => 'successfully linked'], 200);
         } else {
