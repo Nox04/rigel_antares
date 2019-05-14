@@ -60,4 +60,28 @@ class MessengerController extends BaseController
     {
         return $this->entity->find($request->id)->updateGeo($request);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function startJourney(Request $request)
+    {
+        return $this->entity->find($request->id)->stopJourny();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function stopJourny(Request $request)
+    {
+        return $this->entity->find($request->id)->stopJourny();
+    }
 }

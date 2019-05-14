@@ -58,7 +58,10 @@ Route::middleware('auth:api')->group(function () {
     Route::post('rides/reactivate', 'RideController@reactivateRide');
 });
 
+
 Route::middleware('auth:mobile')->group(function () {
     //Messengers
     Route::post('messengers/geo', 'MessengerController@updateGeo');
+    Route::post('messengers/start', 'MessengerController@startJourney');
+    Route::post('messengers/stop', 'MessengerController@stopJourney');
 });

@@ -93,7 +93,20 @@ class Messenger extends Authenticatable implements JWTSubject
     public function updateGeo(Request $request) {
         $this->latitude = $request->latitude;
         $this->longitude = $request->longitude;
+        $this->save();
+
+        event(new MessengerUpdated($this));
+    }
+
+    public function startJourney() {
         $this->working = true;
+        $this->save();
+
+        event(new MessengerUpdated($this));
+    }
+
+    public function stopJourny() {
+        $this->working = false;
         $this->save();
 
         event(new MessengerUpdated($this));
