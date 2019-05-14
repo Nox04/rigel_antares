@@ -98,7 +98,7 @@ class Messenger extends Authenticatable implements JWTSubject
         event(new MessengerUpdated($this));
     }
 
-    public function startJourney() {
+    public function startJourny() {
         $this->working = true;
         $this->save();
 
