@@ -7,6 +7,15 @@
         <meta name="author" content="Rigel">
         <meta name="description" content="Antares">
         <link rel="shortcut icon" href="/images/favicon.png" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+        <script type="text/javascript">
+            WebFont.load({
+                google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+                active: function () {
+                    sessionStorage.fonts = true;
+                }
+            });
+        </script>
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script>
