@@ -84,4 +84,16 @@ class MessengerController extends BaseController
     {
         return $this->entity->find($request->id)->stopJourny();
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getMyRides(Request $request)
+    {
+        return $this->entity->find($request->id)->rides();
+    }
 }
