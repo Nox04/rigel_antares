@@ -5796,7 +5796,14 @@ __webpack_require__.r(__webpack_exports__);
           lng: 0
         },
         open: false,
-        template: ''
+        template: '',
+        options: {
+          pixelOffset: {
+            width: 0,
+            height: -40
+          },
+          maxWidth: 300
+        }
       }
     };
   },
@@ -41699,7 +41706,7 @@ var render = function() {
               "gmap-info-window",
               {
                 attrs: {
-                  options: { maxWidth: 300 },
+                  options: _vm.infoWindow.options,
                   position: _vm.infoWindow.position,
                   opened: _vm.infoWindow.open
                 },

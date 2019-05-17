@@ -17,7 +17,7 @@
         >
         </GmapMarker>
         <gmap-info-window
-          :options="{maxWidth: 300}"
+          :options="infoWindow.options"
           :position="infoWindow.position"
           :opened="infoWindow.open"
           @closeclick="infoWindow.open=false">
@@ -50,7 +50,14 @@ export default {
       infoWindow: {
         position: {lat: 0, lng: 0},
         open: false,
-        template: ''
+        template: '',
+        options: {
+          pixelOffset: {
+            width: 0,
+            height: -40
+          },
+          maxWidth: 300
+        }
       }
     }
   },
