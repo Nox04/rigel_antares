@@ -13,8 +13,16 @@
           :clickable="true"
           :draggable="false"
           :icon="m.id % 2 === 0 ? redMarker : greenMarker"
-          @click="center=m.position"
-        />
+          @click="openInfoWindowTemplate(messengers[index])"
+        >
+        </GmapMarker>
+        <gmap-info-window
+          :options="{maxWidth: 300}"
+          :position="infoWindow.position"
+          :opened="infoWindow.open"
+          @closeclick="infoWindow.open=false">
+          <div v-html="infoWindow.template"></div>
+        </gmap-info-window>
       </GmapMap>
     </div>
     <div class="col-md-2 kt-hidden-mobile">
@@ -38,7 +46,12 @@ export default {
     return {
       redMarker: redMarker,
       greenMarker: greenMarker,
-      messengers: []
+      messengers: [],
+      infoWindow: {
+        position: {lat: 0, lng: 0},
+        open: false,
+        template: ''
+      }
     }
   },
   mounted() {
@@ -47,6 +60,11 @@ export default {
     this.listenUpdates();
   },
   methods: {
+    openInfoWindowTemplate (item) {
+      this.infoWindow.position = item.position;
+      this.infoWindow.template = `<p style="text-align:center">${item.name}</p><p style="text-align:center">${item.phone}</p>`;
+      this.infoWindow.open = true;
+    },
     requestWorkingMessengers() {
       axios.get(api.workingMessengers)
       .then(response => {
