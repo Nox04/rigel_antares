@@ -26,7 +26,7 @@ class Base extends Model
      * @var array
      */
     protected $hidden = [
-        'updated_at'
+        'updated_at',
     ];
 
     /**

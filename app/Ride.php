@@ -45,9 +45,17 @@ class Ride extends Base
         $distances = [];
 
         foreach($messengers as $messenger) {
-            $calculator = new DistanceCalculator($messenger->latitude, $messenger->longitude, 10.480639, -73.272768);
+            $calculator = new DistanceCalculator(
+                $messenger->latitude,
+                $messenger->longitude,
+                10.480639,
+                -73.272768);
             $distance = $calculator->getDistanceInMetersTo();
-            array_push($distances, ["distance" => $distance, "id" => $messenger->id, "phone" => $messenger->phone]);
+            array_push($distances, [
+                "distance" => $distance,
+                "id" => $messenger->id,
+                "phone" => $messenger->phone,
+            ]);
         }
 
         sort($distances);
@@ -77,7 +85,10 @@ class Ride extends Base
             $tags,
             $url = null,
             $data = ["ride_id" => $ride->id],
-            $buttons = [["id" => "1", "text" => "Aceptar", "icon" => ""], ["id" => "2", "text" => "Rechazar", "icon" => ""]],
+            $buttons = [
+                ["id" => "1", "text" => "Aceptar", "icon" => ""],
+                ["id" => "2", "text" => "Rechazar", "icon" => ""],
+            ],
             $schedule = null
         );
     }
