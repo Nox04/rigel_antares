@@ -37,7 +37,6 @@ class Ride extends Base
         self::updated(function($ride) {
             event(new RideUpdated($ride));
         });
-
     }
 
     public function sendRideToMessengers($ride) {
@@ -67,12 +66,13 @@ class Ride extends Base
                 "relation" => "=",
                 "value" => $messenger['phone'],
             ]);
-            if($key !== $count - 1)
+            if($key !== $count - 1) {
                 array_push($tags, ["operator" => "OR"]);
+            }
         }
 
         OneSignal::setParam('headings', $headings)
-        ->sendNotificationUsingTags(
+            ->sendNotificationUsingTags(
             "Barrio " . $ride->neighborhood,
             $tags,
             $url = null,
@@ -99,6 +99,5 @@ class Ride extends Base
         } else {
             return response()->json(['error' => 'ride_taken'], 402);
         }
-
     }
 }

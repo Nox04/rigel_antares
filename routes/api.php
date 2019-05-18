@@ -47,13 +47,13 @@ Route::prefix('mauth')->group(function () {
 
 Route::middleware('auth:api')->group(function () {
     //Messengers
-    Route::resource('messengers', 'MessengerController', ['except' => ['create', 'edit']]);
+    Route::resource('messengers', 'MessengerController');
     Route::get('messengers/list/working', 'MessengerController@workingMessengers');
     Route::post('messengers/status', 'MessengerController@status');
     Route::post('messengers/geo', 'MessengerController@updateGeo');
 
     //Rides
-    Route::resource('rides', 'RideController', ['except' => ['create', 'edit']]);
+    Route::resource('rides', 'RideController');
     Route::get('rides/list/pending', 'RideController@pendingRides');
     Route::post('rides/reactivate', 'RideController@reactivateRide');
 });

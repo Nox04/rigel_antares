@@ -17,7 +17,7 @@ class MessengerRequest extends BaseRequest
             {
                 return [
                     'name' => 'required|max:100|unique:messengers,name',
-                    'phone' => 'required|min:7|max:12|unique:messengers,phone'
+                    'phone' => 'required|min:7|max:12|unique:messengers,phone',
                 ];
             }
             case 'PUT':
@@ -25,7 +25,7 @@ class MessengerRequest extends BaseRequest
             {
                 return [
                     'name' => 'required|max:100|unique:messengers,name,' . $this->id,
-                    'phone' => 'required|min:7|max:12|unique:messengers,phone,' . $this->id
+                    'phone' => 'required|min:7|max:12|unique:messengers,phone,' . $this->id,
                 ];
             }
             default:

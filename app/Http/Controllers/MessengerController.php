@@ -10,7 +10,6 @@ class MessengerController extends BaseController
 {
     /**
      * Create a controller instance.
-     *
      */
     public function __construct(Messenger $messenger)
     {

@@ -16,7 +16,7 @@ class MessengersAuthController extends Controller
     {
         $user = Messenger::where('phone', $request->phone)->where('pin', $request->pin)->enabled()->first();
 
-        if(!is_null($user)) {
+        if(! is_null($user)) {
             $token = $this->guard()->fromUser($user);
             return response()->json(['status' => 'success', 'user' => $user], 200)->header('Authorization', $token);
         }
@@ -31,7 +31,7 @@ class MessengersAuthController extends Controller
         $this->guard()->logout();
         return response()->json([
             'status' => 'success',
-            'msg' => 'Logged out Successfully.'
+            'msg' => 'Logged out Successfully.',
         ], 200);
     }
 
@@ -43,7 +43,7 @@ class MessengersAuthController extends Controller
         $user = Messenger::find(Auth::user()->id);
         return response()->json([
             'status' => 'success',
-            'data' => $user
+            'data' => $user,
         ]);
     }
 
