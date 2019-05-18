@@ -37,7 +37,7 @@ class MessengersAuthController extends Controller
     /**
      * Get authenticated user
      */
-    public function user(Request $request)
+    public function user()
     {
         $user = Messenger::find(Auth::user()->id);
         return response()->json([

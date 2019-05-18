@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Events\RideCreated;
 use App\Events\RideUpdated;
 use App\Jobs\ResendRide;
 use App\Utils\DistanceCalculator;

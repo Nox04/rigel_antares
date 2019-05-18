@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests;
 
 class MessengerRequest extends BaseRequest
@@ -27,8 +28,6 @@ class MessengerRequest extends BaseRequest
                     'phone' => 'required|min:7|max:12|unique:messengers,phone,' . $this->id
                 ];
             }
-            case 'GET':
-            case 'DELETE':
             default:
             {
                 return [];

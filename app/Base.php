@@ -52,7 +52,7 @@ class Base extends Model
         $model = $this->query();
 
         foreach($filters as $key => $filter) {
-            if($filter != '') {
+            if($filter !== '') {
                 $model = $model->where($key, 'like', '%'.$filter.'%');
             }
         }

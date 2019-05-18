@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests;
 
 class RideRequest extends BaseRequest
@@ -29,8 +30,6 @@ class RideRequest extends BaseRequest
                     'address' => 'required|max:200'
                 ];
             }
-            case 'GET':
-            case 'DELETE':
             default:
             {
                 return [];
