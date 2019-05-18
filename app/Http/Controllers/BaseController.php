@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
@@ -92,31 +93,5 @@ class BaseController extends Controller
     public function destroy($id)
     {
         return response()->json($this->entity->find($id)->checkAndDelete());
-    }
-
-    /**
-     * Process data tables ajax request.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function data(Request $request)
-    {
-        $filters = $request->filter;
-        $model = $filters === null ? $this->model : $this->table->filters($this->model, $filters);
-        if (isset($request->action) and $request->action === 'hours') return $model;
-        else if (isset($request->action)) {
-            $headers = [];
-            $fields = $this->table->fieldsExport;
-            foreach ($fields as $key => $value) {
-                $header = is_array($value) ?
-                    array_key_exists(3, $value) ? $value[3]
-                        : ($value[1] === 'select' ? $value[0] : $value[0] . '_id')
-                    : $value;
-                $headers[$key] = __('validation.attributes.' . $header);
-            }
-            return response()->json(Excel::export($model, $headers, $fields, $request->action, $this->crud));
-        }
-        return (new EloquentDataTable($model))->toJson();
     }
 }

@@ -32,7 +32,7 @@ class Messenger extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'pin', 'updated_at'
+        'pin', 'updated_at',
     ];
 
     protected $guard = 'mobile';

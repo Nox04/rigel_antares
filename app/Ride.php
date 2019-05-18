@@ -65,7 +65,7 @@ class Ride extends Base
                 "field" => "tag",
                 "key" => "phone",
                 "relation" => "=",
-                "value" => $messenger['phone']
+                "value" => $messenger['phone'],
             ]);
             if($key !== $count - 1)
                 array_push($tags, ["operator" => "OR"]);
