@@ -62,7 +62,7 @@ class Messenger extends Authenticatable implements JWTSubject
         $model = $this->query();
 
         foreach($filters as $key => $filter) {
-            if($filter != '') {
+            if($filter !== '') {
                 $model = $model->where($key, 'like', '%'.$filter.'%');
             }
         }

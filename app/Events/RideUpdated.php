@@ -14,7 +14,7 @@ class RideUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $ride;
+    protected $ride;
 
     /**
      * Create a new event instance.

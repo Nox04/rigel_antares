@@ -14,8 +14,8 @@ class RideCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $ride;
-    public $messengers;
+    protected $ride;
+    protected $messengers;
 
     /**
      * Create a new event instance.

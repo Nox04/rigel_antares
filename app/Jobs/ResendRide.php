@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Ride;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -32,7 +31,7 @@ class ResendRide implements ShouldQueue
      */
     public function handle()
     {
-        if($this->ride->messenger_id == null) {
+        if($this->ride->messenger_id === null) {
             $this->ride->status = 'inactive';
             $this->ride->save();
         }

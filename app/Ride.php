@@ -66,8 +66,9 @@ class Ride extends Base
                 "field" => "tag",
                 "key" => "phone",
                 "relation" => "=",
-                "value" => $messenger['phone']]);
-            if($key != $count - 1)
+                "value" => $messenger['phone']
+            ]);
+            if($key !== $count - 1)
                 array_push($tags, ["operator" => "OR"]);
         }
 
@@ -91,7 +92,7 @@ class Ride extends Base
     }
 
     public function linkToMessenger($id) {
-        if($this->messenger_id == null) {
+        if($this->messenger_id === null) {
             $this->messenger_id = $id;
             $this->status = 'active';
             $this->save();

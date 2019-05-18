@@ -15,7 +15,7 @@ class BaseRequest extends FormRequest
     {
         return true;
     }
-    
+
     /**
      * Throw an exception on invalid data
      *
@@ -27,7 +27,8 @@ class BaseRequest extends FormRequest
     {
         $response = new JsonResponse([
             'message' => 'The given data is invalid',
-            'errors' => $validator->errors()], 422);
+            'errors' => $validator->errors()
+        ], 422);
         throw new \Illuminate\Validation\ValidationException($validator, $response);
     }
 }

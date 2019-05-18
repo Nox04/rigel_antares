@@ -111,7 +111,7 @@ class BaseController extends Controller
             foreach ($fields as $key => $value) {
                 $header = is_array($value) ?
                     array_key_exists(3, $value) ? $value[3]
-                        : ($value[1] == 'select' ? $value[0] : $value[0] . '_id')
+                        : ($value[1] === 'select' ? $value[0] : $value[0] . '_id')
                     : $value;
                 $headers[$key] = __('validation.attributes.' . $header);
             }

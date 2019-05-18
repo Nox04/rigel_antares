@@ -58,7 +58,7 @@ class Base extends Model
         }
 
         foreach($relations as $key => $relation) {
-            if($relation != '') {
+            if($relation !== '') {
                 $model = $model->with($key);
             }
         }

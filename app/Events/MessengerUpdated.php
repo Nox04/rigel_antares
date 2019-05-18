@@ -14,7 +14,7 @@ class MessengerUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $messenger;
+    protected $messenger;
 
     /**
      * Create a new event instance.
