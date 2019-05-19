@@ -111,4 +111,9 @@ class Ride extends Base
             return response()->json(['error' => 'ride_taken'], 402);
         }
     }
+
+    public function finish() {
+        $this->status = 'finished';
+        $this->save();
+    }
 }

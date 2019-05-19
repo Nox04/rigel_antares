@@ -79,4 +79,10 @@ class RideController extends BaseController
     {
         return $this->entity->find($request->id);
     }
+
+    public function finishRide(Request $request)
+    {
+        $ride = $this->entity->find($request->id);
+        return $ride->finish();
+    }
 }

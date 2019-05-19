@@ -67,4 +67,5 @@ Route::middleware('auth:mobile')->group(function () {
     //Rides
     Route::post('rides/link', 'RideController@linkRide');
     Route::post('rides/my-ride', 'RideController@showMyRide');
+    Route::post('rides/finish', 'RideController@finishRide');
 });
