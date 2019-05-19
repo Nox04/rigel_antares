@@ -47,7 +47,7 @@ class Messenger extends Authenticatable implements JWTSubject
     }
 
     public function getWorkingMessengers() {
-        return $this->where('working', 1)->get();
+        return $this->where('working', 1)->where('busy', 0)->get();
     }
 
     /**

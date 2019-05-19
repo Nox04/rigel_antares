@@ -13,7 +13,7 @@
           :position="m.position"
           :clickable="true"
           :draggable="false"
-          :icon="m.id % 2 === 0 ? redMarker : greenMarker"
+          :icon="m.busy === 1 ? redMarker : greenMarker"
           @click="openInfoWindowTemplate(messengers[index])"
         >
         </GmapMarker>

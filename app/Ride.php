@@ -104,9 +104,12 @@ class Ride extends Base
 
     public function linkToMessenger($id) {
         if($this->messenger_id === null) {
+            $messenger = Messenger::find($this->messenger_id);
+            $messenger->busy = 1;
             $this->messenger_id = $id;
             $this->status = 'active';
             $this->save();
+            $messenger->save();
             return response()->json(['success' => 'successfully linked'], 200);
         } else {
             return response()->json(['error' => 'ride_taken'], 402);
@@ -114,8 +117,11 @@ class Ride extends Base
     }
 
     public function finish() {
+        $messenger = Messenger::find($this->messenger_id);
+        $messenger->busy = 0;
         $this->status = 'finished';
         $this->end = Carbon::now()->toDateTimeString();
         $this->save();
+        $messenger->save();
     }
 }
