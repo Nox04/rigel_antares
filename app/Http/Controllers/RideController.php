@@ -74,4 +74,9 @@ class RideController extends BaseController
         $ride = $this->entity->find($request->id);
         return $ride->linkToMessenger($request->messenger_id);
     }
+
+    public function showMyRide(Request $request)
+    {
+        return $this->entity->find($request->id);
+    }
 }
