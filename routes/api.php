@@ -47,6 +47,7 @@ Route::middleware('auth:api')->group(function () {
     //Messengers
     Route::resource('messengers', 'MessengerController');
     Route::get('messengers/list/working', 'MessengerController@workingMessengers');
+    Route::get('messengers/list/working-and-busy', 'MessengerController@workingAndBusyMessengers');
     Route::post('messengers/status', 'MessengerController@status');
     Route::post('messengers/geo', 'MessengerController@updateGeo');
 

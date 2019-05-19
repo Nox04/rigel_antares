@@ -4,7 +4,7 @@ export const csrfToken = Laravel.csrfToken;
 
 export const api = {
   messengers: 'messengers',
-  workingMessengers: 'messengers/list/working',
+  workingMessengers: 'messengers/list/working-and-busy',
   rides: 'rides',
   pendingRides: 'rides/list/pending',
 }

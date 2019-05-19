@@ -56,6 +56,17 @@ class MessengerController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function workingAndBusyMessengers()
+    {
+        return $this->entity->getWorkingAndBusyMessengers();
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param MessengerRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function updateGeo(Request $request)
     {
         return $this->entity->find($request->id)->updateGeo($request);
