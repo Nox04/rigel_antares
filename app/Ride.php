@@ -6,6 +6,7 @@ use App\Events\RideUpdated;
 use App\Jobs\ResendRide;
 use App\Utils\DistanceCalculator;
 use OneSignal;
+use Carbon\Carbon;
 
 class Ride extends Base
 {
@@ -114,6 +115,7 @@ class Ride extends Base
 
     public function finish() {
         $this->status = 'finished';
+        $this->end = Carbon::now()->toDateTimeString();
         $this->save();
     }
 }
