@@ -94,6 +94,6 @@ class MessengerController extends BaseController
      */
     public function getMyRides(Request $request)
     {
-        return $this->entity->find($request->id)->rides;
+        return $this->entity->find($request->id)->rides()->latest()->get();
     }
 }
