@@ -104,7 +104,7 @@ class Ride extends Base
 
     public function linkToMessenger($id) {
         if($this->messenger_id === null) {
-            $messenger = Messenger::find($this->messenger_id);
+            $messenger = Messenger::find($id);
             $messenger->busy = 1;
             $this->messenger_id = $id;
             $this->status = 'active';
