@@ -50,6 +50,13 @@ class Messenger extends Authenticatable implements JWTSubject
         return $this->where('working', 1)->where('busy', 0)->get();
     }
 
+    public static function boot() {
+        parent::boot();
+        self::updated(function($messenger) {
+            event(new MessengerUpdated($messenger));
+        });
+    }
+
     /**
      * Return filtered data
      *
@@ -94,21 +101,15 @@ class Messenger extends Authenticatable implements JWTSubject
         $this->latitude = $request->latitude;
         $this->longitude = $request->longitude;
         $this->save();
-
-        event(new MessengerUpdated($this));
     }
 
     public function startJourny() {
         $this->working = true;
         $this->save();
-
-        event(new MessengerUpdated($this));
     }
 
     public function stopJourny() {
         $this->working = false;
         $this->save();
-
-        event(new MessengerUpdated($this));
     }
 }
