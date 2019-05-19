@@ -63,8 +63,8 @@ Route::middleware('auth:mobile')->group(function () {
     Route::post('messengers/start', 'MessengerController@startJourny');
     Route::post('messengers/stop', 'MessengerController@stopJourny');
     Route::post('messengers/rides', 'MessengerController@getMyRides');
-    Route::get('messengers/rides/{$ride}', 'RideController@show');
 
     //Rides
     Route::post('rides/link', 'RideController@linkRide');
+    Route::get('rides/{$ride}', 'RideController@show');
 });
